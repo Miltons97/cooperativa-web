@@ -1,0 +1,42 @@
+.cardsContainer {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 280px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.cardDark {
+  background-color: #333;
+  color: #fff;
+}
+
+.cardGreen {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.iconRed { color: #ff4d4d; font-size: 1.5rem; }
+.iconBlue { color: #4d79ff; font-size: 1.5rem; }
+.iconGreen { color: #28a745; font-size: 1.5rem; }
+.iconWhite { color: #fff; font-size: 1.5rem; }
+
+.logoSmall {
+  width: 100px;
+  margin-top: 0.5rem;
+}

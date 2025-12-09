@@ -58,3 +58,27 @@
   color: #00d4ff;
   transform: translateY(-2px);
 }
+
+/* Logo reducido al hacer scroll */
+.logoSmall {
+  transform: scale(0.6); /* achica el logo al 60% */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
+              0 0 20px rgba(0, 174, 255, 0.4);
+}
+
+
+
+/* Contenedor de links que aparece al tocar el icono */
+.scrollMenuLinks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 0; /* deja espacio para el icono */
+  gap: 20px;
+  z-index: 1999;
+}
