@@ -1,5 +1,5 @@
 import React from "react";
-import Cards from "./Cards/Cards"; // asegurate que el nombre de archivo sea Cards.jsx
+import Cards from "../../views/Cards/cards"; 
 import styles from "./Inicio.module.css";
 
 function Inicio() {
@@ -29,7 +29,7 @@ function Inicio() {
         </div>
       </div>
 
-      {/* Contenedor de cards al final */}
+   
       <div className={styles.cardsWrapper}>
         <Cards />
       </div>
