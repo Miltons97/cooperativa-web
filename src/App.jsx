@@ -3,7 +3,7 @@ import Navbar from "./componentes/Navbar/Navbar";
 import Inicio from "./componentes/Inicio/Inicio";
 import Institucional from "./componentes/Institucional/Institucional";
 import Novedades from "./componentes/Novedades/Novedades";
-import Servicios from "./componentes/servicios/servicios";
+import Servicios from "./componentes/sevicios/servicios";
 import PagosFacturas from "./componentes/Socios/MiFactura";
 
 import { InstitucionProvider } from "./componentes/context/intitucionContext";
