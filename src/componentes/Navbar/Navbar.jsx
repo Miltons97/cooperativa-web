@@ -33,13 +33,13 @@ export default function Navbar() {
         <>
           {/* Navbar normal */}
           <div className={styles.logoContainer}>
-            <img
+            {/* <img
               src="assets/copeospil.jpg"
               alt="Logo Cooperativa"
               className={styles.logo}
-            />
+            /> */}
             <span className={styles.brand}>
-              {institucion?.nombre || "Cooperativa Eléctrica"}
+              {/* {institucion?.nombre || "Cooperativa Eléctrica"} */}
             </span>
           </div>
 

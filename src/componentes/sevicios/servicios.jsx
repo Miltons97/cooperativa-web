@@ -8,7 +8,7 @@ import Agua from "../../views/Servicios/Agua/AguaCopeospiL";
 import Luz from "../../views/Servicios/Luz/LuzCopeospil";
 import Internet from "../../views/Servicios/Internet/InternetCopeospi";
 import Social from "../../views/Servicios/Social/Social"
-// ÍCONOS MUI
+
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
 import FlashOnIcon from "@mui/icons-material/FlashOn";
 import WifiIcon from "@mui/icons-material/Wifi";
@@ -17,7 +17,7 @@ import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
 export default function Servicios() {
   const location = useLocation();
 
-  // DATA DE LAS CARDS
+
   const serviciosData = [
     {
       id: 1,
@@ -54,7 +54,7 @@ export default function Servicios() {
 
       <h1 className={styles.serviciosTitle}>Servicios</h1>
 
-      {/* GRID DE CARDS */}
+     
       <div className={styles.serviciosGrid}>
         {serviciosData.map((serv) => (
           <Link
@@ -71,7 +71,6 @@ export default function Servicios() {
         ))}
       </div>
 
-      {/* CONTENIDO SEGÚN RUTA */}
       <div className={styles.servicioContent}>
         {location.pathname === "/servicios/agua" && <Agua />}
         {location.pathname === "/servicios/luz" && <Luz />}

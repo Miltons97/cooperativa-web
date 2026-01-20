@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styles from "./Institucional.module.css";
 
 function Institucional() {
-  // Slider imágenes tomadas desde /assets
   const sliderImages = [
     "/assets/Lineas1.jpg",
     "/assets/Galpon1.jpg",
@@ -20,50 +19,80 @@ function Institucional() {
     return () => clearInterval(interval);
   }, []);
 
-  const mockPosts = [
-    { id: 1, category: "AGUA", caption: "Visita alumnos carrera Maestro Mayor de Obras", media_url: "https://picsum.photos/id/1011/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 2, category: "INSTITUCIONAL", caption: "Nueva reunión con delegados de Chillar", media_url: "https://picsum.photos/id/1027/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 3, category: "INSTITUCIONAL", caption: "Reunión con delegados de Cacharí", media_url: "https://picsum.photos/id/1033/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 4, category: "AGUA", caption: "Visita Escuela Secundaria Nº5", media_url: "https://picsum.photos/id/1052/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 5, category: "INSTITUCIONAL", caption: "Recorrido de consejeros por TRANSBA", media_url: "https://picsum.photos/id/1062/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 6, category: "INSTITUCIONAL", caption: "Homenaje de la CEAL por los 50 años del Laboratorio Azul", media_url: "https://picsum.photos/id/1074/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 7, category: "INSTITUCIONAL", caption: "Reunión del Consejo de CEAL con concejales", media_url: "https://picsum.photos/id/1084/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 8, category: "INSTITUCIONAL", caption: "Firma convenios alumbrado público", media_url: "https://picsum.photos/id/109/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 9, category: "ENERGÍA", caption: "Acuerdo CEAL CAMMESA", media_url: "https://picsum.photos/id/119/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 10, category: "OBRAS", caption: "Nuevas columnas de hormigón", media_url: "https://picsum.photos/id/120/600/400", permalink: "https://www.instagram.com/copeospil/" },
-  ];
-
   return (
-    <div className={styles.novedadesContainer}>
+    <div className={styles.institucionalContainer}>
 
-
+      {/* SLIDER */}
       <div className={styles.sliderContainer}>
         <img
           src={sliderImages[currentIndex]}
-          alt="Slide"
+          alt="Institucional"
           className={styles.sliderImage}
         />
-        <h1 className={styles.novedadesTitle}>Institucional</h1>
+        <h1 className={styles.institucionalTitle}>Institucional</h1>
       </div>
 
-      {/* Grid de noticias */}
-      <div className={styles.novedadesGrid}>
-        {mockPosts.map((post) => (
-          <a
-            key={post.id}
-            href={post.permalink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.novedad}
-          >
-            <div className={styles.novedadImageContainer}>
-              <img src={post.media_url} alt={post.caption} />
-              <span className={styles.novedadCategory}>{post.category}</span>
-            </div>
-            <p className={styles.novedadCaption}>{post.caption}</p>
-          </a>
-        ))}
-      </div>
+      {/* CONTENIDO */}
+      <section className={styles.institucionalContent}>
+
+        <h2>Quiénes somos</h2>
+        <p>
+          La Cooperativa Eléctrica de Servicios Públicos Ltda. fue fundada en el
+          año 1958 como una iniciativa comunitaria destinada a garantizar el
+          acceso a servicios esenciales. Desde sus inicios, la cooperativa ha
+          crecido junto a la comunidad, promoviendo el desarrollo local, la
+          solidaridad y la gestión responsable de los recursos.
+        </p>
+
+        {/* MISIÓN - VISIÓN - VALORES */}
+        <div className={styles.mvvGrid}>
+          <div className={styles.mvvItem}>
+            <h3>Misión</h3>
+            <p>
+              Brindar servicios públicos eficientes y confiables, priorizando el
+              bienestar de nuestros asociados y el desarrollo sustentable.
+            </p>
+          </div>
+
+          <div className={styles.mvvItem}>
+            <h3>Visión</h3>
+            <p>
+              Ser una cooperativa referente en la región por su compromiso
+              social, innovación y transparencia en la gestión.
+            </p>
+          </div>
+
+          <div className={styles.mvvItem}>
+            <h3>Valores</h3>
+            <ul>
+              <li>Solidaridad</li>
+              <li>Responsabilidad</li>
+              <li>Transparencia</li>
+              <li>Compromiso comunitario</li>
+              <li>Participación democrática</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* AUTORIDADES */}
+        <h2>Autoridades</h2>
+
+        <div className={styles.autoridadesGrid}>
+          <div className={styles.autoridadItem}>Presidente: Juan Carlos Pérez</div>
+          <div className={styles.autoridadItem}>Vicepresidente: María Gómez</div>
+          <div className={styles.autoridadItem}>Tesorero: Roberto Fernández</div>
+          <div className={styles.autoridadItem}>Secretario: Ana Ríos</div>
+
+          <div className={styles.autoridadItem}>Vocal Titular: Luis Martínez</div>
+          <div className={styles.autoridadItem}>Vocal Titular: Silvia Acosta</div>
+
+          <div className={styles.autoridadItem}>Vocal Suplente: Diego Morales</div>
+          <div className={styles.autoridadItem}>Vocal Suplente: Carla Benítez</div>
+          <div className={styles.autoridadItem}>Vocal Suplente: Pablo Núñez</div>
+          <div className={styles.autoridadItem}>Vocal Suplente: Laura Quiroga</div>
+        </div>
+
+      </section>
     </div>
   );
 }

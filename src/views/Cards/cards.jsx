@@ -5,7 +5,7 @@ import styles from "./Cards.module.css";
 function Cards() {
   return (
     <div className={styles.cardsContainer}>
-      {/* Card 1 */}
+  
       <div className={styles.card}>
         <h3>Consultas:</h3>
         <p><strong>(2281) 31 73 52</strong></p>
@@ -20,7 +20,6 @@ function Cards() {
         </div>
       </div>
 
-      {/* Card 2 */}
       <div className={styles.card}>
         <h3>Consultas Fibra</h3>
         <p><strong>(2281) 68 44 19</strong></p>
@@ -34,7 +33,7 @@ function Cards() {
         />
       </div>
 
-      {/* Card 3 */}
+     
       <div className={`${styles.card} ${styles.cardDark}`}>
         <h3>Lugares de pago</h3>
         <p>BELGRANO 654, COPEOSPIL.</p>
@@ -45,7 +44,7 @@ function Cards() {
         <FaDownload className={styles.iconWhite} />
       </div>
 
-      {/* Card 4 */}
+   
       <div className={`${styles.card} ${styles.cardGreen}`}>
         <h3>Pagá tu factura</h3>
         <p><strong>AUTOGESTIÓN</strong></p>

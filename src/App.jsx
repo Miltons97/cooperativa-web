@@ -8,11 +8,15 @@ import PagosFacturas from "./componentes/Socios/MiFactura";
 
 import { InstitucionProvider } from "./componentes/context/intitucionContext";
 
+
+import Footer from "./componentes/Footer/footer";
+
 export default function App() {
   return (
     <InstitucionProvider>
       <Router>
         <Navbar />
+
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/institucional" element={<Institucional />} />
@@ -20,6 +24,9 @@ export default function App() {
           <Route path="/pagos-facturas" element={<PagosFacturas />} />
           <Route path="/servicios/*" element={<Servicios />} />
         </Routes>
+
+        <Footer />
+
       </Router>
     </InstitucionProvider>
   );

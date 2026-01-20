@@ -1,38 +1,27 @@
 import React from "react";
-import Cards from "../../views/Cards/cards"; 
+import Cards from "../../views/Cards/cards";
 import styles from "./Inicio.module.css";
 
 function Inicio() {
   return (
     <div className={styles.pageContainer}>
-      {/* Hero con video */}
-      <div className={styles.hero}>
-        <video
-          className={styles.video}
-          src="/assets/prueba2.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-hidden="true"
-        />
-        <div className={styles.overlay}>
-          <img
-            src="/assets/copeospil.jpg"
-            alt="Logo Cooperativa"
-            className={styles.logo}
-          />
-          <h1 className={styles.title}>Bienvenidos a COPEOSPIL Ltda</h1>
+
+      {/* HERO */}
+      <section className={styles.hero}>
+        <div className={styles.content}>
+          <h1 className={styles.title}>COPEOSPIL.Ltda</h1>
+          <div className={styles.divider}></div>
           <p className={styles.subtitle}>
-            Creciendo juntos, porque tu bienestar es el nuestro.
+            Energía que nos une, soluciones que nos acompañan.
           </p>
         </div>
-      </div>
-
-   
-      <div className={styles.cardsWrapper}>
+        <div className={styles.logoWrapper}> <img src="/assets/logoSinFondo.jpg" alt="Logo COPEOSPIL" className={styles.logo} /> </div>
+      </section>
+      <div className={styles.divider2}></div>
+      <section className={styles.cardsSection}>
         <Cards />
-      </div>
+      </section>
+
     </div>
   );
 }

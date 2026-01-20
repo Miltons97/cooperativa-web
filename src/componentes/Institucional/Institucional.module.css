@@ -1,87 +1,27 @@
-.novedadesContainer {
+@font-face {
+  font-family: "Neue Machina";
+  src: url("/fonts/NeueMachina-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* CONTENEDOR GENERAL */
+
+.institucionalContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.videoContainer {
-  position: relative;
-  width: 100vw;      /* 🔹 Ancho completo de la ventana */
-  height: 70vh;      /* Altura ajustable */
-  overflow: hidden;
-  margin-left: calc(-50vw + 50%); /* 🔹 Centrar el video al usar width: 100vw */
+  font-family: "Neue Machina", sans-serif;
+  background: linear-gradient(135deg, #7b7a7a, #ffffff);
 }
 
-.novedadesVideo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 74%; /* Ajusta verticalmente */
-  transform: scale(1.01);      /* Zoom muy suave */
-}
+/* SLIDER */
 
-
-.novedadesTitle {
-  position: absolute;
-  bottom: 20px; /* Lo llevamos abajo */
-  left: 20px; /* Esquina izquierda */
-  font-size: 3rem;
-  font-weight: bold;
-  color: black; /* Texto negro */
-  background: rgba(255, 255, 255, 0.6); /* Fondo semitransparente */
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-family: 'Playfair Display', serif;
-}
-
-.novedadesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-  margin: 2rem;
-  width: 90%;
-}
-
-.novedad {
-  display: block;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  text-decoration: none;
-  color: black;
-}
-
-.novedadImageContainer {
-  position: relative;
-}
-
-.novedad img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.novedadCategory {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: #5B7F66;
-  color: white;
-  padding: 2px 8px;
-  font-size: 0.7rem;
-  font-weight: bold;
-  border-radius: 4px;
-}
-
-.novedadCaption {
-  padding: 0.5rem;
-  font-weight: bold;
-}
 .sliderContainer {
   position: relative;
-  width: 100vw;          
-  height: 70vh;          
+  width: 100vw;
+  height: 70vh;
   overflow: hidden;
   margin-left: calc(-50vw + 50%);
 }
@@ -92,4 +32,79 @@
   object-fit: cover;
   object-position: center 74%;
   transform: scale(1.01);
+}
+
+.institucionalTitle {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 3rem;
+  font-weight: bold;
+  color: black;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+/* CONTENIDO */
+
+.institucionalContent {
+  max-width: 1100px;
+  padding: 4rem 2rem;
+  color: #3a2e26;
+}
+
+.institucionalContent h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.institucionalContent h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.institucionalContent p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+/* MISIÓN - VISIÓN - VALORES */
+
+.mvvGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.mvvItem {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.mvvItem ul {
+  padding-left: 1.2rem;
+}
+
+.mvvItem li {
+  margin-bottom: 0.4rem;
+}
+
+/* AUTORIDADES */
+
+.autoridadesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.autoridadItem {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 0.95rem;
 }

@@ -3,24 +3,28 @@
   gap: 2rem;
   flex-wrap: wrap;
   justify-content: center;
+   
 }
 
+
 .card {
-  background-color: #fff;
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
   padding: 1.5rem;
   width: 280px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
 }
 
+
 .cardDark {
-  background-color: #333;
+  background: rgba(0, 0, 0, 0.55);
   color: #fff;
 }
 
 .cardGreen {
-  background-color: #28a745;
+  background: rgba(40, 167, 69, 0.65);
   color: #fff;
 }
 
