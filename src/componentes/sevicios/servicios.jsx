@@ -1,87 +1,95 @@
-
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import styles from "./servicios.module.css";
 
-
-import styles from "./servicios.module.css"
 import Agua from "../../views/Servicios/Agua/AguaCopeospiL";
 import Luz from "../../views/Servicios/Luz/LuzCopeospil";
 import Internet from "../../views/Servicios/Internet/InternetCopeospi";
-import Social from "../../views/Servicios/Social/Social"
-
-import WaterDropIcon from "@mui/icons-material/WaterDrop";
-import FlashOnIcon from "@mui/icons-material/FlashOn";
-import WifiIcon from "@mui/icons-material/Wifi";
-import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
+import Social from "../../views/Servicios/Social/Social";
 
 export default function Servicios() {
   const location = useLocation();
-
+  const isServiciosHome = location.pathname === "/servicios";
 
   const serviciosData = [
     {
       id: 1,
-      name: "Agua",
-      image: "/assets/Agua.jpg",
+      name: "Agua Potable",
+      image: "../../../public/assets/agua1.jpg",
       route: "/servicios/agua",
-      icon: <WaterDropIcon className={styles.cardIcon} />,
+      description: "Información y gestiones sobre el servicio de agua potable.",
     },
     {
       id: 2,
-      name: "Luz",
-      image: "/assets/Luz.jpg",
+      name: "Energía Eléctrica",
+      image: "../../../public/assets/Luz1.jpg",
       route: "/servicios/luz",
-      icon: <FlashOnIcon className={styles.cardIcon} />,
+      description: "Todo sobre el suministro eléctrico y atención al usuario.",
     },
     {
       id: 3,
       name: "Internet",
-      image: "/assets/Internet.jpg",
+      image: "../../../public/assets/FibraOptica.jpg",
       route: "/servicios/internet",
-      icon: <WifiIcon className={styles.cardIcon} />,
+      description: "Planes, soporte técnico y conectividad.",
     },
     {
       id: 4,
-      name: "Social",
-      image: "/assets/Social.jpg",
+      name: "Servicio Social",
+      image: "../../../public/assets/Luto1.jpg",
       route: "/servicios/social",
-      icon: <VolunteerActivismIcon className={styles.cardIcon} />,
+      description: "Programas sociales y asistencia comunitaria.",
     },
   ];
 
   return (
     <div className={styles.serviciosContainer}>
+      <h1 className={styles.serviciosTitle}>Nuestros Servicios</h1>
 
-      <h1 className={styles.serviciosTitle}>Servicios</h1>
+      {/* 🔹 BIENVENIDA */}
+      {isServiciosHome && (
+        <p className={styles.serviciosIntro}>
+          Accedé a la información de cada servicio de forma rápida y sencilla.
+          Seleccioná una categoría para conocer más detalles.
+        </p>
+      )}
 
-     
-      <div className={styles.serviciosGrid}>
-        {serviciosData.map((serv) => (
-          <Link
-            key={serv.id}
-            to={serv.route}
-            className={styles.servicioCard}
-          >
-            <div className={styles.cardImageContainer}>
-              <img src={serv.image} alt={serv.name} />
-              {serv.icon}
-              <span className={styles.cardCategory}>{serv.name}</span>
-            </div>
-          </Link>
-        ))}
-      </div>
+      {/* 🔹 CARDS */}
+      {isServiciosHome && (
+        <div className={styles.serviciosGrid}>
+          {serviciosData.map((serv) => (
+            <Link
+              key={serv.id}
+              to={serv.route}
+              className={styles.servicioCard}
+            >
+              <img
+                src={serv.image}
+                alt={serv.name}
+                className={styles.cardImage}
+              />
+              <img
+                src="../../../public/assets/copeospil.jpg"
+                alt="Copeospil"
+                className={styles.cardLogo}
+              />
+              <div className={styles.cardOverlay}>
+                <h3>{serv.name}</h3>
+                <p>{serv.description}</p>
+                <span className={styles.cardAction}>Ver más →</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
 
+      {/* 🔹 CONTENIDO DE CADA SERVICIO */}
       <div className={styles.servicioContent}>
         {location.pathname === "/servicios/agua" && <Agua />}
         {location.pathname === "/servicios/luz" && <Luz />}
         {location.pathname === "/servicios/internet" && <Internet />}
         {location.pathname === "/servicios/social" && <Social />}
-
-        {location.pathname === "/servicios" && (
-          <p className={styles.selectText}>Seleccione un servicio para ver más información.</p>
-        )}
       </div>
-
     </div>
   );
 }
