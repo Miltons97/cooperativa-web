@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./servicios.module.css";
 
-import Agua from "../../views/Servicios/Agua/AguaCopeospiL";
+import Agua from "../../views/Servicios/Agua/Agua";
 import Luz from "../../views/Servicios/Luz/LuzCopeospil";
 import Internet from "../../views/Servicios/Internet/InternetCopeospi";
 import Social from "../../views/Servicios/Social/Social";
@@ -44,9 +44,12 @@ export default function Servicios() {
 
   return (
     <div className={styles.serviciosContainer}>
-      <h1 className={styles.serviciosTitle}>Nuestros Servicios</h1>
+      {isServiciosHome && (
+        <h1 className={styles.serviciosTitle}>Nuestros Servicios</h1>
+      )}
 
-      {/* 🔹 BIENVENIDA */}
+
+
       {isServiciosHome && (
         <p className={styles.serviciosIntro}>
           Accedé a la información de cada servicio de forma rápida y sencilla.
@@ -54,7 +57,7 @@ export default function Servicios() {
         </p>
       )}
 
-      {/* 🔹 CARDS */}
+
       {isServiciosHome && (
         <div className={styles.serviciosGrid}>
           {serviciosData.map((serv) => (
@@ -83,7 +86,7 @@ export default function Servicios() {
         </div>
       )}
 
-      {/* 🔹 CONTENIDO DE CADA SERVICIO */}
+
       <div className={styles.servicioContent}>
         {location.pathname === "/servicios/agua" && <Agua />}
         {location.pathname === "/servicios/luz" && <Luz />}
