@@ -7,7 +7,7 @@ import Servicios from "./componentes/sevicios/servicios";
 import PagosFacturas from "./componentes/Socios/MiFactura";
 
 import { InstitucionProvider } from "./componentes/context/intitucionContext";
-
+import './fix.css';
 
 import Footer from "./componentes/Footer/footer";
 

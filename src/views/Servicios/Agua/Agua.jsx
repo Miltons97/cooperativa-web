@@ -73,25 +73,32 @@ function Agua() {
 
     setActiveIndex(index);
   };
+useEffect(() => {
+  const container = scrollRef.current;
+  if (!container) return;
 
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
+  const interval = setInterval(() => {
+    const maxIndex = totalDots - 1;
 
-    const interval = setInterval(() => {
-      const maxScroll = totalCards * cardSize;
+    let nextIndex = activeIndex + 1;
 
-      if (container.scrollLeft >= maxScroll) {
-        container.style.scrollBehavior = "auto";
-        container.scrollLeft = 0;
-        container.style.scrollBehavior = "smooth";
-      }
+    if (nextIndex > maxIndex) {
+      nextIndex = 0;
+      container.style.scrollBehavior = "auto";
+      container.scrollLeft = 0;
+      container.style.scrollBehavior = "smooth";
+    } else {
+      container.scrollLeft = nextIndex * cardSize;
+    }
 
-      container.scrollLeft += cardSize;
-    }, 4000);
+    setActiveIndex(nextIndex);
+  }, 4000);
 
-    return () => clearInterval(interval);
-  }, [totalCards, cardSize]);
+  return () => clearInterval(interval);
+}, [activeIndex, cardSize, totalDots]);
+
+
+
 
   return (
     <div className={styles.aguaContainer}>
@@ -112,7 +119,7 @@ function Agua() {
         />
       </div>
 
-      {/* ================= HEADER ================= */}
+
       <header className={styles.header}>
       
         <p>
@@ -121,7 +128,7 @@ function Agua() {
         </p>
       </header>
 
-      {/* ================= FEATURES ================= */}
+
       <section className={styles.features}>
         <h3>Características del Servicio</h3>
 
@@ -204,7 +211,7 @@ function Agua() {
 
       {/* ================= CAMPAÑAS ================= */}
       <section className={styles.campaigns}>
-        <h3>Campañas de Agua de Red COPEOSPIL Ltda.</h3>
+        <h3>Campañas de Agua de Red</h3>
 
         <div className={styles.campaignsViewport}>
           <div ref={scrollRef} className={styles.campaignsScroll}>
@@ -231,7 +238,7 @@ function Agua() {
           </div>
         </div>
 
-        {/* DOTS */}
+        
         <div className={styles.dots}>
           {Array.from({ length: totalDots }).map((_, index) => (
             <span

@@ -34,14 +34,39 @@
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
 }
-
 .featureCard {
-  background: transparent;
+  position: relative;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.05)
+  );
   padding: 2rem;
-  border-radius: 16px;
-  min-height: 200px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-  backdrop-filter: blur(6px);
+  border-radius: 18px;
+  min-height: 210px;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12),
+    inset 0 0 0 rgba(255, 255, 255, 0);
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.featureCard:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    0 0 18px rgba(0, 150, 255, 0.35);
+}
+.featureCard h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+  color: #0b2b4a;
 }
 
 /* INFO */
@@ -160,7 +185,7 @@
 }
 
 .campaignText p {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   line-height: 1.3;
 }
 
