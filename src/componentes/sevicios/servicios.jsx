@@ -4,7 +4,7 @@ import styles from "./servicios.module.css";
 
 import Agua from "../../views/Servicios/Agua/Agua";
 import Luz from "../../views/Servicios/Luz/LuzCopeospil";
-import Internet from "../../views/Servicios/Internet/InternetCopeospi";
+import Internet from "../../views/Servicios/Internet/InternetCopeospil.jsx";
 import Social from "../../views/Servicios/Social/Social";
 
 export default function Servicios() {

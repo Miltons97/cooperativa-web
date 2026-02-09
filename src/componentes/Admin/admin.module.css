@@ -1,0 +1,42 @@
+.adminLayout {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f6f8;
+}
+
+.sidebar {
+  width: 240px;
+  background: #0b2c4d;
+  color: white;
+  padding: 2rem 1rem;
+}
+
+.sidebar a, .sidebar button {
+  display: block;
+  margin: 1rem 0;
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.adminContent {
+  flex: 1;
+  padding: 2rem;
+}
+
+.form {
+  max-width: 600px;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.form input,
+.form textarea,
+.form select {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+}

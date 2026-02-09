@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import styles from "./Agua.module.css";
+import styles from "./agua.module.css";
 
 /* ================= CAMPAÑAS ================= */
 const campaignsData = [

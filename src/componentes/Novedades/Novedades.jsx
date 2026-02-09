@@ -1,51 +1,49 @@
-import React from "react";
-import styles from "./Novedades.module.css";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import styles from "./novedades.module.css";
 
-function Novedades() {
-  const mockPosts = [
-    { id: 1, category: "AGUA", caption: "Visita alumnos carrera Maestro Mayor de Obras", media_url: "https://picsum.photos/id/1011/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 2, category: "INSTITUCIONAL", caption: "Nueva reunión con delegados de Chillar", media_url: "https://picsum.photos/id/1027/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 3, category: "INSTITUCIONAL", caption: "Reunión con delegados de Cacharí", media_url: "https://picsum.photos/id/1033/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 4, category: "AGUA", caption: "Visita Escuela Secundaria Nº5", media_url: "https://picsum.photos/id/1052/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 5, category: "INSTITUCIONAL", caption: "Recorrido de consejeros por TRANSBA", media_url: "https://picsum.photos/id/1062/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 6, category: "INSTITUCIONAL", caption: "Homenaje de la CEAL por los 50 años del Laboratorio Azul", media_url: "https://picsum.photos/id/1074/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 7, category: "INSTITUCIONAL", caption: "Reunión del Consejo de CEAL con concejales", media_url: "https://picsum.photos/id/1084/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 8, category: "INSTITUCIONAL", caption: "Firma convenios alumbrado público", media_url: "https://picsum.photos/id/109/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 9, category: "ENERGÍA", caption: "Acuerdo CEAL CAMMESA", media_url: "https://picsum.photos/id/119/600/400", permalink: "https://www.instagram.com/copeospil/" },
-    { id: 10, category: "OBRAS", caption: "Nuevas columnas de hormigón", media_url: "https://picsum.photos/id/120/600/400", permalink: "https://www.instagram.com/copeospil/" },
-  ];
+function NoticiaDetalle() {
+  const { id } = useParams();
+  const [noticia, setNoticia] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/api/noticias/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setNoticia(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error cargando noticia:", err);
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (loading) return <p>Cargando...</p>;
+  if (!noticia) return <p>Noticia no encontrada</p>;
 
   return (
-    <div className={styles.novedadesContainer}>
-      {/* Hero con video */}
-      <div className={styles.videoContainer}>
-        <video autoPlay muted loop playsInline className={styles.novedadesVideo}>
-          <source src="/assets/novedades3.mp4" type="video/mp4" />
-          Tu navegador no soporta el video.
-        </video>
-        <h1 className={styles.novedadesTitle}>Novedades</h1>
-      </div>
+    <div className={styles.detalleContainer}>
+      {noticia.imagen && (
+        <img
+          src={`http://localhost:3001${noticia.imagen}`}
+          alt={noticia.titulo}
+          className={styles.imagenPrincipal}
+        />
+      )}
 
-      {/* Grid de noticias */}
-      <div className={styles.novedadesGrid}>
-        {mockPosts.map((post) => (
-          <a
-            key={post.id}
-            href={post.permalink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.novedad}
-          >
-            <div className={styles.novedadImageContainer}>
-              <img src={post.media_url} alt={post.caption} />
-              <span className={styles.novedadCategory}>{post.category}</span>
-            </div>
-            <p className={styles.novedadCaption}>{post.caption}</p>
-          </a>
-        ))}
+      <h1>{noticia.titulo}</h1>
+      <span className={styles.categoria}>{noticia.categoria}</span>
+      <p className={styles.fecha}>
+        {new Date(noticia.fecha_publicacion).toLocaleDateString()}
+      </p>
+
+      <div className={styles.contenido}>
+        <p>{noticia.contenido}</p>
       </div>
     </div>
   );
 }
 
-export default Novedades;
+export default NoticiaDetalle;

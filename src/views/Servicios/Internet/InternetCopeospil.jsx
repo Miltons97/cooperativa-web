@@ -1,31 +1,31 @@
 import React, { useState, useRef, useEffect } from "react";
-import styles from "./social.module.css";
+import styles from "./internet.module.css";
 
 /* ================= CAMPAÑAS ESTÁTICAS (fallback) ================= */
 const campaignsDataStatic = [
   {
-    img: "/assets/Luto1.jpg",
-    title: "Servicio de Sepelio",
-    text: "Acompañamiento en momentos difíciles con dignidad y respeto.",
+    img: "/assets/FibraOptica.jpg",
+    title: "Fibra Óptica de Alta Velocidad",
+    text: "Tecnología de punta para una conexión estable y rápida.",
   },
   {
-    img: "/assets/social1.jpg",
-    title: "Asistencia Comunitaria",
-    text: "Programas de apoyo para familias de la comunidad.",
+    img: "/assets/internet1.jpg",
+    title: "Planes para Todos",
+    text: "Opciones adaptadas a tus necesidades de conectividad.",
   },
   {
-    img: "/assets/social2.jpg",
-    title: "Eventos Solidarios",
-    text: "Actividades para fortalecer lazos entre asociados.",
+    img: "/assets/internet2.jpg",
+    title: "Soporte Técnico",
+    text: "Asistencia permanente para resolver cualquier inconveniente.",
   },
   {
-    img: "/assets/social3.jpg",
-    title: "Cooperativismo",
-    text: "Valores que nos unen como comunidad.",
+    img: "/assets/internet3.jpg",
+    title: "Expansión de Red",
+    text: "Trabajamos para llevar internet a más hogares.",
   },
 ];
 
-function Social() {
+function Internet() {
   /* ===== ACCORDION ===== */
   const [open, setOpen] = useState(null);
   const toggle = (index) => {
@@ -37,14 +37,14 @@ function Social() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/noticias?categoria=SOCIAL")
+    fetch("http://localhost:3001/api/noticias?categoria=INTERNET")
       .then((res) => res.json())
       .then((data) => {
         setNoticias(data);
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Error cargando noticias de Social:", err);
+        console.error("Error cargando noticias de Internet:", err);
         setLoading(false);
       });
   }, []);
@@ -56,7 +56,7 @@ function Social() {
   // Usar noticias de la API o las estáticas si no hay
   const campaignsData = noticias.length > 0 
     ? noticias.map(noticia => ({
-        img: `http://localhost:3001${noticia.imagen}` || "/assets/Luto1.jpg",
+        img: `http://localhost:3001${noticia.imagen}` || "/assets/FibraOptica.jpg",
         title: noticia.titulo,
         text: noticia.resumen || noticia.contenido.substring(0, 100) + "...",
       }))
@@ -107,16 +107,16 @@ function Social() {
   }, [activeIndex, cardSize, totalDots]);
 
   return (
-    <div className={styles.socialContainer}>
+    <div className={styles.internetContainer}>
       {/* ================= HERO ================= */}
       <div className={styles.heroContainer}>
         <img
-          src="/assets/Luto1.jpg"
-          alt="Servicio Social"
+          src="/assets/FibraOptica.jpg"
+          alt="Servicio de Internet"
           className={styles.heroImage}
         />
 
-        <h1 className={styles.heroTitle}>Servicio Social</h1>
+        <h1 className={styles.heroTitle}>Servicio de Internet</h1>
 
         <img
           src="/assets/logoSinFondo.jpg"
@@ -128,8 +128,8 @@ function Social() {
       {/* ================= HEADER ================= */}
       <header className={styles.header}>
         <p>
-          Acompañamiento solidario y programas de asistencia para fortalecer el
-          vínculo con nuestros asociados y la comunidad.
+          Conectividad de fibra óptica con alta velocidad, estabilidad y soporte
+          técnico permanente para nuestros asociados.
         </p>
       </header>
 
@@ -139,30 +139,30 @@ function Social() {
 
         <div className={styles.featuresGrid}>
           <div className={styles.featureCard}>
-            <h4>Servicio de Sepelio</h4>
+            <h4>Fibra Óptica</h4>
             <p>
-              Acompañamiento en momentos difíciles con profesionalismo y respeto.
+              Tecnología de última generación para una conexión ultra rápida.
             </p>
           </div>
 
           <div className={styles.featureCard}>
-            <h4>Programas Sociales</h4>
+            <h4>Planes Flexibles</h4>
             <p>
-              Iniciativas de apoyo para familias de la cooperativa.
+              Opciones adaptadas a diferentes necesidades y presupuestos.
             </p>
           </div>
 
           <div className={styles.featureCard}>
-            <h4>Eventos Comunitarios</h4>
+            <h4>Soporte 24/7</h4>
             <p>
-              Actividades que fortalecen el espíritu cooperativo.
+              Asistencia técnica disponible para resolver inconvenientes.
             </p>
           </div>
 
           <div className={styles.featureCard}>
-            <h4>Asistencia Solidaria</h4>
+            <h4>Expansión Continua</h4>
             <p>
-              Ayuda mutua entre asociados en situaciones de necesidad.
+              Trabajamos para llevar conectividad a más hogares de la zona.
             </p>
           </div>
         </div>
@@ -175,24 +175,24 @@ function Social() {
         <div className={styles.accordion}>
           {[
             {
-              title: "¿Cómo acceder al servicio de sepelio?",
+              title: "¿Cómo contratar el servicio de internet?",
               text:
-                "Los asociados tienen acceso automático. Consultá los alcances en nuestras oficinas.",
+                "Podés solicitarlo en nuestras oficinas o a través de nuestros canales digitales.",
             },
             {
-              title: "Programas de ayuda",
+              title: "Planes disponibles",
               text:
-                "Disponemos de diferentes programas según las necesidades de los asociados.",
+                "Contamos con diferentes velocidades adaptadas a cada necesidad.",
             },
             {
-              title: "Eventos y actividades",
+              title: "Problemas de conexión",
               text:
-                "Organizamos encuentros para fortalecer la comunidad cooperativa.",
+                "Contactá a soporte técnico para diagnóstico y solución.",
             },
             {
-              title: "Requisitos",
+              title: "Instalación",
               text:
-                "La información actualizada está disponible en nuestras oficinas.",
+                "La instalación es realizada por técnicos certificados.",
             },
           ].map((item, index) => (
             <div key={index} className={styles.accordionItem}>
@@ -213,7 +213,7 @@ function Social() {
 
       {/* ================= CAMPAÑAS / NOTICIAS ================= */}
       <section className={styles.campaigns}>
-        <h3>Novedades del Servicio Social</h3>
+        <h3>Novedades de Internet</h3>
 
         {loading && <p style={{ textAlign: "center" }}>Cargando noticias...</p>}
 
@@ -262,4 +262,4 @@ function Social() {
   );
 }
 
-export default Social;
+export default Internet;

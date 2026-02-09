@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import styles from "./LuzCopeospil.module.css";
+import styles from "./luz.module.css";
 
 /* ================= CAMPAÑAS ================= */
 const campaignsData = [
