@@ -78,18 +78,19 @@ function Institucional() {
         <h2>Autoridades</h2>
 
         <div className={styles.autoridadesGrid}>
-          <div className={styles.autoridadItem}>Presidente: Juan Carlos Pérez</div>
-          <div className={styles.autoridadItem}>Vicepresidente: María Gómez</div>
-          <div className={styles.autoridadItem}>Tesorero: Roberto Fernández</div>
-          <div className={styles.autoridadItem}>Secretario: Ana Ríos</div>
-
-          <div className={styles.autoridadItem}>Vocal Titular: Luis Martínez</div>
-          <div className={styles.autoridadItem}>Vocal Titular: Silvia Acosta</div>
-
-          <div className={styles.autoridadItem}>Vocal Suplente: Diego Morales</div>
-          <div className={styles.autoridadItem}>Vocal Suplente: Carla Benítez</div>
-          <div className={styles.autoridadItem}>Vocal Suplente: Pablo Núñez</div>
-          <div className={styles.autoridadItem}>Vocal Suplente: Laura Quiroga</div>
+          <div className={styles.autoridadItem}>Presidente: Tarditi Marcelo Javier</div>
+          <div className={styles.autoridadItem}>Vicepresidente: Gorodo Rubén Omar</div>
+          <div className={styles.autoridadItem}>Secretario: Álvarez José Mateo</div>
+          <div className={styles.autoridadItem}>Prosecretario: López María Cristina</div>
+          <div className={styles.autoridadItem}>Tesorero: Gaggioli Hernán Luis</div>
+          <div className={styles.autoridadItem}>Proesorero: Bogino Ariel Dario</div>
+          <div className={styles.autoridadItem}>1°Vocal Titular: Cantelmi Hidalgo Juan Marcelo</div>
+          <div className={styles.autoridadItem}>2°Vocal Titular: García Ezequiel</div>
+          <div className={styles.autoridadItem}>3°Vocal Titular: Gorodo Juan José</div>
+          <div className={styles.autoridadItem}>1°Vocal Suplente: Peano Raquel Beatriz</div>
+          <div className={styles.autoridadItem}>2°Vocal Suplente: De Rosa Alejandra</div>
+          <div className={styles.autoridadItem}>Vocal Suplente: Muñoz Pedro Matías</div>
+          <div className={styles.autoridadItem}>Vocal Suplente: Garro Vanesa Lujan</div>
         </div>
 
       </section>

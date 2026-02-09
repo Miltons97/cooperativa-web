@@ -94,12 +94,12 @@
   margin-bottom: 0.4rem;
 }
 
-/* AUTORIDADES */
+
 
 .autoridadesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 2fr));
+  gap: 1.5rem;
 }
 
 .autoridadItem {
