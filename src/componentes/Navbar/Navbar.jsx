@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { InstitucionContext } from "../../componentes/context/intitucionContext";
+import { InstitucionContext } from "../context/intitucionContext";
 import { FaBars } from "react-icons/fa";
 import styles from "./Navbar.module.css";
 
