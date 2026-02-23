@@ -19,11 +19,11 @@ app.use(express.urlencoded({ extended: true })); // ← AGREGAR para form-data
 app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // ← AGREGAR
 
 // ================= RUTAS EXISTENTES =================
-app.use("/institucion", require("./routes/institucionRoutes"));
-app.use("/multimedia", require("./routes/multimediaRoutes"));
+app.use("/institucion", require("./routes/institucionRoutes.js"));
+app.use("/multimedia", require("./routes/multimediaRoutes.js"));
 
 // ================= NUEVAS RUTAS =================
-app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/auth", require("./routes/authRoutes.js"));
 app.use("/api/noticias", require("./routes/noticiasRoutes.js"));
 
 // ================= RUTA DE PRUEBA =================

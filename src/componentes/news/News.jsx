@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import styles from "./novedades.module.css";
+import styles from "./news.module.css";
 
 function NoticiaDetalle() {
   const { id } = useParams();

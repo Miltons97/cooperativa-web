@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Cards from "../../views/Cards/cards";
 import NoticiasSlider from "../Silders/noticiasSilder";
-import styles from "./Inicio.module.css";
+import styles from "./home.module.css";
 
 function Inicio() {
   const [noticias, setNoticias] = useState([]);
 
   useEffect(() => {
-    // ← Filtra solo noticias para inicio
     fetch("http://localhost:3001/api/noticias?seccion=inicio")
       .then((res) => res.json())
       .then((data) => setNoticias(data))
@@ -18,21 +17,23 @@ function Inicio() {
     <div className={styles.pageContainer}>
       <section className={styles.hero}>
         <div className={styles.content}>
-          <h1 className={styles.title}>COPEOSPIL.Ltda</h1>
+          <h1 className={styles.title}>COPEOSPIL Ltda.</h1>
           <div className={styles.divider}></div>
           <p className={styles.subtitle}>
-            Energía que nos une, soluciones que nos acompañan.
+            Energía que nos une, soluciones nos acompañan.
           </p>
         </div>
+
         <div className={styles.logoWrapper}>
           <img
-            src="/assets/logoSinFondo.jpg"
+            src="/assets/LogoSinFondo.png"
             alt="Logo COPEOSPIL"
             className={styles.logo}
           />
         </div>
       </section>
-       {noticias.length > 0 && (
+
+      {noticias.length > 0 && (
         <section className={styles.noticiasSection}>
           <h2 className={styles.noticiasTitle}>Novedades</h2>
           <NoticiasSlider noticias={noticias} />
@@ -44,8 +45,6 @@ function Inicio() {
       <section className={styles.cardsSection}>
         <Cards />
       </section>
-
-     
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 /* 🌐 WEB PÚBLICA */
-import Navbar from "./componentes/Navbar/Navbar";
-import Inicio from "./componentes/Inicio/Inicio";
-import Institucional from "./componentes/Institucional/Institucional";
-import Novedades from "./componentes/Novedades/Novedades";
+import Navbar from "./componentes/navbar/Navbar";
+import Inicio from "./componentes/home/Home";
+import Institucional from "./componentes/institutional/Institutional";
+import Novedades from "./componentes/news/News";
 import Servicios from "./componentes/sevicios/servicios";
 import PagosFacturas from "./componentes/Socios/MiFactura";
 import Footer from "./componentes/Footer/footer";

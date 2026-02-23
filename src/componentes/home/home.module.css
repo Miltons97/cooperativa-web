@@ -1,0 +1,204 @@
+@font-face {
+  font-family: "Neue Machina";
+  src: url("/fonts/NeueMachina-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ================= CONTENEDOR GENERAL ================= */
+
+.pageContainer {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Neue Machina", sans-serif;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(237, 238, 237, 0.123),
+      rgba(192, 250, 176, 0.795),
+      transparent
+    ),
+    url("/assets/PinosVerdesFB.png");
+
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* ================= PINOS REFLEJADOS ================= */
+
+.pageContainer::after {
+  content: "";
+  position: absolute;
+  left: 100px;
+  bottom: 100px;
+
+  width: 100%;
+  height: 420px;
+
+
+
+  background-repeat: repeat-x;
+  background-position: bottom center;
+  background-size: 100% 100%, auto 300px;
+
+  transform: scaleY(-1);
+  opacity: 1;
+
+  /* 🔥 CLAVE PARA QUE SE VEAN BIEN */
+  filter: brightness(1.25) contrast(1.4);
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem clamp(20px, 5%, 80px);
+  background: transparent;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+/* ================= TEXTO ================= */
+
+.content {
+  max-width: 600px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  color: #4a3728;
+  margin-bottom: 2rem;
+}
+
+.divider {
+  width: min(420px, 90%);
+  height: 1px;
+  background-color: #6b5b4b;
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #4a3728;
+  line-height: 1.6;
+}
+
+/* ================= LOGO ================= */
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: clamp(18rem, 15vh, 50rem);
+  padding: 0 100px;
+  box-sizing: border-box;
+}
+
+.logoWrapper img {
+  margin-left: 290px;
+}
+
+.logo {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+}
+
+/* ================= NOTICIAS ================= */
+
+.noticiasSection {
+  margin: 4rem auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.noticiasTitle {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #003366;
+}
+
+/* ================= DIVIDER ================= */
+
+.divider2 {
+  width: 100%;
+  max-width: 420px;
+  height: 1px;
+  background-color: #6b5b4b;
+  margin: 2rem auto;
+}
+
+/* ================= CARDS ================= */
+
+.cardsSection {
+  width: 100%;
+  padding: 4rem clamp(20px, 5%, 80px) 6rem;
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 4rem 20px;
+    min-height: auto;
+  }
+
+  .divider {
+    margin: 2rem auto;
+    width: min(280px, 90%);
+  }
+
+  .logoWrapper {
+    margin-top: 2rem;
+    padding: 0 20px;
+  }
+
+  .logoWrapper img {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 2rem 15px;
+  }
+
+  .cardsSection {
+    padding: 3rem 15px 4rem;
+  }
+
+  .pageContainer::after {
+    height: 220px;
+    background-size: auto 150px;
+    bottom: 60px;
+  }
+}
