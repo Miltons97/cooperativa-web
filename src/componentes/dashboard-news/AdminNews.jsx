@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { createNoticia } from "../services/noticiasServices";
+import { createNoticia } from "../../services/noticiasServices";
 import { jwtDecode } from "jwt-decode"; // npm install jwt-decode
-import styles from "./crearNoticia.module.css";
+import styles from "./admin-create-news.module.css";
 
 export default function CrearNoticia() {
   const [userRole, setUserRole] = useState("");

@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
-import styles from "./sidebarAdmin.module.css";
+import styles from "./sidebar-admin-news.module.css";
 
 export default function SidebarAdmin() {
   const location = useLocation();

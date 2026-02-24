@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Cards from "../../views/Cards/cards";
-import NoticiasSlider from "../Silders/noticiasSilder";
+import Cards from "../../views/cards-views/Cards";
+import NoticiasSlider from "../news-silder/noticiasSilder";
 import styles from "./home.module.css";
 
 function Inicio() {

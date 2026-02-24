@@ -1,11 +1,11 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import styles from "./servicios.module.css";
+import styles from "./services-page.module.css";
 
-import Agua from "../../views/Servicios/Agua/Agua";
-import Luz from "../../views/Servicios/Luz/LuzCopeospil";
-import Internet from "../../views/Servicios/Internet/InternetCopeospil.jsx";
-import Social from "../../views/Servicios/Social/Social";
+import Agua from "./Agua/Agua.jsx";
+import Luz from "./Luz/LuzCopeospil.jsx";
+import Internet from "./Internet/InternetCopeospil.jsx";
+import Social from "./Social/Social.jsx";
 
 export default function Servicios() {
   const location = useLocation();

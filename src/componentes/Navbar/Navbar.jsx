@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { InstitucionContext } from "../context/intitucionContext";
+import { InstitucionContext } from "../context/InstitutionContext";
 import { FaBars } from "react-icons/fa";
-import styles from "./Navbar.module.css";
+import styles from "./navbar.module.css";
 
 export default function Navbar() {
   const { info } = useContext(InstitucionContext);

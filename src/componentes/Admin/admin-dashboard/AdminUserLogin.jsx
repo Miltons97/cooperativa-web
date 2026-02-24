@@ -1,6 +1,6 @@
 // componentes/Admin/Login/adminUser.jsx
 import { useState } from "react";
-import { login } from "../../services/authServices";
+import { login } from "../../../services/authServices";
 
 export default function LoginAdmin() {
   const [email, setEmail] = useState("");
