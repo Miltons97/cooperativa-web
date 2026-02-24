@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { InstitucionContext } from "../context/InstitutionContext";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import styles from "./navbar.module.css";
 
 export default function Navbar() {
@@ -10,36 +10,40 @@ export default function Navbar() {
 
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50); // detecta scroll
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
+  // En móvil O con scroll → mostrar solo icono
+  const showIconOnly = isMobile || scrolled;
+
   return (
-    <nav className={styles.navbar}>
-      {/* Si scrollea, mostramos solo el icono en esquina */}
-      {scrolled ? (
+    <nav className={`${styles.navbar} ${scrolled ? styles.navbarScrolled : ""}`}>
+      {showIconOnly ? (
+        /* ── Solo ícono ── */
         <div
-          className={styles.scrollMenuIcon}
+          className={styles.menuIconBtn}
           onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Abrir menú"
         >
-          <FaBars />
+          {menuOpen ? <FaTimes /> : <FaBars />}
         </div>
       ) : (
+        /* ── Navbar completo (desktop sin scroll) ── */
         <>
-          {/* Navbar normal */}
           <div className={styles.logoContainer}>
-            {/* <img
-              src="assets/copeospil.jpg"
-              alt="Logo Cooperativa"
-              className={styles.logo}
-            /> */}
             <span className={styles.brand}>
-              {/* {institucion?.nombre || "Cooperativa Eléctrica"} */}
+              {institucion?.nombre || ""}
             </span>
           </div>
 
@@ -53,14 +57,28 @@ export default function Navbar() {
         </>
       )}
 
-      {/* Menú desplegable al click en icono */}
-      {menuOpen && scrolled && (
-        <div className={styles.scrollMenuLinks}>
-          <Link to="/" className={styles.link} onClick={() => setMenuOpen(false)}>Inicio</Link>
-          <Link to="/institucional" className={styles.link} onClick={() => setMenuOpen(false)}>Institucional</Link>
-          <Link to="/novedades" className={styles.link} onClick={() => setMenuOpen(false)}>Novedades</Link>
-          <Link to="/servicios" className={styles.link} onClick={() => setMenuOpen(false)}>Servicios</Link>
-          <Link to="/pagos-facturas" className={styles.link} onClick={() => setMenuOpen(false)}>Pagos y Facturas</Link>
+      {/* ── Menú desplegable ── */}
+      {menuOpen && (
+        <div className={styles.mobileMenu}>
+          {/* Cerrar al hacer click afuera */}
+          <div
+            className={styles.mobileMenuOverlay}
+            onClick={() => setMenuOpen(false)}
+          />
+          <div className={styles.mobileMenuContent}>
+            <button
+              className={styles.closeBtn}
+              onClick={() => setMenuOpen(false)}
+              aria-label="Cerrar menú"
+            >
+              <FaTimes />
+            </button>
+            <Link to="/" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Inicio</Link>
+            <Link to="/institucional" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Institucional</Link>
+            <Link to="/novedades" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Novedades</Link>
+            <Link to="/servicios" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Servicios</Link>
+            <Link to="/pagos-facturas" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Pagos y Facturas</Link>
+          </div>
         </div>
       )}
     </nav>

@@ -6,57 +6,43 @@
 }
 
 /* ================= CONTENEDOR GENERAL ================= */
-
 .pageContainer {
   position: relative;
   width: 100%;
   min-height: 100vh;
   font-family: "Neue Machina", sans-serif;
-
-  background:
-    linear-gradient(
+  background: linear-gradient(
       to top,
       rgba(237, 238, 237, 0.123),
       rgba(192, 250, 176, 0.795),
       transparent
     ),
     url("/assets/PinosVerdesFB.png");
-
+  background-repeat: repeat;
+  background-size: 100% auto;
+  background-position: bottom center;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   box-sizing: border-box;
 }
 
-/* ================= PINOS REFLEJADOS ================= */
-
+/* ================= PINOS ABAJO ================= */
 .pageContainer::after {
   content: "";
   position: absolute;
-  left: 100px;
-  bottom: 100px;
-
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: 420px;
-
-
-
-  background-repeat: repeat-x;
-  background-position: bottom center;
-  background-size: 100% 100%, auto 300px;
-
-  transform: scaleY(-1);
-  opacity: 1;
-
-  /* 🔥 CLAVE PARA QUE SE VEAN BIEN */
-  filter: brightness(1.25) contrast(1.4);
-
+  height: 200px;
+  background-image: url("/assets/PinosVerdesFB.png");
+  background-repeat: repeat;
+  background-size: auto 500px;
   pointer-events: none;
   z-index: 0;
 }
 
 /* ================= HERO ================= */
-
 .hero {
   min-height: 100vh;
   width: 100%;
@@ -71,7 +57,6 @@
 }
 
 /* ================= TEXTO ================= */
-
 .content {
   max-width: 600px;
   width: 100%;
@@ -80,7 +65,7 @@
 }
 
 .title {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.5rem, 4vw, 3rem);
   font-weight: 400;
   color: #4a3728;
   margin-bottom: 2rem;
@@ -94,13 +79,12 @@
 }
 
 .subtitle {
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
   color: #4a3728;
   line-height: 1.6;
 }
 
 /* ================= LOGO ================= */
-
 .logoWrapper {
   display: flex;
   align-items: center;
@@ -122,7 +106,6 @@
 }
 
 /* ================= NOTICIAS ================= */
-
 .noticiasSection {
   margin: 4rem auto;
   max-width: 1200px;
@@ -132,14 +115,13 @@
 }
 
 .noticiasTitle {
-  font-size: 2rem;
+  font-size: clamp(1.4rem, 3vw, 2rem);
   margin-bottom: 1.5rem;
   text-align: center;
   color: #003366;
 }
 
 /* ================= DIVIDER ================= */
-
 .divider2 {
   width: 100%;
   max-width: 420px;
@@ -149,7 +131,6 @@
 }
 
 /* ================= CARDS ================= */
-
 .cardsSection {
   width: 100%;
   padding: 4rem clamp(20px, 5%, 80px) 6rem;
@@ -162,18 +143,81 @@
   z-index: 1;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ===============================================
+   RESPONSIVE BREAKPOINTS
+   - 1440px: pantallas grandes / 4K
+   - 1200px: laptops grandes
+   - 1024px: laptops / tablets landscape
+   - 900px:  tablets portrait
+   - 768px:  tablets pequeñas
+   - 480px:  móviles grandes
+   - 360px:  móviles pequeños
+=============================================== */
 
+/* --- 1440px+ (pantallas grandes) --- */
+@media (min-width: 1440px) {
+  .hero {
+    padding: 5rem 120px;
+  }
+
+  .logoWrapper {
+    padding: 0 120px;
+  }
+
+  .logoWrapper img {
+    margin-left: 320px;
+  }
+}
+
+/* --- Hasta 1200px (laptop estándar) --- */
+@media (max-width: 1200px) {
+  .logoWrapper img {
+    margin-left: 180px;
+  }
+
+  .logo {
+    max-width: 400px;
+  }
+}
+
+/* --- Hasta 1024px (tablet landscape / laptop pequeño) --- */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 3rem clamp(16px, 4%, 60px);
+    gap: 2rem;
+  }
+
+  .logoWrapper {
+    padding: 0 40px;
+    margin-top: 4rem;
+  }
+
+  .logoWrapper img {
+    margin-left: 80px;
+  }
+
+  .logo {
+    max-width: 340px;
+  }
+}
+
+/* --- Hasta 900px (tablet portrait) --- */
 @media (max-width: 900px) {
   .hero {
     flex-direction: column;
     text-align: center;
     padding: 4rem 20px;
     min-height: auto;
+    gap: 2.5rem;
+  }
+
+  .content {
+    max-width: 100%;
+    padding: 0;
   }
 
   .divider {
-    margin: 2rem auto;
+    margin: 1.5rem auto;
     width: min(280px, 90%);
   }
 
@@ -185,11 +229,50 @@
   .logoWrapper img {
     margin-left: 0;
   }
+
+  .logo {
+    max-width: 300px;
+  }
+
+  .noticiasSection {
+    margin: 2.5rem auto;
+  }
 }
 
+/* --- Hasta 768px (tablets pequeñas) --- */
+@media (max-width: 768px) {
+  .hero {
+    padding: 3rem 16px;
+    gap: 2rem;
+  }
+
+  .logo {
+    max-width: 260px;
+  }
+
+  .cardsSection {
+    padding: 3rem 16px 5rem;
+  }
+
+  .pageContainer::after {
+    height: 180px;
+    background-size: auto 250px;
+  }
+}
+
+/* --- Hasta 480px (móviles grandes) --- */
 @media (max-width: 480px) {
   .hero {
     padding: 2rem 15px;
+    gap: 1.5rem;
+  }
+
+  .logo {
+    max-width: 220px;
+  }
+
+  .logoWrapper {
+    padding: 0 15px;
   }
 
   .cardsSection {
@@ -200,5 +283,32 @@
     height: 220px;
     background-size: auto 150px;
     bottom: 60px;
+  }
+
+  .divider2 {
+    margin: 1.5rem auto;
+  }
+}
+
+/* --- Hasta 360px (móviles pequeños) --- */
+@media (max-width: 360px) {
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .logo {
+    max-width: 180px;
+  }
+
+  .hero {
+    padding: 1.5rem 12px;
+  }
+
+  .noticiasTitle {
+    font-size: 1.2rem;
   }
 }
