@@ -1,74 +1,143 @@
-const pool = require("../config/db");
+const NoticiasModel = require("../models/noticias");
 
-const NoticiasModel = {
-  async getAllNoticias() {
-    const result = await pool.query(
-      "SELECT * FROM noticias WHERE activa = true ORDER BY fecha_publicacion DESC"
-    );
-    return result.rows;
-  },
+exports.getNoticias = async (req, res) => {
+  try {
+    const { categoria, seccion } = req.query;
+    
+    let noticias;
+    
+    if (categoria) {
+      // 🔹 Filtra por categoría específica
+      noticias = await NoticiasModel.getNoticiasByCategoria(categoria);
 
-  async getNoticiasByCategoria(categoria) {
-    const result = await pool.query(
-      "SELECT * FROM noticias WHERE categoria = $1 AND activa = true ORDER BY fecha_publicacion DESC",
-      [categoria]
-    );
-    return result.rows;
-  },
+    } else if (seccion === "inicio") {
+      // 🔹 Últimas 3 para inicio
+      noticias = await NoticiasModel.getNoticiasInicio();
 
-  // ← NUEVO: Para inicio (últimas 3 noticias generales)
-  async getNoticiasInicio() {
-    const result = await pool.query(
-      `SELECT * FROM noticias 
-       WHERE activa = true 
-       AND categoria IN ('NOVEDADES', 'INICIO')
-       ORDER BY fecha_publicacion DESC 
-       LIMIT 3`
-    );
-    return result.rows;
-  },
+    } else if (seccion === "novedades") {
+      // 🔥 TRAE TODAS LAS NOTICIAS PUBLICADAS
+      noticias = await NoticiasModel.getAllNoticias();
 
-  async getNoticiaById(id) {
-    const result = await pool.query(
-      "SELECT * FROM noticias WHERE id = $1 AND activa = true",
-      [id]
-    );
-    return result.rows[0];
-  },
-
-  async createNoticia({ titulo, resumen, contenido, imagen, categoria }) {
-    const result = await pool.query(
-      `INSERT INTO noticias (titulo, resumen, contenido, imagen, categoria)
-       VALUES ($1, $2, $3, $4, $5)
-       RETURNING *`,
-      [titulo, resumen, contenido, imagen, categoria]
-    );
-    return result.rows[0];
-  },
-
-  async updateNoticia(id, { titulo, resumen, contenido, categoria, imagen }) {
-    let query = `UPDATE noticias SET titulo = $1, resumen = $2, contenido = $3, categoria = $4, updated_at = NOW()`;
-    const params = [titulo, resumen, contenido, categoria];
-
-    if (imagen) {
-      query += `, imagen = $5`;
-      params.push(imagen);
+    } else {
+      // 🔹 Por defecto trae todas
+      noticias = await NoticiasModel.getAllNoticias();
     }
+    
+    res.json(noticias);
 
-    query += ` WHERE id = $${params.length + 1} RETURNING *`;
-    params.push(id);
-
-    const result = await pool.query(query, params);
-    return result.rows[0];
-  },
-
-  async deleteNoticia(id) {
-    const result = await pool.query(
-      "UPDATE noticias SET activa = false WHERE id = $1 RETURNING *",
-      [id]
-    );
-    return result.rows[0];
-  },
+  } catch (error) {
+    console.error("❌ Error al obtener noticias:", error);
+    res.status(500).json({ error: error.message });
+  }
 };
 
-module.exports = NoticiasModel;
+exports.getNoticiaById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const noticia = await NoticiasModel.getNoticiaById(id);
+
+    if (!noticia) {
+      return res.status(404).json({ message: "Noticia no encontrada" });
+    }
+
+    res.json(noticia);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.createNoticia = async (req, res) => {
+  try {
+    const { titulo, resumen, contenido, categoria } = req.body;
+
+    const userRole = req.user.role;
+    const allowedCategories = getAllowedCategories(userRole);
+
+    if (!allowedCategories.includes(categoria)) {
+      return res.status(403).json({ 
+        error: `Tu rol (${userRole}) no puede publicar en la categoría ${categoria}`,
+        categoriasPermitidas: allowedCategories
+      });
+    }
+
+    if (!titulo || !contenido || !categoria) {
+      return res.status(400).json({ 
+        error: "Faltan campos requeridos",
+        recibido: { titulo, contenido, categoria }
+      });
+    }
+
+    const imagen = req.file ? `/uploads/${req.file.filename}` : null;
+
+    const nuevaNoticia = await NoticiasModel.createNoticia({
+      titulo,
+      resumen: resumen || "",
+      contenido,
+      imagen,
+      categoria,
+    });
+
+    res.status(201).json(nuevaNoticia);
+
+  } catch (error) {
+    console.error("❌ Error al crear noticia:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.updateNoticia = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { titulo, resumen, contenido, categoria } = req.body;
+
+    const imagen = req.file ? `/uploads/${req.file.filename}` : undefined;
+
+    const noticia = await NoticiasModel.updateNoticia(id, {
+      titulo,
+      resumen,
+      contenido,
+      categoria,
+      imagen,
+    });
+
+    if (!noticia) {
+      return res.status(404).json({ message: "Noticia no encontrada" });
+    }
+
+    res.json(noticia);
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.deleteNoticia = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const noticia = await NoticiasModel.deleteNoticia(id);
+
+    if (!noticia) {
+      return res.status(404).json({ message: "Noticia no encontrada" });
+    }
+
+    res.json({ message: "Noticia desactivada correctamente" });
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// 🔐 Permisos por rol
+function getAllowedCategories(role) {
+  const permissions = {
+    superadmin: ["AGUA", "LUZ", "INTERNET", "SOCIAL", "NOVEDADES", "INICIO"],
+    admin: ["NOVEDADES", "INICIO"],
+    servicios: ["AGUA", "LUZ", "INTERNET", "SOCIAL"],
+    agua: ["AGUA"],
+    luz: ["LUZ"],
+    internet: ["INTERNET"],
+    social: ["SOCIAL"]
+  };
+
+  return permissions[role] || [];
+}

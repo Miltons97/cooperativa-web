@@ -20,7 +20,7 @@ function Inicio() {
           <h1 className={styles.title}>COPEOSPIL Ltda.</h1>
           <div className={styles.divider}></div>
           <p className={styles.subtitle}>
-            Energía que nos une, soluciones nos acompañan.
+            Energía que nos une, soluciones que acompañan.
           </p>
         </div>
 

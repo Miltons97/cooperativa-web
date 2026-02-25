@@ -1,0 +1,165 @@
+@font-face {
+  font-family: "Neue Machina";
+  src: url("/fonts/NeueMachina-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* CONTENEDOR GENERAL → ACÁ VA EL FONDO */
+.pageContainer {
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Neue Machina", sans-serif;
+  background: linear-gradient(135deg, #739182 , #ffffff);
+  margin: 0; /* ⬅️ AGREGADO */
+  padding: 0; /* ⬅️ AGREGADO */
+  overflow-x: hidden; /* ⬅️ AGREGADO: Previene scroll horizontal */
+  box-sizing: border-box; /* ⬅️ AGREGADO */
+}
+/* #739182 */
+.hero {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%; /* ⬅️ AGREGADO: Evita que se pase del ancho */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem clamp(20px, 5%, 80px); /* ⬅️ AGREGADO: Padding responsivo */
+  background: transparent;
+  box-sizing: border-box;
+  margin: 0; /* ⬅️ AGREGADO */
+}
+
+/* TEXTO */
+.content {
+  max-width: 600px;
+  width: 100%; /* ⬅️ AGREGADO: Responsivo */
+  padding: 0 20px; /* ⬅️ AGREGADO: Espacio interno en móviles */
+  box-sizing: border-box; /* ⬅️ AGREGADO */
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem); /* ⬅️ CAMBIADO: Tamaño responsivo */
+  font-weight: 400;
+  color: #4a3728;
+  margin-bottom: 2rem;
+}
+
+.divider {
+  width: min(420px, 90%); /* ⬅️ CAMBIADO: Se adapta a pantallas pequeñas */
+  height: 1px;
+  background-color: #6b5b4b;
+  margin-bottom: 2rem;
+}
+
+.divider2 {
+  width: 100%;
+  max-width: 420px; /* ⬅️ CAMBIADO: Límite de ancho */
+  height: 1px;
+  background-color: #6b5b4b;
+  margin-bottom: 2rem;
+  display: block; /* ⬅️ CAMBIADO: era "flex" */
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.2rem); /* ⬅️ CAMBIADO: Tamaño responsivo */
+  color: #4a3728;
+  line-height: 1.6; /* ⬅️ AGREGADO: Mejor legibilidad */
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  width: 100%; /* ⬅️ AGREGADO */
+  margin-top: clamp(18rem, 15vh, 50rem); /* ⬅️ CAMBIADO: Menos espacio superior */
+  padding: 0 100px; /* ⬅️ AGREGADO: Evita que el logo toque los bordes */
+  box-sizing: border-box; /* ⬅️ AGREGADO */
+ 
+}
+.logoWrapper img {
+  margin-left: 290px; /* ⬅️ cacho a la derecha */
+}
+
+
+.logo {
+  width: 100%;
+  max-width: 480px; /* ⬅️ CAMBIADO: Límite máximo */
+  height: auto; /* ⬅️ AGREGADO: Mantiene proporción */
+}
+
+/* SECCIÓN DE CARDS */
+.cardsSection {
+  width: 100%;
+  max-width: 100%; /* ⬅️ AGREGADO */
+  padding: 4rem clamp(20px, 5%, 80px) 6rem; /* ⬅️ CAMBIADO: Padding horizontal responsivo */
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  box-sizing: border-box; /* ⬅️ AGREGADO */
+  overflow-x: hidden; /* ⬅️ AGREGADO */
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 4rem 20px; /* ⬅️ CAMBIADO: Padding fijo en móviles */
+    min-height: auto; /* ⬅️ AGREGADO: No fuerza 100vh en móviles */
+  }
+
+  .content {
+    padding: 0; /* ⬅️ AGREGADO: Elimina padding extra en móviles */
+  }
+
+  .divider {
+    margin: 2rem auto;
+    width: min(280px, 90%); /* ⬅️ CAMBIADO */
+  }
+
+  .divider2 {
+    margin: 2rem auto;
+    width: min(280px, 90%); /* ⬅️ CAMBIADO */
+  }
+
+  .logoWrapper {
+    margin-top: 2rem; /* ⬅️ CAMBIADO: Menos espacio en móviles */
+    padding: 0 20px; /* ⬅️ AGREGADO */
+  }
+
+  .title {
+    font-size: 2rem; /* ⬅️ AGREGADO: Tamaño fijo en móviles */
+  }
+
+  .subtitle {
+    font-size: 1rem; /* ⬅️ AGREGADO */
+  }
+}
+
+/* EXTRA: Para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .hero {
+    padding: 2rem 15px; /* ⬅️ AGREGADO: Menos padding en móviles pequeños */
+  }
+
+  .cardsSection {
+    padding: 3rem 15px 4rem; /* ⬅️ AGREGADO */
+  }
+
+  .title {
+    font-size: 1.8rem; /* ⬅️ AGREGADO */
+  }
+}.noticiasSection {
+  margin: 4rem auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+.noticiasTitle {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #003366;
+}

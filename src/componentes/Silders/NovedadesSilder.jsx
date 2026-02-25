@@ -1,18 +1,21 @@
 import React, { useRef, useEffect, useState } from "react";
-import styles from "./noticiasSilder.module.css";
+import styles from "./novedades-silder.module.css";
 
 const API_URL = "http://localhost:3001";
 
-function NoticiasSlider({ noticias }) {
+function NovedadesSlider({ novedades }) {
   const scrollRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const visibleCards = 5;
-  const cardWidth = 280;
-  const gap = 24;
+  const visibleCards = 3; // Más grandes estilo novedades
+  const cardWidth = 320;
+  const gap = 16;
   const cardSize = cardWidth + gap;
 
-  const totalDots = noticias.length - visibleCards + 1;
+  const totalDots =
+    novedades.length > visibleCards
+      ? novedades.length - visibleCards + 1
+      : 1;
 
   const scrollToCard = (index) => {
     const container = scrollRef.current;
@@ -27,6 +30,8 @@ function NoticiasSlider({ noticias }) {
   };
 
   useEffect(() => {
+    if (totalDots <= 1) return;
+
     const container = scrollRef.current;
     if (!container) return;
 
@@ -36,51 +41,50 @@ function NoticiasSlider({ noticias }) {
 
       if (nextIndex > maxIndex) {
         nextIndex = 0;
-        container.style.scrollBehavior = "auto";
-        container.scrollLeft = 0;
-        container.style.scrollBehavior = "smooth";
-      } else {
-        container.scrollLeft = nextIndex * cardSize;
       }
+
+      container.scrollTo({
+        left: nextIndex * cardSize,
+        behavior: "smooth",
+      });
 
       setActiveIndex(nextIndex);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [activeIndex, cardSize, totalDots]);
+  }, [activeIndex, totalDots, cardSize]);
 
   return (
     <div className={styles.slider}>
       <div className={styles.viewport}>
         <div ref={scrollRef} className={styles.scroll}>
-          {noticias.map((n) => {
-            // ✅ CORREGIDO: Eliminar la barra inicial si existe
+          {novedades.map((n) => {
             const imageUrl = n.imagen
-              ? `${API_URL}${n.imagen.startsWith('/') ? n.imagen : '/' + n.imagen}`
+              ? `${API_URL}${n.imagen.startsWith("/") ? n.imagen : "/" + n.imagen}`
               : null;
 
             return (
               <article key={n.id} className={styles.card}>
-                {imageUrl ? (
-                  <img
-                    src={imageUrl}
-                    alt={n.titulo}
-                    onError={(e) => {
-                      console.error("❌ Error cargando:", imageUrl);
-                      e.target.src = "/assets/placeholder.jpg"; // Imagen por defecto
-                    }}
-                  />
-                ) : (
-                  <div className={styles.placeholder}>
-                    SIN IMAGEN
-                  </div>
-                )}
+                <div className={styles.imageContainer}>
+                  {imageUrl ? (
+                    <img
+                      src={imageUrl}
+                      alt={n.titulo}
+                      onError={(e) => {
+                        e.target.src = "/assets/placeholder.jpg";
+                      }}
+                    />
+                  ) : (
+                    <div className={styles.placeholder}>SIN IMAGEN</div>
+                  )}
 
-                <span className={styles.categoria}>{n.categoria}</span>
+                  <span className={styles.categoria}>
+                    {n.categoria}
+                  </span>
+                </div>
 
-                <div className={styles.text}>
-                  <h4>{n.titulo}</h4>
-                  <p>{n.resumen || n.contenido.substring(0, 100) + "..."}</p>
+                <div className={styles.caption}>
+                  {n.titulo}
                 </div>
               </article>
             );
@@ -103,4 +107,4 @@ function NoticiasSlider({ noticias }) {
   );
 }
 
-export default NoticiasSlider;
+export default NovedadesSlider;

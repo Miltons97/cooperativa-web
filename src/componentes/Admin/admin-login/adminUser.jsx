@@ -33,7 +33,7 @@ export default function LoginAdmin() {
   return (
     <div style={{ padding: "2rem", maxWidth: "400px", margin: "0 auto" }}>
       <form onSubmit={handleSubmit}>
-        <h2>Admin COPEOSPIL</h2>
+        <h2>LOGIN COPEOSPIL</h2>
         
         {error && (
           <div style={{ color: "red", marginBottom: "1rem" }}>

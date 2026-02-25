@@ -52,7 +52,7 @@ export default function Navbar() {
             <Link to="/institucional" className={styles.link}>Institucional</Link>
             <Link to="/novedades" className={styles.link}>Novedades</Link>
             <Link to="/servicios" className={styles.link}>Servicios</Link>
-            <Link to="/pagos-facturas" className={styles.link}>Pagos y Facturas</Link>
+            <Link to="/pagos-facturas" className={styles.link}>Mi Facturas</Link>
           </div>
         </>
       )}

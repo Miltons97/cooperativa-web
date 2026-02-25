@@ -7,12 +7,12 @@ function Cards() {
     <div className={styles.cardsContainer}>
   
       <div className={styles.card}>
-        <h3>Consultas:</h3>
+        <h3>Central:</h3>
         <p><strong>(2281) 31 73 52</strong></p>
         <p>Números de emergencias para tus servicios:</p>
-        <p>Luz: (2281) 50 3485 / 50 5914</p>
-        <p>Agua: (2281) 53 3611</p>
-        <p>Social: (2281) 43 1605 / 40 8006</p>
+        <p>Energía: (2281) 50 3485 / 50 5914</p>
+        <p>Agua de Red: (2281) 53 3611</p>
+        <p>Servicio de Sepelio: (2281) 43 1605 / 40 8006</p>
         <div className={styles.icons}>
           <FaBolt className={styles.iconRed} />
           <FaTint className={styles.iconBlue} />
