@@ -28,6 +28,7 @@ export default function App() {
         <Routes>
    
           <Route path="/" element={<Inicio />} />
+
           <Route path="/institucional" element={<Institucional />} />
           <Route path="/novedades" element={<Novedades />} />
           <Route path="/pagos-facturas" element={<PagosFacturas />} />
@@ -47,3 +48,4 @@ export default function App() {
     </InstitucionProvider>
   );
 }
+//cambios nuevos
