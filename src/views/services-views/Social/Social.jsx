@@ -9,17 +9,17 @@ const campaignsDataStatic = [
     text: "Acompañamiento en momentos difíciles con dignidad y respeto.",
   },
   {
-    img: "/assets/social1.jpg",
+    img: "/assets/luto2.jpg",
     title: "Asistencia Comunitaria",
     text: "Programas de apoyo para familias de la comunidad.",
   },
   {
-    img: "/assets/social2.jpg",
+    img: "/assets/luto5.jpg",
     title: "Eventos Solidarios",
     text: "Actividades para fortalecer lazos entre asociados.",
   },
   {
-    img: "/assets/social3.jpg",
+    img: "/assets/luto6.jpg",
     title: "Cooperativismo",
     text: "Valores que nos unen como comunidad.",
   },
@@ -111,7 +111,7 @@ function Social() {
       {/* ================= HERO ================= */}
       <div className={styles.heroContainer}>
         <img
-          src="/assets/Luto1.jpg"
+          src="/assets/luto4.jpg"
           alt="Servicio Social"
           className={styles.heroImage}
         />

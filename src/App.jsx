@@ -32,8 +32,8 @@ export default function App() {
 
           <Route path="/" element={<Home />} />
           <Route path="/institucional" element={<Institucional />} />
-        <Route path="/novedades" element={<News />} />
-<Route path="/novedades/:id" element={<NovedadesDetalle />} />
+       {/* <Route path="/novedades" element={<News />} /> */}
+{/* <Route path="/novedades/:id" element={<NovedadesDetalle />} /> */}
 
           <Route path="/pagos-facturas" element={<PagosFacturas />} />
           <Route path="/servicios/*" element={<Servicios />} />

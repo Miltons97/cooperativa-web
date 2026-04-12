@@ -6,6 +6,7 @@ import Agua from "./Agua/Agua.jsx";
 import Luz from "./Luz/LuzCopeospil.jsx";
 import Internet from "./Internet/InternetCopeospil.jsx";
 import Social from "./Social/Social.jsx";
+import AguaMineral from "./AguaMineral/AguaMineral.jsx";
 
 export default function Servicios() {
   const location = useLocation();
@@ -32,6 +33,13 @@ export default function Servicios() {
       image: "../../../public/assets/FibraOptica.jpg",
       route: "/servicios/internet",
       description: "Planes, soporte técnico y conectividad.",
+    },
+     {
+      id: 1,
+      name: "Agua Mineral",
+      image: "../../../public/assets/mineral2.jpg",
+      route: "/servicios/agua-mineral",
+      description: "Información sobre el servicio de agua mineral.",
     },
     {
       id: 4,
@@ -92,6 +100,7 @@ export default function Servicios() {
         {location.pathname === "/servicios/luz" && <Luz />}
         {location.pathname === "/servicios/internet" && <Internet />}
         {location.pathname === "/servicios/social" && <Social />}
+                {location.pathname === "/servicios/agua-mineral" && <AguaMineral />}
       </div>
     </div>
   );

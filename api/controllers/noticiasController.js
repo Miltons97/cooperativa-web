@@ -129,11 +129,13 @@ function getAllowedCategories(role) {
   const permissions = {
     superadmin: ["AGUA", "LUZ", "INTERNET", "SOCIAL", "NOVEDADES", "INICIO"],
     admin: ["NOVEDADES", "INICIO"],
-    servicios: ["AGUA", "LUZ", "INTERNET", "SOCIAL"],
+    servicios: ["AGUA","AGUA MINERAL,", "LUZ", "INTERNET", "SOCIAL"],
     agua: ["AGUA"],
+    aguaMineral: ["AGUA MINERAL"],
     luz: ["LUZ"],
     internet: ["INTERNET"],
     social: ["SOCIAL"]
+
   };
 
   return permissions[role] || [];

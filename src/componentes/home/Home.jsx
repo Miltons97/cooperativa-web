@@ -17,7 +17,8 @@ function Inicio() {
     <div className={styles.pageContainer}>
       <section className={styles.hero}>
         <div className={styles.content}>
-          <h1 className={styles.title}>COPEOSPIL Ltda.</h1>
+          <p className={styles.eyebrow}>Cooperativa de Servicios Públicos</p>
+          <h1 className={styles.title}>COPEOSPIL<span className={styles.titleAccent}> Ltda.</span></h1>
           <div className={styles.divider}></div>
           <p className={styles.subtitle}>
             Energía que nos une, soluciones que acompañan.
@@ -35,7 +36,10 @@ function Inicio() {
 
       {noticias.length > 0 && (
         <section className={styles.noticiasSection}>
-          <h2 className={styles.noticiasTitle}>Novedades</h2>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionTag}>Últimas novedades</span>
+            <h2 className={styles.noticiasTitle}>Novedades</h2>
+          </div>
           <NoticiasSlider noticias={noticias} />
         </section>
       )}
@@ -50,4 +54,3 @@ function Inicio() {
 }
 
 export default Inicio;
-//home

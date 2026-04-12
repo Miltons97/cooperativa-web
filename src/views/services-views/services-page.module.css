@@ -1,103 +1,275 @@
-.serviciosContainer {
-  padding: 3.5rem 2rem 5rem;
-  min-height: 100vh;
-    background: linear-gradient(135deg, #7a7a7b, #ffffff);
+@font-face {
+  font-family: "Neue Machina";
+  src: url("/fonts/NeueMachina-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
 }
 
+/* ══════════════════════════════════════
+   VARIABLES
+══════════════════════════════════════ */
+.serviciosContainer {
+  --navy:       #003366;
+  --navy-mid:   #0a4080;
+  --navy-light: #1a5fa0;
+  --brown:      #3a2e26;
+  --brown-mid:  #6b5b4b;
+  --cream:      #f4f1ec;
+  --border:     rgba(0, 51, 102, 0.12);
+  --white:      #ffffff;
+}
 
+/* ══════════════════════════════════════
+   CONTENEDOR
+══════════════════════════════════════ */
+.serviciosContainer {
+  --navy:       #003366;
+  --navy-mid:   #0a4080;
+  --navy-light: #1a5fa0;
+  --brown:      #3a2e26;
+  --brown-mid:  #6b5b4b;
+  --cream:      #f4f1ec;
+  --border:     rgba(0, 51, 102, 0.12);
+  --white:      #ffffff;
+
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Neue Machina", sans-serif;
+
+  background-color: #e8edf8;
+  background-image:
+    radial-gradient(ellipse at 15% 15%, rgba(0, 80, 200, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 20%, rgba(0, 150, 210, 0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 80%, rgba(0, 60, 160, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 90%, rgba(100, 180, 255, 0.06) 0%, transparent 40%);
+
+  padding: clamp(3rem, 7vw, 5.5rem) clamp(16px, 4vw, 48px) clamp(4rem, 8vw, 7rem);
+  box-sizing: border-box;
+}
+/* ══════════════════════════════════════
+   ENCABEZADO
+══════════════════════════════════════ */
 .serviciosTitle {
   text-align: center;
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
+  font-size: clamp(2rem, 5.5vw, 3.4rem);
+  font-weight: 400;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+  line-height: 1;
 }
 
 .serviciosIntro {
   text-align: center;
-  max-width: 730px;
-  margin: 0 auto 4rem;
-  font-size: 1.15rem;
-  line-height: 1.6;
-  color: #555;
+  max-width: 640px;
+  margin: 0 auto clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(0.92rem, 1.8vw, 1.05rem);
+  line-height: 1.8;
+  color: #4a3a2a;
+  opacity: 0.82;
 }
 
+/* ══════════════════════════════════════
+   GRID — 5 cards en una sola fila
+══════════════════════════════════════ */
 .serviciosGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  margin-bottom: 4rem;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: clamp(0.6rem, 1.2vw, 1rem);
+  justify-content: center;
+  align-items: stretch;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* ══════════════════════════════════════
+   CARD
+══════════════════════════════════════ */
 .servicioCard {
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-  height: 350px;
+
+  /* cada card ocupa 1/5 del ancho disponible */
+  flex: 1 1 0;
+  min-width: 0;
+  height: clamp(300px, 28vw, 420px);
+
   text-decoration: none;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: block;
+  box-shadow:
+    0 2px 8px rgba(0, 51, 102, 0.08),
+    0 8px 28px rgba(0, 51, 102, 0.1);
+  transition:
+    transform 0.38s cubic-bezier(0.34, 1.2, 0.64, 1),
+    box-shadow 0.38s ease;
 }
 
 .servicioCard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow:
+    0 4px 16px rgba(0, 51, 102, 0.12),
+    0 24px 56px rgba(0, 51, 102, 0.2);
+  z-index: 2;
 }
 
+/* ── IMAGEN ── */
 .cardImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+  transition: transform 0.55s ease;
 }
 
+.servicioCard:hover .cardImage {
+  transform: scale(1.07);
+}
+
+/* ── LOGO ── */
+.cardLogo {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: auto;
+  border-radius: 7px;
+  z-index: 3;
+  opacity: 0.9;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.servicioCard:hover .cardLogo {
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+/* ── OVERLAY ── */
 .cardOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top,
-      rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0, 0.2));
+  background: linear-gradient(
+    180deg,
+    rgba(0, 20, 60, 0.0)  0%,
+    rgba(0, 20, 60, 0.35) 45%,
+    rgba(0, 10, 40, 0.82) 100%
+  );
   color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 1.5rem;
-  transition: background 0.3s ease;
+  padding: clamp(0.8rem, 2vw, 1.4rem);
+  transition: background 0.35s ease;
 }
 
 .servicioCard:hover .cardOverlay {
-  background: linear-gradient(to top,
-      rgba(0, 0, 0, 0.85),
-      rgba(0, 0, 0, 0.3));
+  background: linear-gradient(
+    180deg,
+    rgba(0, 20, 60, 0.05) 0%,
+    rgba(0, 20, 60, 0.5)  40%,
+    rgba(0, 10, 40, 0.92) 100%
+  );
 }
 
 .cardOverlay h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.4rem;
+  font-size: clamp(0.88rem, 1.4vw, 1.15rem);
+  font-weight: 600;
+  margin: 0 0 5px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 
 .cardOverlay p {
-  font-size: 0.95rem;
-  opacity: 0.9;
+  font-size: clamp(0.72rem, 1vw, 0.82rem);
+  opacity: 0.85;
+  line-height: 1.45;
+  margin: 0 0 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .cardAction {
-  margin-top: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
   font-weight: 600;
-  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+.servicioCard:hover .cardAction {
+  color: #fff;
+  gap: 8px;
 }
 
+/* ══════════════════════════════════════
+   CONTENIDO DE SUBRUTA
+══════════════════════════════════════ */
 .servicioContent {
-  margin-top: 3rem;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.cardLogo {
-  position: absolute;
-  top: 14px;
-  right: 14px;
 
-  width: 42px;
-  height: auto;
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
 
-  background: none;   /* clave */
-  padding: 0;         /* clave */
-  border-radius: 8px;   /* clave */
+/* tablet — 2 filas de cards con scroll */
+@media (max-width: 900px) {
+  .serviciosGrid {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+  }
 
-  z-index: 3;
+  .servicioCard {
+    flex: 0 0 calc(50% - 0.5rem);
+    height: clamp(240px, 42vw, 320px);
+  }
+}
+
+/* mobile — scroll horizontal */
+@media (max-width: 600px) {
+  .serviciosGrid {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: 10px;
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    gap: 0.75rem;
+  }
+  .serviciosGrid::-webkit-scrollbar { display: none; }
+
+  .servicioCard {
+    flex: 0 0 75vw;
+    height: 280px;
+    scroll-snap-align: start;
+  }
+
+  .serviciosContainer {
+    padding: 2.5rem 16px 4rem;
+  }
+  .serviciosTitle {
+    font-size: clamp(1.7rem, 8vw, 2.4rem);
+  }
+}
+
+/* mobile chico */
+@media (max-width: 380px) {
+  .servicioCard   { flex: 0 0 85vw; height: 250px; }
+  .serviciosTitle { font-size: 1.6rem; }
+  .serviciosIntro { font-size: 0.88rem; }
 }

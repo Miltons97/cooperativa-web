@@ -15,7 +15,6 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
-
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
     return () => {
@@ -24,63 +23,80 @@ export default function Navbar() {
     };
   }, []);
 
-  // En móvil O con scroll → mostrar solo icono
   const showIconOnly = isMobile || scrolled;
 
   return (
-    <nav className={`${styles.navbar} ${scrolled ? styles.navbarScrolled : ""}`}>
-      {showIconOnly ? (
-        /* ── Solo ícono ── */
-        <div
-          className={styles.menuIconBtn}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Abrir menú"
-        >
-          {menuOpen ? <FaTimes /> : <FaBars />}
-        </div>
-      ) : (
-        /* ── Navbar completo (desktop sin scroll) ── */
-        <>
+    <>
+      <nav className={`${styles.navbar} ${scrolled ? styles.navbarScrolled : ""}`}>
+
+        {showIconOnly ? (
+          <div
+            className={styles.menuIconBtn}
+            style={{ display: "flex" }}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Abrir menú"
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </div>
+        ) : (
           <div className={styles.logoContainer}>
+            {institucion?.logo && (
+              <img src={institucion.logo} alt="logo" className={styles.logo} />
+            )}
             <span className={styles.brand}>
-              {institucion?.nombre || ""}
+              {institucion?.nombre || "COPEOSPIL Ltda."}
             </span>
           </div>
+        )}
 
+        {!showIconOnly && (
           <div className={styles.links}>
             <Link to="/" className={styles.link}>Inicio</Link>
             <Link to="/institucional" className={styles.link}>Institucional</Link>
-            <Link to="/novedades" className={styles.link}>Novedades</Link>
             <Link to="/servicios" className={styles.link}>Servicios</Link>
             <Link to="/pagos-facturas" className={styles.link}>Mi Facturas</Link>
           </div>
-        </>
-      )}
+        )}
 
-      {/* ── Menú desplegable ── */}
+        {!showIconOnly && <div className={styles.rightCol} />}
+
+      </nav>
+
+      {/* ── SIDEBAR — fuera del nav para que ocupe el full height ── */}
       {menuOpen && (
         <div className={styles.mobileMenu}>
-          {/* Cerrar al hacer click afuera */}
           <div
             className={styles.mobileMenuOverlay}
             onClick={() => setMenuOpen(false)}
           />
           <div className={styles.mobileMenuContent}>
-            <button
-              className={styles.closeBtn}
-              onClick={() => setMenuOpen(false)}
-              aria-label="Cerrar menú"
-            >
-              <FaTimes />
-            </button>
-            <Link to="/" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Inicio</Link>
-            <Link to="/institucional" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Institucional</Link>
-            <Link to="/novedades" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Novedades</Link>
-            <Link to="/servicios" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Servicios</Link>
-            <Link to="/pagos-facturas" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Pagos y Facturas</Link>
+            <div className={styles.mobileHeader}>
+              <span className={styles.mobileBrand}>
+                {institucion?.nombre || "COPEOSPIL Ltda."}
+              </span>
+              <button
+                className={styles.closeBtn}
+                onClick={() => setMenuOpen(false)}
+                aria-label="Cerrar menú"
+              >
+                <FaTimes />
+              </button>
+            </div>
+            <Link to="/" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
+              Inicio
+            </Link>
+            <Link to="/institucional" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
+              Institucional
+            </Link>
+            <Link to="/servicios" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
+              Servicios
+            </Link>
+            <Link to="/pagos-facturas" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
+              Pagos y Facturas
+            </Link>
           </div>
         </div>
       )}
-    </nav>
+    </>
   );
 }

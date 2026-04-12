@@ -45,32 +45,23 @@ const infiniteData = [...campaignsData, ...campaignsData];
 function Luz() {
   /* ===== ACCORDION ===== */
   const [open, setOpen] = useState(null);
-  const toggle = (index) => {
-    setOpen(open === index ? null : index);
-  };
+  const toggle = (index) => setOpen(open === index ? null : index);
 
-  /* ===== SLIDER CAMPAÑAS ===== */
+  /* ===== SLIDER ===== */
   const scrollRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const totalCards = campaignsData.length;
+  const totalCards  = campaignsData.length;
   const visibleCards = 4;
-
-  const cardWidth = 280;
-  const gap = 24;
-  const cardSize = cardWidth + gap;
-
-  const totalDots = totalCards - visibleCards + 1;
+  const cardWidth   = 280;
+  const gap         = 24;
+  const cardSize    = cardWidth + gap;
+  const totalDots   = totalCards - visibleCards + 1;
 
   const scrollToCard = (index) => {
     const container = scrollRef.current;
     if (!container) return;
-
-    container.scrollTo({
-      left: index * cardSize,
-      behavior: "smooth",
-    });
-
+    container.scrollTo({ left: index * cardSize, behavior: "smooth" });
     setActiveIndex(index);
   };
 
@@ -90,7 +81,6 @@ function Luz() {
       } else {
         container.scrollLeft = nextIndex * cardSize;
       }
-
       setActiveIndex(nextIndex);
     }, 4000);
 
@@ -99,16 +89,15 @@ function Luz() {
 
   return (
     <div className={styles.luzContainer}>
-      {/* ================= HERO ================= */}
+
+      {/* ══════════ HERO ══════════ */}
       <div className={styles.heroContainer}>
         <img
           src="/assets/posteLuz.jpg"
           alt="Servicio de Energía Eléctrica"
           className={styles.heroImage}
         />
-
         <h1 className={styles.heroTitle}>Servicio de Energía Eléctrica</h1>
-
         <img
           src="/assets/logoSinFondo.jpg"
           alt="COPEOSPIL"
@@ -116,7 +105,7 @@ function Luz() {
         />
       </div>
 
-      {/* ================= HEADER ================= */}
+      {/* ══════════ HEADER ══════════ */}
       <header className={styles.header}>
         <p>
           Brindamos un servicio eléctrico seguro y confiable, con mantenimiento
@@ -124,23 +113,60 @@ function Luz() {
         </p>
       </header>
 
-      {/* ================= FEATURES ================= */}
+      {/* ══════════ URBANA / RURAL ══════════ */}
+      <div className={styles.dualSection}>
+        <div className={`${styles.dualBlock} ${styles.urbana}`}>
+          <div className={styles.dualBlockHeader}>
+            <span>🏙</span>
+            <h3>Electricidad Urbana</h3>
+          </div>
+          <div className={styles.dualBlockBody}>
+            <p>
+              Suministro eléctrico para zonas urbanas con red de media y baja
+              tensión.
+            </p>
+            <ul>
+              <li>Red domiciliaria y comercial</li>
+              <li>Alumbrado público</li>
+              <li>Mantenimiento preventivo</li>
+              <li>Atención de emergencias</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className={`${styles.dualBlock} ${styles.rural}`}>
+          <div className={styles.dualBlockHeader}>
+            <span>🌾</span>
+            <h3>Electricidad Rural</h3>
+          </div>
+          <div className={styles.dualBlockBody}>
+            <p>
+              Cobertura eléctrica para zonas rurales y establecimientos
+              agropecuarios.
+            </p>
+            <ul>
+              <li>Líneas de alta tensión rural</li>
+              <li>Conexiones para establecimientos</li>
+              <li>Extensiones de red</li>
+              <li>Soporte técnico especializado</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* ══════════ FEATURES ══════════ */}
       <section className={styles.features}>
         <h3>Características del Servicio</h3>
 
         <div className={styles.featuresGrid}>
           <div className={styles.featureCard}>
             <h4>Distribución Eléctrica</h4>
-            <p>
-              Red de media y baja tensión que abastece a toda la localidad.
-            </p>
+            <p>Red de media y baja tensión que abastece a toda la localidad.</p>
           </div>
 
           <div className={styles.featureCard}>
             <h4>Mantenimiento Preventivo</h4>
-            <p>
-              Inspecciones periódicas para evitar interrupciones del servicio.
-            </p>
+            <p>Inspecciones periódicas para evitar interrupciones del servicio.</p>
           </div>
 
           <div className={styles.featureCard}>
@@ -152,14 +178,12 @@ function Luz() {
 
           <div className={styles.featureCard}>
             <h4>Atención al Usuario</h4>
-            <p>
-              Asistencia ante reclamos, cortes y consultas administrativas.
-            </p>
+            <p>Asistencia ante reclamos, cortes y consultas administrativas.</p>
           </div>
         </div>
       </section>
 
-      {/* ================= INFO ================= */}
+      {/* ══════════ INFO / ACCORDION ══════════ */}
       <section className={styles.infoSection}>
         <h3>Información del Servicio</h3>
 
@@ -167,23 +191,19 @@ function Luz() {
           {[
             {
               title: "¿Cómo solicitar conexión eléctrica?",
-              text:
-                "La solicitud se realiza en nuestras oficinas o mediante los canales digitales.",
+              text: "La solicitud se realiza en nuestras oficinas o mediante los canales digitales.",
             },
             {
               title: "Cortes programados",
-              text:
-                "Los cortes por mantenimiento se informan previamente.",
+              text: "Los cortes por mantenimiento se informan previamente.",
             },
             {
               title: "Reclamos por baja tensión",
-              text:
-                "Comuníquese con el área técnica para su verificación.",
+              text: "Comuníquese con el área técnica para su verificación.",
             },
             {
               title: "Documentación necesaria para la habilitación",
-              text:
-                "Los documentos vigentes se encuentran disponibles para consulta.",
+              text: "Los documentos vigentes se encuentran disponibles para consulta.",
             },
           ].map((item, index) => (
             <div key={index} className={styles.accordionItem}>
@@ -191,7 +211,6 @@ function Luz() {
                 {item.title}
                 <span>{open === index ? "−" : "+"}</span>
               </button>
-
               {open === index && (
                 <div className={styles.accordionContent}>
                   <p>{item.text}</p>
@@ -202,7 +221,7 @@ function Luz() {
         </div>
       </section>
 
-      {/* ================= CAMPAÑAS ================= */}
+      {/* ══════════ CAMPAÑAS ══════════ */}
       <section className={styles.campaigns}>
         <h3>Campañas de Energía Eléctrica</h3>
 
@@ -215,13 +234,11 @@ function Luz() {
                   alt="COPEOSPIL"
                   className={styles.cardLogo}
                 />
-
                 <img
                   src={item.img}
                   alt={item.title}
                   className={styles.campaignImage}
                 />
-
                 <div className={styles.campaignText}>
                   <h4>{item.title}</h4>
                   <p>{item.text}</p>
@@ -243,6 +260,7 @@ function Luz() {
           ))}
         </div>
       </section>
+
     </div>
   );
 }

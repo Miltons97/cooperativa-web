@@ -1,12 +1,12 @@
-// componentes/Admin/Login/adminUser.jsx
 import { useState } from "react";
 import { login } from "../../../services/authServices";
+import styles from "./adminLogin.module.css";
 
 export default function LoginAdmin() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail]       = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [loading, setLoading]   = useState(false);
+  const [error, setError]       = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,15 +15,14 @@ export default function LoginAdmin() {
 
     try {
       const token = await login(email, password);
-      
       if (token) {
         localStorage.setItem("token", token);
         window.location.href = "/admin/noticias/nueva";
       } else {
-        setError("Credenciales inválidas");
+        setError("Credenciales inválidas. Verificá tus datos.");
       }
     } catch (err) {
-      setError("Error al iniciar sesión. Intenta nuevamente.");
+      setError("Error al iniciar sesión. Intentá nuevamente.");
       console.error(err);
     } finally {
       setLoading(false);
@@ -31,47 +30,70 @@ export default function LoginAdmin() {
   };
 
   return (
-    <div style={{ padding: "2rem", maxWidth: "400px", margin: "0 auto" }}>
-      <form onSubmit={handleSubmit}>
-        <h2>Admin COPEOSPIL</h2>
-        
-        {error && (
-          <div style={{ color: "red", marginBottom: "1rem" }}>
-            {error}
+    <div className={styles.loginPage}>
+      <div className={styles.card}>
+
+        {/* ── HEADER ── */}
+        <div className={styles.cardHeader}>
+          <div className={styles.logoCircle}>
+            <img src="/assets/LogoSinFondo.png" alt="COPEOSPIL" />
           </div>
-        )}
+          <h1 className={styles.cardTitle}>Bienvenido</h1>
+          <p className={styles.cardSubtitle}>Panel Administrativo</p>
+        </div>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          style={{ display: "block", width: "100%", marginBottom: "1rem", padding: "0.5rem" }}
-        />
-        
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          style={{ display: "block", width: "100%", marginBottom: "1rem", padding: "0.5rem" }}
-        />
-        
-        <button 
-          type="submit" 
-          disabled={loading}
-          style={{ width: "100%", padding: "0.5rem" }}
-        >
-          {loading ? "Ingresando..." : "Ingresar"}
-        </button>
-      </form>
+        {/* ── FORM ── */}
+        <form className={styles.form} onSubmit={handleSubmit}>
 
-      <div style={{ marginTop: "2rem", fontSize: "0.8rem", color: "#666" }}>
-        <p><strong>Usuarios de prueba:</strong></p>
-        <p>admin@ejemplo.com / Admin123!</p>
-        <p>user@ejemplo.com / User123!</p>
+          {error && (
+            <div className={styles.errorBox}>
+              <span className={styles.errorDot} />
+              {error}
+            </div>
+          )}
+
+          <div className={styles.fieldGroup}>
+            <label className={styles.fieldLabel}>Correo electrónico</label>
+            <input
+              type="email"
+              placeholder="admin@copeospil.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className={styles.fieldInput}
+            />
+          </div>
+
+          <div className={styles.fieldGroup}>
+            <label className={styles.fieldLabel}>Contraseña</label>
+            <input
+              type="password"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className={styles.fieldInput}
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={loading}
+            className={`${styles.submitBtn} ${loading ? styles.loading : ""}`}
+          >
+            {loading ? "Ingresando..." : "Ingresar"}
+          </button>
+
+        </form>
+
+        {/* ── FOOTER ── */}
+        <div className={styles.cardFooter}>
+          <p>
+            <strong>Acceso restringido</strong>
+            admin@ejemplo.com / Admin123!
+          </p>
+        </div>
+
       </div>
     </div>
   );

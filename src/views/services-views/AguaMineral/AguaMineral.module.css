@@ -8,29 +8,21 @@
 /* ══════════════════════════════════════
    VARIABLES
 ══════════════════════════════════════ */
-.luzContainer {
-  --green:         #2e7d32;
-  --green-mid:     #388e3c;
-  --green-light:   #66bb6a;
-  --green-pale:    rgba(46, 125, 50, 0.08);
-  --green-border:  rgba(46, 125, 50, 0.22);
-
-  --gold:          #f5a800;
-  --gold-mid:      #e09600;
-  --gold-dark:     #b87800;
-  --gold-light:    #ffc84a;
-  --gold-pale:     rgba(245, 168, 0, 0.08);
-  --gold-border:   rgba(245, 168, 0, 0.25);
-
-  --text:          #1a2e1a;
-  --text-muted:    #3a5a3a;
-  --white:         #ffffff;
+.aguaContainer {
+  --cyan:        #4dc3e8;
+  --cyan-mid:    #2ab0da;
+  --cyan-dark:   #1490b8;
+  --cyan-pale:   rgba(77, 195, 232, 0.08);
+  --cyan-border: rgba(77, 195, 232, 0.25);
+  --text:        #0d2e3a;
+  --text-muted:  #2e6070;
+  --white:       #ffffff;
 }
 
 /* ══════════════════════════════════════
    CONTENEDOR
 ══════════════════════════════════════ */
-.luzContainer {
+.aguaContainer {
   padding: 0 0 4rem 0;
   margin-top: -250px;
   font-family: "Neue Machina", sans-serif;
@@ -38,9 +30,9 @@
     linear-gradient(
       180deg,
       transparent  0%,
-      #f2faf2      20%,
-      #f8f6e8      55%,
-      #fdf5d8      100%
+      #edfbff      28%,
+      #e0f6fc      60%,
+      #d0effa      100%
     );
 }
 
@@ -65,7 +57,7 @@
   top: 0;
   left: 0;
   object-fit: cover;
-  object-position: center 44%;
+  object-position: center 20%;
   display: block;
 }
 
@@ -75,8 +67,8 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(10, 40, 10, 0.08) 0%,
-    rgba(10, 35, 10, 0.58) 100%
+    rgba(0, 100, 140, 0.08) 0%,
+    rgba(0, 80, 120, 0.55)  100%
   );
   pointer-events: none;
 }
@@ -85,13 +77,13 @@
   position: absolute;
   bottom: clamp(20px, 5vh, 48px);
   left: clamp(20px, 5vw, 80px);
-  font-size: clamp(1.5rem, 3.8vw, 2.8rem);
+  font-size: clamp(1.6rem, 4vw, 3rem);
   font-weight: 400;
   color: #fff;
   letter-spacing: -0.02em;
   line-height: 1;
   z-index: 2;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
 }
 
 .heroTitle::after {
@@ -99,7 +91,7 @@
   display: block;
   width: 48px;
   height: 3px;
-  background: var(--green-light);
+  background: var(--cyan);
   margin-top: 10px;
   border-radius: 2px;
 }
@@ -112,13 +104,13 @@
   height: clamp(70px, 10vw, 130px);
   border-radius: 50%;
   object-fit: contain;
-  background: rgba(46, 125, 50, 0.2);
+  background: rgba(77, 195, 232, 0.2);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   padding: 10px;
-  border: 2px solid rgba(102, 187, 106, 0.5);
+  border: 2px solid rgba(77, 195, 232, 0.5);
   box-shadow:
-    0 0 0 4px rgba(46, 125, 50, 0.15),
+    0 0 0 4px rgba(77, 195, 232, 0.15),
     0 8px 24px rgba(0, 0, 0, 0.2);
   z-index: 2;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -126,7 +118,7 @@
 .heroLogo:hover {
   transform: scale(1.06);
   box-shadow:
-    0 0 0 6px rgba(46, 125, 50, 0.22),
+    0 0 0 6px rgba(77, 195, 232, 0.22),
     0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
@@ -147,120 +139,7 @@
 }
 
 /* ══════════════════════════════════════
-   SECCIÓN DUAL — urbana + rural
-══════════════════════════════════════ */
-.dualSection {
-  max-width: 1200px;
-  margin: 0 auto clamp(3rem, 6vw, 5rem);
-  padding: 0 clamp(16px, 5vw, 48px);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(1.2rem, 3vw, 2rem);
-}
-
-/* bloque compartido */
-.dualBlock {
-  border-radius: 18px;
-  overflow: hidden;
-  border: 0.5px solid transparent;
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.05),
-    0 8px 24px rgba(0, 0, 0, 0.07);
-}
-
-/* ── URBANA (verde) ── */
-.dualBlock.urbana {
-  border-color: var(--green-border);
-}
-
-.dualBlock.rural {
-  border-color: var(--gold-border);
-}
-
-/* cabecera del bloque */
-.dualBlockHeader {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: clamp(1rem, 2.5vw, 1.3rem) clamp(1.2rem, 3vw, 1.6rem);
-}
-
-.urbana .dualBlockHeader {
-  background: var(--green);
-}
-
-.rural .dualBlockHeader {
-  background: var(--gold);
-}
-
-.dualBlockHeader h3 {
-  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-.dualBlockHeader span {
-  font-size: 1.2rem;
-}
-
-/* cuerpo del bloque */
-.dualBlockBody {
-  padding: clamp(1.2rem, 3vw, 1.8rem);
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(8px);
-}
-
-.dualBlockBody p {
-  font-size: clamp(0.82rem, 1.4vw, 0.92rem);
-  line-height: 1.7;
-  color: var(--text-muted);
-  margin: 0 0 1rem;
-}
-
-.dualBlockBody ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.dualBlockBody li {
-  font-size: clamp(0.8rem, 1.3vw, 0.88rem);
-  color: #3a3a3a;
-  padding: 6px 0 6px 18px;
-  position: relative;
-  line-height: 1.4;
-}
-
-.urbana .dualBlockBody li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 13px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--green);
-}
-
-.rural .dualBlockBody li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 13px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--gold);
-}
-
-/* ══════════════════════════════════════
-   FEATURES — título con color dual
+   FEATURES
 ══════════════════════════════════════ */
 .features {
   max-width: 1200px;
@@ -272,7 +151,7 @@
   text-align: center;
   font-size: clamp(1.2rem, 2.5vw, 1.7rem);
   font-weight: 400;
-  color: var(--green);
+  color: var(--cyan-dark);
   letter-spacing: -0.01em;
   margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
   position: relative;
@@ -285,9 +164,9 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
+  width: 44px;
   height: 2px;
-  background: linear-gradient(90deg, var(--green), var(--gold));
+  background: linear-gradient(90deg, var(--cyan-dark), var(--cyan));
   border-radius: 2px;
 }
 
@@ -297,7 +176,6 @@
   gap: clamp(0.8rem, 2vw, 1.4rem);
 }
 
-/* cards pares → verde, impares → dorado */
 .featureCard {
   position: relative;
   background: rgba(255, 255, 255, 0.78);
@@ -306,45 +184,27 @@
   min-height: 190px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 0.5px solid var(--green-border);
-  border-top: 3px solid var(--green);
+  border: 0.5px solid var(--cyan-border);
+  border-top: 3px solid var(--cyan);
   box-shadow:
-    0 2px 8px rgba(46, 125, 50, 0.06),
-    0 8px 24px rgba(46, 125, 50, 0.08);
+    0 2px 8px rgba(77, 195, 232, 0.07),
+    0 8px 24px rgba(77, 195, 232, 0.1);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.featureCard:nth-child(even) {
-  border-color: var(--gold-border);
-  border-top: 3px solid var(--gold);
-  box-shadow:
-    0 2px 8px rgba(245, 168, 0, 0.06),
-    0 8px 24px rgba(245, 168, 0, 0.08);
 }
 
 .featureCard:hover {
   transform: translateY(-7px);
   box-shadow:
-    0 4px 16px rgba(46, 125, 50, 0.12),
-    0 16px 40px rgba(46, 125, 50, 0.15);
-}
-
-.featureCard:nth-child(even):hover {
-  box-shadow:
-    0 4px 16px rgba(245, 168, 0, 0.14),
-    0 16px 40px rgba(245, 168, 0, 0.17);
+    0 4px 16px rgba(77, 195, 232, 0.14),
+    0 16px 40px rgba(77, 195, 232, 0.18);
 }
 
 .featureCard h4 {
   font-size: clamp(0.88rem, 1.4vw, 1rem);
   font-weight: 600;
-  color: var(--green);
+  color: var(--cyan-dark);
   margin: 0 0 0.7rem;
   letter-spacing: 0.02em;
-}
-
-.featureCard:nth-child(even) h4 {
-  color: var(--gold-dark);
 }
 
 .featureCard p {
@@ -367,7 +227,7 @@
   text-align: center;
   font-size: clamp(1.2rem, 2.5vw, 1.7rem);
   font-weight: 400;
-  color: var(--green);
+  color: var(--cyan-dark);
   letter-spacing: -0.01em;
   margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
   position: relative;
@@ -380,16 +240,25 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
+  width: 44px;
   height: 2px;
-  background: linear-gradient(90deg, var(--green), var(--gold));
+  background: linear-gradient(90deg, var(--cyan-dark), var(--cyan));
   border-radius: 2px;
 }
 
-.accordion { display: flex; flex-direction: column; gap: 0; }
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
 
-.accordionItem { border-bottom: 0.5px solid var(--green-border); }
-.accordionItem:first-child { border-top: 0.5px solid var(--green-border); }
+.accordionItem {
+  border-bottom: 0.5px solid var(--cyan-border);
+}
+
+.accordionItem:first-child {
+  border-top: 0.5px solid var(--cyan-border);
+}
 
 .accordionItem button {
   width: 100%;
@@ -407,18 +276,23 @@
   transition: color 0.2s ease;
   gap: 1rem;
 }
-.accordionItem button:hover { color: var(--green); }
+
+.accordionItem button:hover {
+  color: var(--cyan-dark);
+}
 
 .accordionItem button span {
   font-size: 1.2rem;
   font-weight: 300;
-  color: var(--green);
+  color: var(--cyan-mid);
   flex-shrink: 0;
   width: 20px;
   text-align: center;
 }
 
-.accordionContent { padding: 0 0 clamp(0.8rem, 2vw, 1.1rem); }
+.accordionContent {
+  padding: 0 0 clamp(0.8rem, 2vw, 1.1rem);
+}
 
 .accordionContent p {
   font-size: clamp(0.85rem, 1.5vw, 0.92rem);
@@ -440,7 +314,7 @@
   text-align: center;
   font-size: clamp(1.2rem, 2.5vw, 1.7rem);
   font-weight: 400;
-  color: var(--green);
+  color: var(--cyan-dark);
   letter-spacing: -0.01em;
   margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
   position: relative;
@@ -453,9 +327,9 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
+  width: 44px;
   height: 2px;
-  background: linear-gradient(90deg, var(--green), var(--gold));
+  background: linear-gradient(90deg, var(--cyan-dark), var(--cyan));
   border-radius: 2px;
 }
 
@@ -476,8 +350,10 @@
   scroll-snap-type: x mandatory;
   padding-bottom: 4px;
 }
+
 .campaignsScroll::-webkit-scrollbar { display: none; }
 
+/* ── CAMPAIGN CARD ── */
 .campaignCard {
   position: relative;
   width: 280px;
@@ -488,8 +364,8 @@
   flex-shrink: 0;
   scroll-snap-align: start;
   box-shadow:
-    0 2px 8px rgba(46, 125, 50, 0.08),
-    0 8px 24px rgba(46, 125, 50, 0.1);
+    0 2px 8px rgba(77, 195, 232, 0.08),
+    0 8px 24px rgba(77, 195, 232, 0.11);
   transition:
     transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1),
     box-shadow 0.35s ease;
@@ -498,8 +374,8 @@
 .campaignCard:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow:
-    0 4px 16px rgba(46, 125, 50, 0.14),
-    0 20px 48px rgba(46, 125, 50, 0.18);
+    0 4px 16px rgba(77, 195, 232, 0.16),
+    0 20px 48px rgba(77, 195, 232, 0.2);
 }
 
 .campaignImage {
@@ -509,7 +385,10 @@
   display: block;
   transition: transform 0.5s ease;
 }
-.campaignCard:hover .campaignImage { transform: scale(1.06); }
+
+.campaignCard:hover .campaignImage {
+  transform: scale(1.06);
+}
 
 .campaignText {
   position: absolute;
@@ -518,8 +397,8 @@
   padding: clamp(0.8rem, 2vw, 1.1rem);
   background: linear-gradient(
     180deg,
-    transparent           0%,
-    rgba(10, 40, 10, 0.8) 100%
+    transparent          0%,
+    rgba(0, 70, 110, 0.78) 100%
   );
   color: #fff;
 }
@@ -542,6 +421,7 @@
   overflow: hidden;
 }
 
+/* ── LOGO EN CARD ── */
 .cardLogo {
   position: absolute;
   top: 10px;
@@ -569,28 +449,29 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: rgba(46, 125, 50, 0.2);
+  background: rgba(77, 195, 232, 0.22);
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 .dot:hover {
-  background: rgba(46, 125, 50, 0.45);
+  background: rgba(77, 195, 232, 0.5);
   transform: scale(1.25);
 }
 
 .dotActive {
   width: 22px;
   border-radius: 4px;
-  background: var(--green);
+  background: var(--cyan-mid);
   transform: none;
 }
 
 /* ══════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════ */
+
 @media (max-width: 900px) {
-  .luzContainer      { margin-top: -180px; }
-  .dualSection       { grid-template-columns: 1fr; }
+  .aguaContainer     { margin-top: -180px; }
   .featuresGrid      { grid-template-columns: repeat(2, 1fr); }
   .heroContainer     { height: 38vh; min-height: 220px; }
   .campaignsViewport { max-width: calc(280px * 2 + 1.2rem); }
@@ -601,7 +482,7 @@
 }
 
 @media (max-width: 600px) {
-  .luzContainer      { margin-top: -120px; }
+  .aguaContainer     { margin-top: -120px; }
   .heroContainer     { height: 35vh; min-height: 200px; }
   .featuresGrid      { grid-template-columns: 1fr; }
   .campaignsViewport { max-width: 100%; overflow: visible; }
@@ -615,14 +496,13 @@
   .campaignCard      { width: clamp(240px, 75vw, 300px); }
   .infoSection,
   .features,
-  .campaigns,
-  .dualSection       { padding: 0 16px; }
+  .campaigns         { padding: 0 16px; }
   .heroLogo          { width: 62px; height: 62px; padding: 8px; bottom: 14px; right: 14px; }
 }
 
 @media (max-width: 380px) {
-  .heroTitle    { font-size: 1.3rem; }
-  .featureCard  { min-height: auto; padding: 1rem; }
-  .campaignCard { width: 85vw; }
-  .heroLogo     { width: 50px; height: 50px; padding: 6px; }
+  .heroTitle   { font-size: 1.4rem; }
+  .featureCard { min-height: auto; padding: 1rem; }
+  .campaignCard{ width: 85vw; }
+  .heroLogo    { width: 50px; height: 50px; padding: 6px; }
 }
