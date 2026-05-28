@@ -22,9 +22,12 @@ const User = {
     );
 
     return result.rows[0];
-  }
-  
- 
+  },
+
+  async updatePassword(id, newPassword) {
+    const hashed = await bcrypt.hash(newPassword, 10);
+    await pool.query("UPDATE usuarios SET password = $1 WHERE id = $2", [hashed, id]);
+  },
 };
 
 module.exports = User;

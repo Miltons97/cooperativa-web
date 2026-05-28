@@ -1,0 +1,367 @@
+/* ══════════════════════════════════════
+   VARIABLES
+══════════════════════════════════════ */
+.loginPage {
+  --navy:        #003366;
+  --navy-mid:    #0a4080;
+  --navy-light:  #1a5fa0;
+  --accent:      #1a7fd4;
+  --text:        #0b1e35;
+  --text-muted:  #5a7a9a;
+  --border:      rgba(0, 51, 102, 0.15);
+  --white:       #ffffff;
+  --error:       #c0392b;
+  --error-pale:  rgba(192, 57, 43, 0.08);
+}
+
+/* ══════════════════════════════════════
+   PÁGINA COMPLETA
+══════════════════════════════════════ */
+.loginPage {
+  min-height: 100vh;
+  width: 100%;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 16px;
+  box-sizing: border-box;
+  background:
+    linear-gradient(
+      135deg,
+      #1a2744 0%,
+      #1e3a5f 30%,
+      #162d4a 60%,
+      #0f1f38 100%
+    );
+  position: relative;
+  overflow: hidden;
+}
+
+/* círculos decorativos de fondo */
+.loginPage::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26, 95, 160, 0.15) 0%, transparent 70%);
+  top: -200px;
+  right: -150px;
+  pointer-events: none;
+}
+
+.loginPage::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 80, 160, 0.1) 0%, transparent 70%);
+  bottom: -100px;
+  left: -100px;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════
+   CARD
+══════════════════════════════════════ */
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 20px;
+  padding: clamp(2rem, 5vw, 2.8rem) clamp(1.8rem, 5vw, 2.8rem);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.25),
+    0 24px 64px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+  animation: cardIn 0.4s cubic-bezier(0.34, 1.2, 0.64, 1) both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ══════════════════════════════════════
+   HEADER DE LA CARD
+══════════════════════════════════════ */
+.cardHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logoCircle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.2rem;
+  box-shadow: 0 4px 16px rgba(0, 51, 102, 0.35);
+}
+
+.logoCircle img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.cardTitle {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin: 0 0 6px;
+}
+
+.cardSubtitle {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ══════════════════════════════════════
+   FORM
+══════════════════════════════════════ */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ── CAMPO ── */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.fieldInput {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 0.92rem;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  color: var(--text);
+  background: #f8fafd;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-sizing: border-box;
+}
+
+.fieldInput::placeholder {
+  color: rgba(90, 122, 154, 0.5);
+}
+
+.fieldInput:focus {
+  border-color: var(--accent);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(26, 127, 212, 0.12);
+}
+
+/* ── ERROR ── */
+.errorBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--error-pale);
+  border: 0.5px solid rgba(192, 57, 43, 0.2);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  color: var(--error);
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  25%      { transform: translateX(-6px); }
+  75%      { transform: translateX(6px); }
+}
+
+.errorDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--error);
+  flex-shrink: 0;
+}
+
+/* ── BOTÓN ── */
+.submitBtn {
+  width: 100%;
+  padding: 13px;
+  margin-top: 0.5rem;
+  font-size: 0.88rem;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 51, 102, 0.3);
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 51, 102, 0.4);
+}
+
+.submitBtn:active:not(:disabled) {
+  transform: translateY(0) scale(0.99);
+}
+
+.submitBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* spinner en botón */
+.submitBtn.loading::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ══════════════════════════════════════
+   FOOTER CARD
+══════════════════════════════════════ */
+.cardFooter {
+  margin-top: 1.6rem;
+  padding-top: 1.4rem;
+  border-top: 0.5px solid var(--border);
+  text-align: center;
+}
+
+.cardFooter p {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.cardFooter strong {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(90, 122, 154, 0.6);
+  margin-bottom: 6px;
+}
+
+/* ══════════════════════════════════════
+   OLVIDÉ CONTRASEÑA
+══════════════════════════════════════ */
+.forgotLink {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  cursor: pointer;
+  text-align: center;
+  padding: 4px 0;
+  margin-top: 0.25rem;
+  transition: color 0.2s;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.forgotLink:hover { color: var(--navy); }
+
+.forgotSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.forgotHint {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin: 0 0 1.2rem;
+  text-align: center;
+}
+
+.tempBox {
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: 12px;
+  padding: 1.4rem 1.2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.tempLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #16a34a;
+  margin: 0;
+}
+
+.tempPass {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0b2b4a;
+  letter-spacing: 0.12em;
+  margin: 0;
+  background: #fff;
+  border: 1.5px dashed #86efac;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+}
+
+.tempNote {
+  font-size: 0.77rem;
+  color: #4a6a5a;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media (max-width: 480px) {
+  .card {
+    border-radius: 16px;
+    padding: 1.8rem 1.4rem;
+  }
+  .logoCircle { width: 54px; height: 54px; }
+  .logoCircle img { width: 36px; height: 36px; }
+}

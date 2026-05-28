@@ -65,6 +65,7 @@ exports.createNoticia = async (req, res) => {
     }
 
     const imagen = req.file ? `/uploads/${req.file.filename}` : null;
+    const mostrar_en_inicio = req.body.mostrar_en_inicio === "on" || req.body.mostrar_en_inicio === "true";
 
     const nuevaNoticia = await NoticiasModel.createNoticia({
       titulo,
@@ -72,6 +73,7 @@ exports.createNoticia = async (req, res) => {
       contenido,
       imagen,
       categoria,
+      mostrar_en_inicio,
     });
 
     res.status(201).json(nuevaNoticia);
@@ -90,6 +92,7 @@ exports.updateNoticia = async (req, res) => {
     const categoria = req.body.categoria;
 
     const imagen = req.file ? `/uploads/${req.file.filename}` : undefined;
+    const mostrar_en_inicio = req.body.mostrar_en_inicio === "on" || req.body.mostrar_en_inicio === "true";
 
     const noticia = await NoticiasModel.updateNoticia(id, {
       titulo,
@@ -97,6 +100,7 @@ exports.updateNoticia = async (req, res) => {
       contenido,
       categoria,
       imagen,
+      mostrar_en_inicio,
     });
 
     if (!noticia) {
@@ -127,9 +131,9 @@ exports.deleteNoticia = async (req, res) => {
 // Función helper para permisos
 function getAllowedCategories(role) {
   const permissions = {
-    superadmin: ["AGUA", "LUZ", "INTERNET", "SOCIAL", "NOVEDADES", "INICIO"],
+    superadmin: ["AGUA", "AGUA MINERAL", "LUZ", "INTERNET", "SOCIAL", "NOVEDADES", "INICIO"],
     admin: ["NOVEDADES", "INICIO"],
-    servicios: ["AGUA","AGUA MINERAL,", "LUZ", "INTERNET", "SOCIAL"],
+    servicios: ["AGUA", "AGUA MINERAL", "LUZ", "INTERNET", "SOCIAL"],
     agua: ["AGUA"],
     aguaMineral: ["AGUA MINERAL"],
     luz: ["LUZ"],

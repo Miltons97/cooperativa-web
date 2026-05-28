@@ -1,7 +1,7 @@
-// controllers/authController.js (MEJORADO)
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../models/adminUser");
+const { sendTempPassword } = require("../utils/mailer");
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
@@ -42,7 +42,69 @@ exports.login = async (req, res) => {
   }
 };
 
-// Función para registrar nuevos usuarios (opcional)
+
+exports.changePassword = async (req, res) => {
+  const { currentPassword, newPassword } = req.body;
+  const userId = req.userId;
+
+  try {
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({ error: "Faltan campos obligatorios" });
+    }
+    if (newPassword.length < 6) {
+      return res.status(400).json({ error: "La nueva contraseña debe tener al menos 6 caracteres" });
+    }
+
+    const user = await User.findByEmail(req.userEmail);
+    if (!user) return res.status(404).json({ error: "Usuario no encontrado" });
+
+    const valid = await bcrypt.compare(currentPassword, user.password);
+    if (!valid) return res.status(401).json({ error: "La contraseña actual es incorrecta" });
+
+    await User.updatePassword(userId, newPassword);
+    res.json({ message: "Contraseña actualizada correctamente" });
+  } catch (error) {
+    console.error("Error en changePassword:", error);
+    res.status(500).json({ error: "Error al cambiar la contraseña" });
+  }
+};
+
+exports.resetPassword = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    if (!email) return res.status(400).json({ error: "El email es requerido" });
+
+    const user = await User.findByEmail(email);
+    if (!user) return res.status(404).json({ error: "No existe un usuario con ese email" });
+
+    const digits = Math.floor(1000 + Math.random() * 9000);
+    const tempPassword = `Temp${digits}!`;
+
+    await User.updatePassword(user.id, tempPassword);
+
+    // Intentar enviar el email (no bloquea si falla)
+    let emailSent = false;
+    try {
+      await sendTempPassword(email, tempPassword);
+      emailSent = true;
+    } catch (mailErr) {
+      console.error("⚠️  No se pudo enviar el email:", mailErr.message);
+    }
+
+    res.json({
+      message: emailSent
+        ? "Contraseña blanqueada y enviada por email"
+        : "Contraseña blanqueada (el email no pudo enviarse)",
+      tempPassword,
+      emailSent,
+    });
+  } catch (error) {
+    console.error("Error en resetPassword:", error);
+    res.status(500).json({ error: "Error al blanquear la contraseña" });
+  }
+};
+
 exports.register = async (req, res) => {
   const { email, password, role } = req.body;
 

@@ -1,25 +1,24 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import Navbar from "./components/Navbar/Navbar";
+import Home from "./components/Home/Home";
+import Institucional from "./components/Institutional/Institutional";
+import News from "./components/News/News";
+import Servicios from "./views/ServicesView/ServicesPage";
+import PagosFacturas from "./components/Members/MyInvoice";
+import Footer from "./components/Footer/Footer";
 
-import Navbar from "./componentes/Navbar/Navbar";
-import Home from "./componentes/home/Home";
-import Institucional from "./componentes/institutional/Institutional";
-import News  from "./componentes/news/News";
-import Servicios from "./views/services-views/ServicesPage";
-import PagosFacturas from "./componentes/Socios/MiFactura";
-import Footer from "./componentes/Footer/footer";
-
-
-import { InstitucionProvider } from "./componentes/context/InstitutionContext";
+import { InstitucionProvider } from "./components/context/InstitutionContext";
 import "./fix.css";
 
-
-import AdminLayout from "./componentes/Admin/adminLayout";
-import LoginAdmin from "./componentes/Admin/admin-dashboard/AdminUserLogin";
-import CrearNoticia from "./componentes/Dashboard/noticias-admin/crearNoticias";
-import VerNoticiasAdmin from "./componentes/Dashboard/noticias-admin/verNoticias";
-import EditarNoticia from "./componentes/Dashboard/noticias-admin/editarNoticias";
-// import NovedadesDetalle from "./componentes/Novedades/Novedades";
+import AdminLayout from "./components/Admin/AdminLayout";
+import PrivateRoute from "./components/Admin/PrivateRoute";
+import LoginAdmin from "./components/Admin/AdminDashboard/AdminUserLogin";
+import CrearNoticia from "./components/Dashboard/NewsAdmin/CreateNews";
+import CrearNecrologica from "./components/Dashboard/NewsAdmin/CreateObituary";
+import VerNoticiasAdmin from "./components/Dashboard/NewsAdmin/ViewNews";
+import EditarNoticia from "./components/Dashboard/NewsAdmin/EditNews";
+import ChangePassword from "./components/Dashboard/Profile/ChangePassword";
 
 export default function App() {
   return (
@@ -41,11 +40,12 @@ export default function App() {
 
           <Route path="/admin/login" element={<LoginAdmin />} />
 
-          <Route path="/admin" element={<AdminLayout />}>
+          <Route path="/admin" element={<PrivateRoute><AdminLayout /></PrivateRoute>}>
             <Route path="noticias/nueva" element={<CrearNoticia />} />
+            <Route path="necrologica/nueva" element={<CrearNecrologica />} />
             <Route path="/admin/noticias" element={<VerNoticiasAdmin />} />
             <Route path="/admin/noticias/editar/:id" element={<EditarNoticia />} />
-
+            <Route path="/admin/perfil" element={<ChangePassword />} />
           </Route>
         </Routes>
 

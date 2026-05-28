@@ -9,6 +9,7 @@ const createNoticiasTable = async () => {
       contenido TEXT NOT NULL,
       imagen TEXT,
       categoria VARCHAR(50),
+      mostrar_en_inicio BOOLEAN DEFAULT false,
       fecha_publicacion DATE DEFAULT CURRENT_DATE,
       activa BOOLEAN DEFAULT true,
       created_at TIMESTAMP DEFAULT NOW(),

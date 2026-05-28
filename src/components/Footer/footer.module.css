@@ -1,0 +1,139 @@
+.footer {
+  background: linear-gradient(135deg, #0f1c3c 0%, #0a2632 100%);
+  color: #fff;
+  padding: 60px 20px 25px;
+  width: 100%;
+}
+
+/* CONTENEDOR */
+.footerContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* COLUMNAS */
+.footerColumn h3 {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  border-bottom: 1.5px solid rgba(80, 140, 220, 0.25);
+  padding-bottom: 8px;
+}
+
+.footerColumn p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  margin: 0 0 6px;
+  line-height: 1.6;
+}
+
+.footerColumn ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footerColumn ul li {
+  margin-bottom: 10px;
+}
+
+/* LINKS */
+.footerColumn a {
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.footerColumn a:hover {
+  color: #ffffff;
+  padding-left: 5px;
+}
+
+/* REDES SOCIALES */
+.socialRow {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.75) !important;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease !important;
+  padding-left: 0 !important;
+}
+
+.socialLink:hover {
+  background: rgba(255,255,255,0.18) !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+  padding-left: 0 !important;
+}
+
+/* FOOTER BOTTOM */
+.footerBottom {
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 40px;
+  padding-top: 20px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.45);
+}
+
+.dev {
+  margin-top: 8px;
+  opacity: 0.5;
+  font-size: 0.75rem;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .footerContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 15px 10px;
+  }
+  .footerContainer {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footerColumn ul li {
+    margin-bottom: 12px;
+  }
+  .footerColumn a:hover {
+    padding-left: 0;
+  }
+  .socialRow {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footerColumn h3 { font-size: 0.9rem; }
+  .footerBottom    { font-size: 0.72rem; }
+}
+
+@media (max-width: 360px) {
+  .footerBottom { font-size: 0.6rem; padding: 8px 4px; }
+  .dev          { font-size: 0.55rem; }
+}

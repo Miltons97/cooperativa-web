@@ -19,11 +19,11 @@ const NoticiasModel = {
   // ← NUEVO: Para inicio (últimas 3 noticias generales)
   async getNoticiasInicio() {
     const result = await pool.query(
-      `SELECT * FROM noticias 
-       WHERE activa = true 
-       AND categoria IN ('NOVEDADES', 'INICIO')
-       ORDER BY fecha_publicacion DESC 
-       LIMIT 3`
+      `SELECT * FROM noticias
+       WHERE activa = true
+       AND (categoria IN ('NOVEDADES', 'INICIO') OR mostrar_en_inicio = true)
+       ORDER BY fecha_publicacion DESC
+       LIMIT 10`
     );
     return result.rows;
   },
@@ -36,22 +36,22 @@ const NoticiasModel = {
     return result.rows[0];
   },
 
-  async createNoticia({ titulo, resumen, contenido, imagen, categoria }) {
+  async createNoticia({ titulo, resumen, contenido, imagen, categoria, mostrar_en_inicio }) {
     const result = await pool.query(
-      `INSERT INTO noticias (titulo, resumen, contenido, imagen, categoria)
-       VALUES ($1, $2, $3, $4, $5)
+      `INSERT INTO noticias (titulo, resumen, contenido, imagen, categoria, mostrar_en_inicio)
+       VALUES ($1, $2, $3, $4, $5, $6)
        RETURNING *`,
-      [titulo, resumen, contenido, imagen, categoria]
+      [titulo, resumen, contenido, imagen, categoria, mostrar_en_inicio ?? false]
     );
     return result.rows[0];
   },
 
-  async updateNoticia(id, { titulo, resumen, contenido, categoria, imagen }) {
-    let query = `UPDATE noticias SET titulo = $1, resumen = $2, contenido = $3, categoria = $4, updated_at = NOW()`;
-    const params = [titulo, resumen, contenido, categoria];
+  async updateNoticia(id, { titulo, resumen, contenido, categoria, imagen, mostrar_en_inicio }) {
+    let query = `UPDATE noticias SET titulo = $1, resumen = $2, contenido = $3, categoria = $4, mostrar_en_inicio = $5, updated_at = NOW()`;
+    const params = [titulo, resumen, contenido, categoria, mostrar_en_inicio ?? false];
 
     if (imagen) {
-      query += `, imagen = $5`;
+      query += `, imagen = $6`;
       params.push(imagen);
     }
 
