@@ -25,12 +25,11 @@ export default function AdminNews() {
           aguaMineral: ["AGUA MINERAL"],
           luz: ["LUZ"],
           internet: ["INTERNET"],
-          social: ["SOCIAL"]
+          social: ["SOCIAL"],
         };
 
         setAllowedCategories(permissions[decoded.role] || []);
-      } catch (err) {
-        console.error("Error decodificando token:", err);
+      } catch {
         setError("Sesión inválida. Por favor, inicia sesión nuevamente.");
       }
     }
@@ -52,7 +51,7 @@ export default function AdminNews() {
 
     try {
       await createNoticia(form);
-      setSuccess("✅ Noticia publicada correctamente");
+      setSuccess("Noticia publicada correctamente");
       e.target.reset();
     } catch (err) {
       setError(err.response?.data?.error || "Error al publicar la noticia");
@@ -133,18 +132,12 @@ export default function AdminNews() {
           >
             <option value="" disabled>Seleccionar categoría</option>
             {allowedCategories.map((cat) => (
-              <option key={cat} value={cat}>
-                {cat}
-              </option>
+              <option key={cat} value={cat}>{cat}</option>
             ))}
           </select>
         </div>
 
-        <button
-          type="submit"
-          className={styles.submitButton}
-          disabled={loading}
-        >
+        <button type="submit" className={styles.submitButton} disabled={loading}>
           {loading ? "Publicando..." : "Publicar Noticia"}
         </button>
       </form>

@@ -62,7 +62,6 @@ function Social() {
   return (
     <div className={styles.socialContainer}>
 
-      {/* ── HERO ── */}
       <div className={styles.heroContainer}>
         <img src="/assets/luto4.jpg" alt="Servicio Social" className={styles.heroImage} />
         <h1 className={styles.heroTitle}>Servicio Social</h1>
@@ -73,7 +72,6 @@ function Social() {
         <p>Acompañamiento solidario y programas de asistencia para fortalecer el vínculo con nuestros asociados y la comunidad.</p>
       </header>
 
-      {/* ── FEATURES ── */}
       <section className={styles.features}>
         <h3>Características del Servicio</h3>
         <div className={styles.featuresGrid}>
@@ -91,7 +89,6 @@ function Social() {
         </div>
       </section>
 
-      {/* ── ACCORDION ── */}
       <section className={styles.infoSection}>
         <h3>Información del Servicio</h3>
         <div className={styles.accordion}>
@@ -114,7 +111,6 @@ function Social() {
         </div>
       </section>
 
-      {/* ── NECROLÓGICAS ── */}
       <section className={styles.campaigns}>
         <h3>Necrológicas</h3>
 
@@ -172,7 +168,6 @@ function Social() {
         )}
       </section>
 
-      {/* ── MODAL NECROLÓGICA ── */}
       {selectedNoticia && (
         <div className={styles.modalOverlay} onClick={() => setSelectedNoticia(null)}>
           <div className={styles.obituaryModal} onClick={(e) => e.stopPropagation()}>

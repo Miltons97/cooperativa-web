@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import { API_URL } from "../../config/api";
 
 export const InstitucionContext = createContext();
 
@@ -7,15 +8,15 @@ export const InstitucionProvider = ({ children }) => {
   const [archivos, setArchivos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/institucion")
+    fetch(`${API_URL}/institucion`)
       .then((res) => res.json())
       .then((data) => setInfo(data))
-      .catch((err) => console.error(err));
+      .catch(() => {});
 
-    fetch("http://localhost:3000/multimedia")
+    fetch(`${API_URL}/multimedia`)
       .then((res) => res.json())
       .then((data) => setArchivos(data))
-      .catch((err) => console.error(err));
+      .catch(() => {});
   }, []);
 
   return (

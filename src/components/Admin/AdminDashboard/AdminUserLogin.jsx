@@ -9,7 +9,6 @@ export default function LoginAdmin() {
   const [loading, setLoading]   = useState(false);
   const [error, setError]       = useState("");
 
-  // forgot password
   const [showForgot, setShowForgot]       = useState(false);
   const [forgotEmail, setForgotEmail]     = useState("");
   const [forgotLoading, setForgotLoading] = useState(false);
@@ -29,9 +28,8 @@ export default function LoginAdmin() {
       } else {
         setError("Credenciales inválidas. Verificá tus datos.");
       }
-    } catch (err) {
+    } catch {
       setError("Error al iniciar sesión. Intentá nuevamente.");
-      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -75,7 +73,6 @@ export default function LoginAdmin() {
           <p className={styles.cardSubtitle}>Panel Administrativo</p>
         </div>
 
-        {/* ── LOGIN FORM ── */}
         {!showForgot && (
           <form className={styles.form} onSubmit={handleSubmit}>
             {error && (
@@ -109,25 +106,16 @@ export default function LoginAdmin() {
               />
             </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className={`${styles.submitBtn} ${loading ? styles.loading : ""}`}
-            >
+            <button type="submit" disabled={loading} className={`${styles.submitBtn} ${loading ? styles.loading : ""}`}>
               {loading ? "Ingresando..." : "Ingresar"}
             </button>
 
-            <button
-              type="button"
-              className={styles.forgotLink}
-              onClick={() => setShowForgot(true)}
-            >
+            <button type="button" className={styles.forgotLink} onClick={() => setShowForgot(true)}>
               ¿Olvidaste tu contraseña?
             </button>
           </form>
         )}
 
-        {/* ── FORGOT PASSWORD FORM ── */}
         {showForgot && (
           <div className={styles.forgotSection}>
             <p className={styles.forgotHint}>
@@ -145,8 +133,8 @@ export default function LoginAdmin() {
             {tempPassword ? (
               <div className={styles.tempBox}>
                 {emailSent
-                  ? <p className={styles.tempLabel}>✅ Email enviado a {forgotEmail}</p>
-                  : <p className={styles.tempLabel}>⚠️ Email no enviado — guardá esta contraseña:</p>
+                  ? <p className={styles.tempLabel}>Email enviado a {forgotEmail}</p>
+                  : <p className={styles.tempLabel}>Email no enviado — guardá esta contraseña:</p>
                 }
                 <p className={styles.tempPass}>{tempPassword}</p>
                 <p className={styles.tempNote}>
@@ -170,11 +158,7 @@ export default function LoginAdmin() {
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={forgotLoading}
-                  className={`${styles.submitBtn} ${forgotLoading ? styles.loading : ""}`}
-                >
+                <button type="submit" disabled={forgotLoading} className={`${styles.submitBtn} ${forgotLoading ? styles.loading : ""}`}>
                   {forgotLoading ? "Generando..." : "Blanquear contraseña"}
                 </button>
 
@@ -187,7 +171,7 @@ export default function LoginAdmin() {
         )}
 
         <div className={styles.cardFooter}>
-          <p><strong>Acceso restringido</strong>COPEOSPIL Ltda.</p>
+          <p><strong>Acceso restringido</strong> — COPEOSPIL Ltda.</p>
         </div>
 
       </div>

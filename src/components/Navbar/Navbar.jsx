@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const FACTURAS_URL = ""; // ← pegá aquí la URL externa cuando la tengas
+const FACTURAS_URL = "";
 import { useContext, useEffect, useState } from "react";
 import { InstitucionContext } from "../context/InstitutionContext";
 import { FaBars, FaTimes } from "react-icons/fa";
@@ -30,7 +30,6 @@ export default function Navbar() {
   return (
     <>
       <nav className={`${styles.navbar} ${scrolled ? styles.navbarScrolled : ""}`}>
-
         {showIconOnly ? (
           <div
             className={styles.menuIconBtn}
@@ -61,37 +60,23 @@ export default function Navbar() {
         )}
 
         {!showIconOnly && <div className={styles.rightCol} />}
-
       </nav>
 
       {menuOpen && (
         <div className={styles.mobileMenu}>
-          <div
-            className={styles.mobileMenuOverlay}
-            onClick={() => setMenuOpen(false)}
-          />
+          <div className={styles.mobileMenuOverlay} onClick={() => setMenuOpen(false)} />
           <div className={styles.mobileMenuContent}>
             <div className={styles.mobileHeader}>
               <span className={styles.mobileBrand}>
                 {institucion?.nombre || "COPEOSPIL Ltda."}
               </span>
-              <button
-                className={styles.closeBtn}
-                onClick={() => setMenuOpen(false)}
-                aria-label="Cerrar menú"
-              >
+              <button className={styles.closeBtn} onClick={() => setMenuOpen(false)} aria-label="Cerrar menú">
                 <FaTimes />
               </button>
             </div>
-            <Link to="/" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
-              Inicio
-            </Link>
-            <Link to="/institucional" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
-              Institucional
-            </Link>
-            <Link to="/servicios" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
-              Servicios
-            </Link>
+            <Link to="/" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Inicio</Link>
+            <Link to="/institucional" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Institucional</Link>
+            <Link to="/servicios" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>Servicios</Link>
             <a href={FACTURAS_URL || "#"} target={FACTURAS_URL ? "_blank" : "_self"} rel="noopener noreferrer" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
               Pagos y Facturas
             </a>

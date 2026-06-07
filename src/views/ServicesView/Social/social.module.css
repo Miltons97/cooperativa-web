@@ -1,7 +1,4 @@
-/* ══════════════════════════════════════
-   VARIABLES
-══════════════════════════════════════ */
-.socialContainer {
+﻿.socialContainer {
   --magenta:        #9b1d6e;
   --magenta-mid:    #b8258a;
   --magenta-light:  #d44faa;
@@ -15,9 +12,6 @@
   --text-muted:     #6b4a5a;
 }
 
-/* ══════════════════════════════════════
-   CONTENEDOR
-══════════════════════════════════════ */
 .socialContainer {
   padding: 0 0 4rem 0;
   margin-top: -250px;
@@ -32,15 +26,12 @@
     );
 }
 
-/* ══════════════════════════════════════
-   HERO
-══════════════════════════════════════ */
 .heroContainer {
   position: relative;
   width: 100vw;
-  height: 80vh;        /* ← era 70vh */
-  min-height: 460px;   /* ← era 360px */
-  max-height: 720px;   /* ← era 680px */
+  height: 80vh;        
+  min-height: 460px;   
+  max-height: 720px;   
   overflow: hidden;
   margin-left: calc(-50vw + 50%);
   margin-bottom: 0;
@@ -57,7 +48,6 @@
   display: block;
 }
 
-/* overlay magenta sutil */
 .heroContainer::after {
   content: "";
   position: absolute;
@@ -93,7 +83,6 @@
   border-radius: 2px;
 }
 
-/* ── LOGO redondo con borde magenta ── */
 .heroLogo {
   position: absolute;
   bottom: clamp(20px, 5vh, 40px);
@@ -102,7 +91,7 @@
   height: clamp(80px, 12vw, 150px);
   border-radius: 50%;
   object-fit: contain;
-  background: rgba(155, 29, 110, 0.25);   /* ← fondo rosa translúcido */
+  background: rgba(155, 29, 110, 0.25);   
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   padding: 12px;
@@ -120,9 +109,6 @@
     0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
-/* ══════════════════════════════════════
-   HEADER
-══════════════════════════════════════ */
 .header {
   text-align: center;
   max-width: 760px;
@@ -136,9 +122,6 @@
   color: var(--text-muted);
 }
 
-/* ══════════════════════════════════════
-   FEATURES
-══════════════════════════════════════ */
 .features {
   max-width: 1200px;
   margin: 0 auto clamp(3rem, 6vw, 5rem);
@@ -212,9 +195,6 @@
   margin: 0;
 }
 
-/* ══════════════════════════════════════
-   INFO / ACCORDION
-══════════════════════════════════════ */
 .infoSection {
   max-width: 800px;
   margin: 0 auto clamp(3rem, 6vw, 5rem);
@@ -299,9 +279,6 @@
   margin: 0;
 }
 
-/* ══════════════════════════════════════
-   CAMPAÑAS / NOTICIAS
-══════════════════════════════════════ */
 .campaigns {
   max-width: 1200px;
   margin: 0 auto;
@@ -352,7 +329,6 @@
 
 .campaignsScroll::-webkit-scrollbar { display: none; }
 
-/* ── CAMPAIGN CARD ── */
 .campaignCard {
   position: relative;
   width: 280px;
@@ -420,7 +396,6 @@
   overflow: hidden;
 }
 
-/* ── LOGO EN CARD ── */
 .cardLogo {
   position: absolute;
   top: 10px;
@@ -435,7 +410,6 @@
   pointer-events: none;
 }
 
-/* ── DOTS ── */
 .dots {
   display: flex;
   justify-content: center;
@@ -465,9 +439,6 @@
   transform: none;
 }
 
-/* ══════════════════════════════════════
-   OBITUARY CARD (thumbnail)
-══════════════════════════════════════ */
 .obituaryCard {
   position: relative;
   width: 280px;
@@ -554,9 +525,6 @@
   overflow: hidden;
 }
 
-/* ══════════════════════════════════════
-   MODAL OVERLAY
-══════════════════════════════════════ */
 .modalOverlay {
   position: fixed;
   inset: 0;
@@ -576,9 +544,6 @@
   to   { opacity: 1; }
 }
 
-/* ══════════════════════════════════════
-   MODAL NECROLÓGICA
-══════════════════════════════════════ */
 .obituaryModal {
   position: relative;
   width: 100%;
@@ -766,11 +731,6 @@
   letter-spacing: 0.06em;
 }
 
-/* ══════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════ */
-
-/* tablet */
 @media (max-width: 900px) {
   .socialContainer { margin-top: -180px; }
 
@@ -790,10 +750,8 @@
     max-width: calc(280px * 2 + 1.2rem);
   }
 
- 
 }
 
-/* mobile */
 @media (max-width: 600px) {
   .socialContainer { margin-top: -120px; }
 
@@ -837,7 +795,6 @@
 
 }
 
-/* mobile chico */
 @media (max-width: 380px) {
   .heroTitle    { font-size: 1.6rem; }
   .featureCard  { min-height: auto; padding: 1rem; }

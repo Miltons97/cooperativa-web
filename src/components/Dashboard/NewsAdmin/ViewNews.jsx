@@ -27,7 +27,6 @@ const EXPORT_FORMATS = {
   story:     { w: 1080, h: 1920, label: "9 : 16" },
 };
 
-/* preview box limits (px) */
 const MAX_PW = 460;
 const MAX_PH = 500;
 
@@ -39,23 +38,18 @@ export default function ViewNews() {
   const [downloading, setDownloading]   = useState(false);
   const [cardStyle, setCardStyle]       = useState("news");
   const [exportFormat, setExportFormat] = useState("square");
-
-  /* preview state */
   const [previewUrl,     setPreviewUrl]     = useState(null);
   const [previewLoading, setPreviewLoading] = useState(false);
   const [previewW,       setPreviewW]       = useState(MAX_PW);
   const [previewH,       setPreviewH]       = useState(MAX_PW);
-
-  /* obituary */
   const [showObitForm, setShowObitForm] = useState(false);
   const [obitLoading, setObitLoading]   = useState(false);
   const [obitError, setObitError]       = useState("");
   const [obitSuccess, setObitSuccess]   = useState("");
 
-  const cardRef = useRef(null);   // obituary html2canvas ref
-  const genKey  = useRef(0);      // cancel stale async renders
+  const cardRef = useRef(null);
+  const genKey  = useRef(0);
 
-  /* ── data ── */
   const loadNews = async () => {
     setLoading(true);
     try {
@@ -83,7 +77,6 @@ export default function ViewNews() {
     loadNews();
   };
 
-  /* ── helpers ── */
   const catColor = selected
     ? (CATEGORY_COLORS[selected.categoria] ?? CATEGORY_COLORS.INICIO)
     : "#0b2b4a";
@@ -94,24 +87,17 @@ export default function ViewNews() {
       })
     : "";
 
-  /* ── canvas preview ──
-     Runs whenever the noticia or export format changes.
-     Generates the full-res canvas, scales it to a JPEG thumbnail
-     and stores the data-URL so the <img> can show it.
-  ── */
   const buildPreview = useCallback(async (n, fmt, color, date) => {
     const key = ++genKey.current;
     setPreviewLoading(true);
     setPreviewUrl(null);
-
     try {
       const canvas = await generateCard({
         selected: n, catColor: color, formattedDate: date,
         format: EXPORT_FORMATS[fmt], API_URL,
       });
-      if (genKey.current !== key) return; // stale
+      if (genKey.current !== key) return;
 
-      /* scale to preview size */
       const { w, h } = EXPORT_FORMATS[fmt];
       const pScale   = Math.min(MAX_PW / w, MAX_PH / h);
       const pW       = Math.round(w * pScale);
@@ -137,7 +123,6 @@ export default function ViewNews() {
     buildPreview(selected, exportFormat, catColor, formattedDate);
   }, [selected?.id, exportFormat, cardStyle]);
 
-  /* ── download ── */
   const handleDownload = async () => {
     setDownloading(true);
     try {
@@ -151,9 +136,7 @@ export default function ViewNews() {
         a.download = `copeospil-${slug}-${exportFormat}.png`;
         a.href     = canvas.toDataURL("image/png", 1.0);
         a.click();
-
       } else {
-        /* obituary: keep html2canvas path */
         if (!cardRef.current) return;
         const canvas = await html2canvas(cardRef.current, {
           useCORS: true, scale: 2, backgroundColor: null, logging: false,
@@ -182,7 +165,7 @@ export default function ViewNews() {
     form.set("categoria", "SOCIAL");
     try {
       await createNoticia(form);
-      setObitSuccess("✅ Necrológica publicada correctamente");
+      setObitSuccess("Necrológica publicada correctamente");
       e.target.reset();
       loadNews();
     } catch (err) {
@@ -192,11 +175,9 @@ export default function ViewNews() {
     }
   };
 
-  /* ─────────────────────────────────────────────────────────── */
   return (
     <div className={styles.container}>
 
-      {/* ── Page header ── */}
       <div className={styles.pageHeader}>
         <h2 className={styles.title}>Administrar Noticias</h2>
         <button className={styles.btnNewObituary} onClick={openObitForm}>
@@ -243,9 +224,6 @@ export default function ViewNews() {
         </table>
       )}
 
-      {/* ═══════════════════════════════════════════════════════
-          OBITUARY FORM
-      ═══════════════════════════════════════════════════════ */}
       {showObitForm && (
         <div className={styles.overlay} onClick={() => setShowObitForm(false)}>
           <div className={styles.obitFormBox} onClick={(e) => e.stopPropagation()}>
@@ -290,17 +268,12 @@ export default function ViewNews() {
         </div>
       )}
 
-      {/* ═══════════════════════════════════════════════════════
-          CARD MODAL
-      ═══════════════════════════════════════════════════════ */}
       {selected && (
         <div className={styles.overlay} onClick={() => setSelected(null)}>
           <div className={styles.modalBox} onClick={(e) => e.stopPropagation()}>
 
-            {/* ── NEWS CARD ── */}
             {cardStyle === "news" && (
               <>
-                {/* Format selector */}
                 <div className={styles.formatToggle}>
                   {Object.entries(EXPORT_FORMATS).map(([key, { label }]) => (
                     <button
@@ -313,7 +286,6 @@ export default function ViewNews() {
                   ))}
                 </div>
 
-                {/* Preview */}
                 <div
                   className={styles.previewBox}
                   style={{ width: previewW, height: previewLoading ? Math.max(previewH, 120) : previewH }}
@@ -336,14 +308,12 @@ export default function ViewNews() {
                   )}
                 </div>
 
-                {/* Hint */}
                 <p className={styles.exportHint}>
                   {EXPORT_FORMATS[exportFormat].w} × {EXPORT_FORMATS[exportFormat].h} px · PNG · HD 2×
                 </p>
               </>
             )}
 
-            {/* ── OBITUARY CARD ── */}
             {cardStyle === "obituary" && (
               <div
                 ref={cardRef}
@@ -385,7 +355,6 @@ export default function ViewNews() {
               </div>
             )}
 
-            {/* ── Actions ── */}
             <div className={styles.modalActions}>
               <button className={styles.btnClose} onClick={() => setSelected(null)}>
                 Cerrar

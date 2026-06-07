@@ -2,23 +2,21 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { getNoticiaById, updateNoticia } from "../../../services/newsService";
 import styles from "./editNews.module.css";
-
 import { API_URL } from "../../../config/api";
 
 const SERVICE_CATS = ["AGUA", "LUZ", "INTERNET", "AGUA MINERAL", "SOCIAL"];
-
 const CATEGORIAS = ["INICIO", "NOVEDADES", "AGUA", "LUZ", "INTERNET", "AGUA MINERAL", "SOCIAL"];
 
 export default function EditNews() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [noticia, setNoticia]           = useState(null);
-  const [selectedCat, setSelectedCat]   = useState("");
+  const [noticia, setNoticia]               = useState(null);
+  const [selectedCat, setSelectedCat]       = useState("");
   const [mostrarEnInicio, setMostrarEnInicio] = useState(false);
-  const [loading, setLoading]           = useState(false);
-  const [error, setError]               = useState("");
-  const [success, setSuccess]           = useState("");
+  const [loading, setLoading]               = useState(false);
+  const [error, setError]                   = useState("");
+  const [success, setSuccess]               = useState("");
 
   useEffect(() => {
     getNoticiaById(id).then((n) => {
@@ -43,7 +41,7 @@ export default function EditNews() {
 
     try {
       await updateNoticia(id, form);
-      setSuccess("✅ Noticia actualizada correctamente");
+      setSuccess("Noticia actualizada correctamente");
       setTimeout(() => navigate("/admin/noticias"), 1200);
     } catch (err) {
       setError(err.message || "Error al guardar los cambios");
@@ -61,11 +59,8 @@ export default function EditNews() {
   return (
     <div className={styles.page}>
 
-      {/* ── HEADER ── */}
       <div className={styles.header}>
-        <Link to="/admin/noticias" className={styles.backBtn}>
-          ← Volver
-        </Link>
+        <Link to="/admin/noticias" className={styles.backBtn}>← Volver</Link>
         <h2 className={styles.title}>Editar Noticia</h2>
       </div>
 
@@ -75,7 +70,6 @@ export default function EditNews() {
       <form onSubmit={handleSubmit}>
         <div className={styles.card}>
 
-          {/* ── SECCIÓN: CONTENIDO ── */}
           <div className={styles.cardSection}>
             <p className={styles.sectionLabel}>Contenido</p>
 
@@ -121,7 +115,6 @@ export default function EditNews() {
             </div>
           </div>
 
-          {/* ── SECCIÓN: IMAGEN Y CATEGORÍA ── */}
           <div className={styles.cardSection}>
             <p className={styles.sectionLabel}>Imagen y categoría</p>
 
@@ -169,11 +162,9 @@ export default function EditNews() {
             </div>
           </div>
 
-          {/* ── SECCIÓN: PUBLICAR EN INICIO ── */}
           {SERVICE_CATS.includes(selectedCat) && (
             <div className={styles.cardSection}>
               <p className={styles.sectionLabel}>Visibilidad</p>
-
               <label className={styles.checkboxCard}>
                 <input
                   type="checkbox"
@@ -190,11 +181,8 @@ export default function EditNews() {
             </div>
           )}
 
-          {/* ── FOOTER ACCIONES ── */}
           <div className={styles.cardFooter}>
-            <Link to="/admin/noticias" className={styles.cancelBtn}>
-              Cancelar
-            </Link>
+            <Link to="/admin/noticias" className={styles.cancelBtn}>Cancelar</Link>
             <button type="submit" className={styles.saveBtn} disabled={loading}>
               {loading ? "Guardando..." : "Guardar cambios"}
             </button>

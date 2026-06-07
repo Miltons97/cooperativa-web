@@ -1,7 +1,4 @@
-/* ══════════════════════════════════════
-   SECTION
-══════════════════════════════════════ */
-.section {
+﻿.section {
   width: 100%;
   font-family: "Space Grotesk", system-ui, sans-serif;
   margin-top: clamp(2rem, 4vw, 3.5rem);
@@ -37,9 +34,6 @@
   padding: 1rem 0;
 }
 
-/* ══════════════════════════════════════
-   SLIDER
-══════════════════════════════════════ */
 .viewport {
   width: 100%;
   max-width: calc(280px * 4 + 24px * 3 + 48px);
@@ -59,9 +53,6 @@
 }
 .scroll::-webkit-scrollbar { display: none; }
 
-/* ══════════════════════════════════════
-   CARD — cinematic full-bleed
-══════════════════════════════════════ */
 .card {
   position: relative;
   display: block;
@@ -99,7 +90,6 @@
   transition-duration: 0.15s;
 }
 
-/* ── IMAGE: fills entire card ── */
 .imageWrapper {
   position: absolute;
   inset: 0;
@@ -110,7 +100,6 @@
   overflow: hidden;
 }
 
-/* category color glow from bottom on hover */
 .imageWrapper::before {
   content: "";
   position: absolute;
@@ -128,7 +117,6 @@
 
 .card:hover .imageWrapper::before { opacity: 0.80; }
 
-/* dark gradient overlay for text readability */
 .imageWrapper::after {
   content: "";
   position: absolute;
@@ -159,7 +147,8 @@
   position: relative;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center center;
   display: block;
   z-index: 1;
   transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -183,7 +172,6 @@
   color: #fff;
 }
 
-/* category chip — frosted white, top-left */
 .catChip {
   position: absolute;
   top: 14px;
@@ -202,7 +190,6 @@
   box-shadow: 0 2px 10px rgba(0,0,0,0.30);
 }
 
-/* COPEOSPIL brand — frosted glass, top-right */
 .cardBrand {
   position: absolute;
   top: 14px;
@@ -244,7 +231,6 @@
   white-space: nowrap;
 }
 
-/* ── CARD BODY — absolute, overlaid on gradient ── */
 .cardBody {
   position: absolute;
   bottom: 0;
@@ -256,7 +242,6 @@
   flex-direction: column;
 }
 
-/* thin white accent line above title */
 .cardBody::before {
   content: "";
   display: block;
@@ -317,7 +302,6 @@
   letter-spacing: 0.02em;
 }
 
-/* frosted glass pill button */
 .cardReadMore {
   font-size: 0.58rem;
   font-weight: 800;
@@ -343,9 +327,6 @@
   transform: translateX(3px);
 }
 
-/* ══════════════════════════════════════
-   DOTS
-══════════════════════════════════════ */
 .dots {
   display: flex;
   justify-content: center;
@@ -373,9 +354,6 @@
   transform: none;
 }
 
-/* ══════════════════════════════════════
-   MODAL OVERLAY
-══════════════════════════════════════ */
 .overlay {
   position: fixed;
   inset: 0;
@@ -395,9 +373,6 @@
   to   { opacity: 1; }
 }
 
-/* ══════════════════════════════════════
-   MODAL
-══════════════════════════════════════ */
 .modal {
   background: #ffffff;
   border-radius: 26px;
@@ -426,9 +401,6 @@
 .modal::-webkit-scrollbar-track { background: transparent; }
 .modal::-webkit-scrollbar-thumb { background: #dce6f0; border-radius: 4px; }
 
-/* ══════════════════════════════════════
-   MODAL HERO — cinematic full-width top
-══════════════════════════════════════ */
 .modalHero {
   position: relative;
   width: 100%;
@@ -442,7 +414,6 @@
   flex-shrink: 0;
 }
 
-/* blurred ambient background */
 .modalHeroBlur {
   position: absolute;
   inset: -36px;
@@ -457,19 +428,17 @@
   display: block;
 }
 
-/* main contained image — never cropped */
 .modalHeroImg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center;
+  object-fit: cover;
+  object-position: center center;
   z-index: 1;
   display: block;
 }
 
-/* gradient: dark top + dark bottom */
 .modalHeroGrad {
   position: absolute;
   inset: 0;
@@ -480,14 +449,12 @@
   pointer-events: none;
 }
 
-/* no-image fallback */
 .modalHeroFallback {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-/* brand + badge row — top of hero */
 .modalHeroTop {
   position: relative;
   z-index: 3;
@@ -497,7 +464,6 @@
   padding: 1.3rem 1.5rem;
 }
 
-/* title overlaid at bottom */
 .modalHeroBottom {
   position: relative;
   z-index: 3;
@@ -571,7 +537,6 @@
   transform: scale(1.12);
 }
 
-/* hero title — large, white, overlaid */
 .modalTitle {
   font-size: 1.72rem;
   font-weight: 800;
@@ -582,9 +547,6 @@
   text-shadow: 0 2px 28px rgba(0,0,0,0.75);
 }
 
-/* ══════════════════════════════════════
-   MODAL BODY
-══════════════════════════════════════ */
 .modalBody {
   padding: 1.7rem 2.2rem 1.2rem;
   flex: 1;
@@ -626,9 +588,6 @@
   white-space: pre-wrap;
 }
 
-/* ══════════════════════════════════════
-   MODAL FOOTER
-══════════════════════════════════════ */
 .modalFooter {
   display: flex;
   align-items: center;
@@ -648,9 +607,6 @@
   text-transform: uppercase;
 }
 
-/* ══════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════ */
 @media (max-width: 1200px) {
   .viewport { max-width: calc(280px * 3 + 24px * 2); }
 }

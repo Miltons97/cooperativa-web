@@ -64,6 +64,7 @@
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.3s ease;
+  box-sizing: border-box;
 }
 
 .inputField:focus,
@@ -133,4 +134,23 @@
   accent-color: #2e7d32;
   cursor: pointer;
   flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .formContainer {
+    padding: 1.25rem;
+  }
+
+  .submitButton {
+    font-size: 1rem;
+    padding: 0.85rem;
+  }
 }

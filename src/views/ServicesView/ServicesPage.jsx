@@ -54,7 +54,9 @@ export default function ServicesPage() {
     <div className={styles.serviciosContainer}>
       {isServiciosHome && (
         <>
-          <h1 className={styles.serviciosTitle}>Nuestros Servicios</h1>
+          <h1 className={styles.serviciosTitle}>
+            <span className={styles.titlePrefix}>Nuestros </span>Servicios
+          </h1>
           <p className={styles.serviciosIntro}>
             Accedé a la información de cada servicio de forma rápida y sencilla.
             Seleccioná una categoría para conocer más detalles.

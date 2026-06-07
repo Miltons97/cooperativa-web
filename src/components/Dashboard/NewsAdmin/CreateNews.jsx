@@ -27,12 +27,11 @@ export default function CreateNews() {
           agua: ["AGUA"],
           luz: ["LUZ"],
           internet: ["INTERNET"],
-          social: ["SOCIAL"]
+          social: ["SOCIAL"],
         };
 
         setAllowedCategories(permissions[decoded.role] || []);
-      } catch (err) {
-        console.error("Error decodificando token:", err);
+      } catch {
         setError("Sesión inválida. Por favor, inicia sesión nuevamente.");
       }
     }
@@ -54,7 +53,7 @@ export default function CreateNews() {
 
     try {
       await createNoticia(form);
-      setSuccess("✅ Noticia publicada correctamente");
+      setSuccess("Noticia publicada correctamente");
       e.target.reset();
       setSelectedCat("");
     } catch (err) {
@@ -81,60 +80,28 @@ export default function CreateNews() {
       <form onSubmit={handleSubmit} className={styles.formContainer}>
         <div className={styles.formGroup}>
           <label htmlFor="titulo">Título *</label>
-          <input
-            id="titulo"
-            name="titulo"
-            placeholder="Título de la noticia"
-            className={styles.inputField}
-            required
-          />
+          <input id="titulo" name="titulo" placeholder="Título de la noticia" className={styles.inputField} required />
         </div>
 
         <div className={styles.formGroup}>
           <label htmlFor="resumen">Resumen</label>
-          <textarea
-            id="resumen"
-            name="resumen"
-            placeholder="Resumen breve (opcional)"
-            className={styles.textareaField}
-            rows="3"
-          />
+          <textarea id="resumen" name="resumen" placeholder="Resumen breve (opcional)" className={styles.textareaField} rows="3" />
         </div>
 
         <div className={styles.formGroup}>
           <label htmlFor="contenido">Contenido *</label>
-          <textarea
-            id="contenido"
-            name="contenido"
-            placeholder="Contenido completo de la noticia"
-            className={styles.textareaField}
-            rows="8"
-            required
-          />
+          <textarea id="contenido" name="contenido" placeholder="Contenido completo de la noticia" className={styles.textareaField} rows="8" required />
         </div>
 
         <div className={styles.formGroup}>
           <label htmlFor="imagen">Imagen</label>
-          <input
-            id="imagen"
-            type="file"
-            name="imagen"
-            accept="image/*"
-            className={styles.fileInput}
-          />
+          <input id="imagen" type="file" name="imagen" accept="image/*" className={styles.fileInput} />
           <small className={styles.hint}>Formatos: JPG, PNG, GIF, WEBP (máx. 5MB)</small>
         </div>
 
         <div className={styles.formGroup}>
           <label htmlFor="categoria">Categoría *</label>
-          <select
-            id="categoria"
-            name="categoria"
-            className={styles.selectField}
-            required
-            value={selectedCat}
-            onChange={(e) => setSelectedCat(e.target.value)}
-          >
+          <select id="categoria" name="categoria" className={styles.selectField} required value={selectedCat} onChange={(e) => setSelectedCat(e.target.value)}>
             <option value="" disabled>Seleccionar categoría</option>
             {allowedCategories.map((cat) => (
               <option key={cat} value={cat}>{cat}</option>
@@ -154,11 +121,7 @@ export default function CreateNews() {
           </div>
         )}
 
-        <button
-          type="submit"
-          className={styles.submitButton}
-          disabled={loading}
-        >
+        <button type="submit" className={styles.submitButton} disabled={loading}>
           {loading ? "Publicando..." : "Publicar Noticia"}
         </button>
       </form>

@@ -1,30 +1,4 @@
-/* ══════════════════════════════════════
-   VARIABLES
-══════════════════════════════════════ */
 .serviciosContainer {
-  --navy:       #003366;
-  --navy-mid:   #0a4080;
-  --navy-light: #1a5fa0;
-  --brown:      #3a2e26;
-  --brown-mid:  #6b5b4b;
-  --cream:      #f4f1ec;
-  --border:     rgba(0, 51, 102, 0.12);
-  --white:      #ffffff;
-}
-
-/* ══════════════════════════════════════
-   CONTENEDOR
-══════════════════════════════════════ */
-.serviciosContainer {
-  --navy:       #003366;
-  --navy-mid:   #0a4080;
-  --navy-light: #1a5fa0;
-  --brown:      #3a2e26;
-  --brown-mid:  #6b5b4b;
-  --cream:      #f4f1ec;
-  --border:     rgba(0, 51, 102, 0.12);
-  --white:      #ffffff;
-
   width: 100%;
   min-height: 100vh;
   font-family: "Space Grotesk", system-ui, sans-serif;
@@ -36,20 +10,22 @@
     radial-gradient(ellipse at 50% 80%, rgba(0, 60, 160, 0.07) 0%, transparent 55%),
     radial-gradient(ellipse at 90% 90%, rgba(100, 180, 255, 0.06) 0%, transparent 40%);
 
-  padding: clamp(3rem, 7vw, 5.5rem) clamp(16px, 4vw, 48px) clamp(4rem, 8vw, 7rem);
+  padding: calc(76px + clamp(2rem, 4vw, 3.5rem)) clamp(16px, 4vw, 48px) clamp(4rem, 8vw, 7rem);
   box-sizing: border-box;
 }
-/* ══════════════════════════════════════
-   ENCABEZADO
-══════════════════════════════════════ */
+
 .serviciosTitle {
   text-align: center;
   font-size: clamp(2rem, 5.5vw, 3.4rem);
   font-weight: 400;
-  color: var(--navy);
+  color: #003366;
   letter-spacing: -0.02em;
   margin: 0 0 1rem;
   line-height: 1;
+}
+
+.titlePrefix {
+  display: inline;
 }
 
 .serviciosIntro {
@@ -62,15 +38,10 @@
   opacity: 0.82;
 }
 
-/* ══════════════════════════════════════
-   GRID — 5 cards en una sola fila
-══════════════════════════════════════ */
 .serviciosGrid {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: clamp(0.6rem, 1.2vw, 1rem);
-  justify-content: center;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(0.7rem, 1.2vw, 1.1rem);
   margin-bottom: clamp(3rem, 6vw, 5rem);
   width: 100%;
   max-width: 1400px;
@@ -78,19 +49,11 @@
   margin-right: auto;
 }
 
-/* ══════════════════════════════════════
-   CARD
-══════════════════════════════════════ */
 .servicioCard {
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-
-  /* cada card ocupa 1/5 del ancho disponible */
-  flex: 1 1 0;
-  min-width: 0;
-  height: clamp(300px, 28vw, 420px);
-
+  height: clamp(340px, 32vw, 500px);
   text-decoration: none;
   display: block;
   box-shadow:
@@ -109,7 +72,6 @@
   z-index: 2;
 }
 
-/* ── IMAGEN ── */
 .cardImage {
   width: 100%;
   height: 100%;
@@ -122,7 +84,6 @@
   transform: scale(1.07);
 }
 
-/* ── LOGO ── */
 .cardLogo {
   position: absolute;
   top: 12px;
@@ -139,7 +100,6 @@
   transform: scale(1.06);
 }
 
-/* ── OVERLAY ── */
 .cardOverlay {
   position: absolute;
   inset: 0;
@@ -167,7 +127,7 @@
 }
 
 .cardOverlay h3 {
-  font-size: clamp(0.88rem, 1.4vw, 1.15rem);
+  font-size: clamp(0.9rem, 1.4vw, 1.15rem);
   font-weight: 600;
   margin: 0 0 5px;
   letter-spacing: -0.01em;
@@ -201,9 +161,6 @@
   gap: 8px;
 }
 
-/* ══════════════════════════════════════
-   CONTENIDO DE SUBRUTA
-══════════════════════════════════════ */
 .servicioContent {
   margin-top: clamp(2rem, 4vw, 3.5rem);
   max-width: 1400px;
@@ -211,58 +168,64 @@
   margin-right: auto;
 }
 
-/* ══════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════ */
-
-/* tablet — 2 filas de cards con scroll */
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .serviciosGrid {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.9rem;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .servicioCard {
-    flex: 0 0 calc(50% - 0.5rem);
-    height: clamp(240px, 42vw, 320px);
+    height: clamp(280px, 36vw, 380px);
   }
 }
 
-/* mobile — scroll horizontal */
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .serviciosGrid {
+    display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    justify-content: flex-start;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    padding-bottom: 10px;
+    gap: 1rem;
+    padding-bottom: 14px;
     margin-left: -16px;
     margin-right: -16px;
     padding-left: 16px;
     padding-right: 16px;
-    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    justify-content: flex-start;
   }
   .serviciosGrid::-webkit-scrollbar { display: none; }
 
   .servicioCard {
-    flex: 0 0 75vw;
-    height: 280px;
-    scroll-snap-align: start;
+    flex: 0 0 calc(100vw - 32px);
+    height: 360px;
+    scroll-snap-align: center;
   }
 
   .serviciosContainer {
-    padding: 2.5rem 16px 4rem;
+    padding: calc(64px + 1.5rem) 16px 4rem;
   }
+
   .serviciosTitle {
     font-size: clamp(1.7rem, 8vw, 2.4rem);
   }
+
+  .titlePrefix {
+    display: none;
+  }
+
+  .serviciosIntro {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
 }
 
-/* mobile chico */
 @media (max-width: 380px) {
-  .servicioCard   { flex: 0 0 85vw; height: 250px; }
+  .servicioCard {
+    flex: 0 0 calc(100vw - 32px);
+    height: 330px;
+    scroll-snap-align: center;
+  }
   .serviciosTitle { font-size: 1.6rem; }
-  .serviciosIntro { font-size: 0.88rem; }
+  .serviciosIntro { font-size: 0.85rem; }
 }

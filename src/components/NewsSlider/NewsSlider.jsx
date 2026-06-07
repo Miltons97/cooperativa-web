@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+﻿import React, { useRef, useEffect, useState } from "react";
 import styles from "./newsSlider.module.css";
 import { API_URL } from "../../config/api";
 
@@ -74,8 +74,6 @@ function NewsSlider({ noticias }) {
                   style={{ "--c": color }}
                   onClick={() => setSelectedNoticia(n)}
                 >
-
-                  {/* ── Imagen: blurred ambient + full contained image ── */}
                   <div className={styles.imageWrapper}>
                     {imageUrl ? (
                       <>
@@ -93,18 +91,12 @@ function NewsSlider({ noticias }) {
                         {n.categoria}
                       </div>
                     )}
-
-                    {/* top-left: category chip */}
                     <span className={styles.catChip} style={{ color }}>{n.categoria}</span>
-
-                    {/* top-right: COPEOSPIL brand */}
                     <div className={styles.cardBrand}>
                       <img src="/assets/logoSinFondo.jpg" alt="COPEOSPIL" className={styles.cardBrandLogo} />
                       <span className={styles.cardBrandLabel}>COPEOSPIL</span>
                     </div>
                   </div>
-
-                  {/* ── Body ── */}
                   <div className={styles.cardBody}>
                     <h4 className={styles.cardTitle}>{n.titulo}</h4>
                     {n.contenido && (
@@ -135,13 +127,9 @@ function NewsSlider({ noticias }) {
           ))}
         </div>
       </div>
-
-      {/* ── MODAL ── */}
       {sel && (
         <div className={styles.modalOverlay} onClick={() => setSelectedNoticia(null)}>
           <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-
-            {/* ── HERO: cinematic full-width image ── */}
             <div className={styles.modalHero}>
               {sel.imagen ? (
                 <>
@@ -163,8 +151,6 @@ function NewsSlider({ noticias }) {
                 />
               )}
               <div className={styles.modalHeroGrad} />
-
-              {/* brand + badge */}
               <div className={styles.modalHeroTop}>
                 <div className={styles.modalBrand}>
                   <img src="/assets/logoSinFondo.jpg" alt="COPEOSPIL Ltda." className={styles.modalLogo} />
@@ -172,16 +158,12 @@ function NewsSlider({ noticias }) {
                 </div>
                 <span className={styles.modalCatBadge}>{sel.categoria}</span>
               </div>
-
-              {/* title overlaid at bottom */}
               <div className={styles.modalHeroBottom}>
                 <h2 className={styles.modalTitle}>{sel.titulo}</h2>
               </div>
 
               <button className={styles.closeBtn} onClick={() => setSelectedNoticia(null)}>✕</button>
             </div>
-
-            {/* ── BODY ── */}
             <div className={styles.modalBody}>
               <div className={styles.modalMeta}>
                 <span className={styles.modalDate}>{formattedDate}</span>
@@ -190,8 +172,6 @@ function NewsSlider({ noticias }) {
               <div className={styles.modalAccent} style={{ background: catColor }} />
               <p className={styles.modalContent}>{sel.contenido}</p>
             </div>
-
-            {/* ── FOOTER ── */}
             <div className={styles.modalFooter}>
               <span className={styles.modalWebsite}>www.copeospil.com.ar</span>
             </div>

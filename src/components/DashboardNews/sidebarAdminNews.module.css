@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
 }
 
 .logo {
@@ -108,4 +109,68 @@
 .logoutButton:hover {
   background: #d32f2f;
   transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 130px;
+    min-width: 130px;
+    min-height: 100vh;
+    padding: 1rem 0.5rem;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .logo {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .logo img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .logo h3 {
+    font-size: 0.72rem;
+    line-height: 1.2;
+  }
+
+  .userInfo {
+    padding: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .userEmail {
+    font-size: 0.65rem;
+    display: none;
+  }
+
+  .userRole {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .nav a {
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.6rem 0.4rem;
+    font-size: 0.68rem;
+    text-align: center;
+  }
+
+  .nav a:hover {
+    transform: none;
+  }
+
+  .icon {
+    font-size: 1.2rem;
+  }
+
+  .logoutButton {
+    font-size: 0.7rem;
+    padding: 0.6rem 0.4rem;
+  }
 }

@@ -1,7 +1,4 @@
-/* ══════════════════════════════════════
-   VARIABLES
-══════════════════════════════════════ */
-.institucionalContainer {
+﻿.institucionalContainer {
   --navy:        #003366;
   --navy-mid:    #0a4080;
   --navy-light:  #1a5fa0;
@@ -13,9 +10,6 @@
   --border:      rgba(0, 51, 102, 0.12);
 }
 
-/* ══════════════════════════════════════
-   CONTENEDOR
-══════════════════════════════════════ */
 .institucionalContainer {
   width: 100%;
   display: flex;
@@ -33,9 +27,6 @@
   min-height: 100vh;
 }
 
-/* ══════════════════════════════════════
-   SLIDER HERO
-══════════════════════════════════════ */
 .sliderContainer {
   position: relative;
   width: 100%;
@@ -54,7 +45,6 @@
   transition: opacity 0.6s ease;
 }
 
-/* overlay oscuro sobre la imagen */
 .sliderContainer::after {
   content: "";
   position: absolute;
@@ -90,9 +80,6 @@
   border-radius: 2px;
 }
 
-/* ══════════════════════════════════════
-   CONTENIDO GENERAL
-══════════════════════════════════════ */
 .institucionalContent {
   width: 100%;
   max-width: 1100px;
@@ -131,9 +118,6 @@
   opacity: 0.88;
 }
 
-/* ══════════════════════════════════════
-   MISIÓN · VISIÓN · VALORES
-══════════════════════════════════════ */
 .mvvGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -161,7 +145,6 @@
     0 12px 32px rgba(0, 51, 102, 0.12);
 }
 
-/* acento de color por posición */
 .mvvItem:nth-child(1) { border-top: 3px solid var(--navy); }
 .mvvItem:nth-child(2) { border-top: 3px solid var(--navy-light); }
 .mvvItem:nth-child(3) { border-top: 3px solid #2d6a2d; }
@@ -207,9 +190,6 @@
   background: #2d6a2d;
 }
 
-/* ══════════════════════════════════════
-   AUTORIDADES
-══════════════════════════════════════ */
 .autoridadesGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -236,7 +216,6 @@
   transform: translateX(4px);
 }
 
-/* bolita decorativa */
 .autoridadItem::before {
   content: "";
   width: 7px;
@@ -247,11 +226,6 @@
   opacity: 0.6;
 }
 
-/* ══════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════ */
-
-/* tablet */
 @media (max-width: 900px) {
   .mvvGrid {
     grid-template-columns: 1fr;
@@ -268,7 +242,6 @@
   }
 }
 
-/* mobile */
 @media (max-width: 600px) {
   .sliderContainer {
     height: 45vh;
@@ -293,7 +266,6 @@
   }
 }
 
-/* mobile chico */
 @media (max-width: 380px) {
   .institucionalTitle { font-size: 1.5rem; }
   .institucionalContent > h2 { font-size: 1.35rem; }

@@ -9,6 +9,7 @@
   background: #0b2c4d;
   color: white;
   padding: 2rem 1rem;
+  flex-shrink: 0;
 }
 
 .sidebar a, .sidebar button {
@@ -24,6 +25,7 @@
 .adminContent {
   flex: 1;
   padding: 2rem;
+  min-width: 0;
 }
 
 .form {
@@ -39,4 +41,27 @@
   width: 100%;
   margin-bottom: 1rem;
   padding: 0.8rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+  .adminLayout {
+    flex-direction: row;
+  }
+
+  .sidebar {
+    width: 130px;
+    min-width: 130px;
+    padding: 1rem 0.5rem;
+  }
+
+  .adminContent {
+    padding: 1rem 0.75rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .form {
+    padding: 1rem;
+  }
 }

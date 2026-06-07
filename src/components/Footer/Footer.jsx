@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./footer.module.css";
 
 const SOCIAL = [
@@ -39,7 +40,7 @@ export default function Footer() {
         <div className={styles.footerColumn}>
           <h3>COPEOSPIL Ltda.</h3>
           <ul>
-            <li><a href="http://localhost:5173/institucional">Institucional</a></li>
+            <li><Link to="/institucional">Institucional</Link></li>
           </ul>
         </div>
 
@@ -57,7 +58,6 @@ export default function Footer() {
           <p>Guardia Luz Alta Italia: (2302) 51-8307</p>
           <p>Guardia Internet: (2302) 54-0924</p>
           <p>Guardia Social: (2302)-444444</p>
-        
         </div>
 
         <div className={styles.footerColumn}>
@@ -68,7 +68,6 @@ export default function Footer() {
               www.copeospil.com.ar
             </a>
           </p>
-
           <div className={styles.socialRow}>
             {SOCIAL.map((s) => (
               <a

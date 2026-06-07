@@ -1,7 +1,4 @@
-/* ══════════════════════════════════════
-   VARIABLES
-══════════════════════════════════════ */
-.aguaContainer {
+﻿.aguaContainer {
   --blue:        #0077c8;
   --blue-mid:    #0090e0;
   --blue-light:  #40b4f0;
@@ -12,9 +9,6 @@
   --white:       #ffffff;
 }
 
-/* ══════════════════════════════════════
-   CONTENEDOR
-══════════════════════════════════════ */
 .aguaContainer {
   padding: 0 0 4rem 0;
   margin-top: -250px;
@@ -29,9 +23,6 @@
     );
 }
 
-/* ══════════════════════════════════════
-   HERO
-══════════════════════════════════════ */
 .heroContainer {
   position: relative;
   width: 100vw;
@@ -115,9 +106,6 @@
     0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
-/* ══════════════════════════════════════
-   HEADER
-══════════════════════════════════════ */
 .header {
   text-align: center;
   max-width: 760px;
@@ -131,9 +119,6 @@
   color: var(--text-muted);
 }
 
-/* ══════════════════════════════════════
-   FEATURES
-══════════════════════════════════════ */
 .features {
   max-width: 1200px;
   margin: 0 auto clamp(3rem, 6vw, 5rem);
@@ -207,9 +192,6 @@
   margin: 0;
 }
 
-/* ══════════════════════════════════════
-   INFO / ACCORDION
-══════════════════════════════════════ */
 .infoSection {
   max-width: 800px;
   margin: 0 auto clamp(3rem, 6vw, 5rem);
@@ -294,9 +276,6 @@
   margin: 0;
 }
 
-/* ══════════════════════════════════════
-   CAMPAÑAS
-══════════════════════════════════════ */
 .campaigns {
   max-width: 1200px;
   margin: 0 auto;
@@ -346,7 +325,6 @@
 
 .campaignsScroll::-webkit-scrollbar { display: none; }
 
-/* ── CAMPAIGN CARD ── */
 .campaignCard {
   position: relative;
   width: 280px;
@@ -414,7 +392,6 @@
   overflow: hidden;
 }
 
-/* ── LOGO EN CARD ── */
 .cardLogo {
   position: absolute;
   top: 10px;
@@ -429,7 +406,6 @@
   pointer-events: none;
 }
 
-/* ── DOTS ── */
 .dots {
   display: flex;
   justify-content: center;
@@ -458,10 +434,6 @@
   background: var(--blue);
   transform: none;
 }
-
-/* ══════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════ */
 
 @media (max-width: 900px) {
   .aguaContainer    { margin-top: -180px; }

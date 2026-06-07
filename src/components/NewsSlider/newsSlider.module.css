@@ -1,7 +1,4 @@
-/* ══════════════════════════════════════
-   SLIDER
-══════════════════════════════════════ */
-.slider {
+﻿.slider {
   width: 100%;
   font-family: "Space Grotesk", system-ui, sans-serif;
 }
@@ -25,9 +22,6 @@
 }
 .scroll::-webkit-scrollbar { display: none; }
 
-/* ══════════════════════════════════════
-   CARD — cinematic full-bleed
-══════════════════════════════════════ */
 .card {
   position: relative;
   display: block;
@@ -50,7 +44,6 @@
   font-family: inherit;
 }
 
-/* Category color glow border + deep shadow on hover */
 .card:hover {
   transform: translateY(-14px) scale(1.022);
   box-shadow:
@@ -66,7 +59,6 @@
   transition-duration: 0.15s;
 }
 
-/* ── IMAGE: fills entire card ── */
 .imageWrapper {
   position: absolute;
   inset: 0;
@@ -77,7 +69,6 @@
   overflow: hidden;
 }
 
-/* category color glow from bottom on hover */
 .imageWrapper::before {
   content: "";
   position: absolute;
@@ -95,7 +86,6 @@
 
 .card:hover .imageWrapper::before { opacity: 0.80; }
 
-/* dark gradient for text readability */
 .imageWrapper::after {
   content: "";
   position: absolute;
@@ -126,7 +116,8 @@
   position: relative;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center center;
   display: block;
   z-index: 1;
   transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -150,7 +141,6 @@
   color: #fff;
 }
 
-/* category chip — frosted glass, top-left */
 .catChip {
   position: absolute;
   top: 14px;
@@ -169,7 +159,6 @@
   box-shadow: 0 2px 10px rgba(0,0,0,0.30);
 }
 
-/* COPEOSPIL brand — frosted glass, top-right */
 .cardBrand {
   position: absolute;
   top: 14px;
@@ -211,7 +200,6 @@
   white-space: nowrap;
 }
 
-/* ── CARD BODY — absolute, overlaid on gradient ── */
 .cardBody {
   position: absolute;
   bottom: 0;
@@ -307,9 +295,6 @@
   transform: translateX(3px);
 }
 
-/* ══════════════════════════════════════
-   DOTS
-══════════════════════════════════════ */
 .dots {
   display: flex;
   justify-content: center;
@@ -338,9 +323,6 @@
   transform: none;
 }
 
-/* ══════════════════════════════════════
-   MODAL OVERLAY
-══════════════════════════════════════ */
 .modalOverlay {
   position: fixed;
   inset: 0;
@@ -360,9 +342,6 @@
   to   { opacity: 1; }
 }
 
-/* ══════════════════════════════════════
-   MODAL
-══════════════════════════════════════ */
 .modal {
   background: #ffffff;
   border-radius: 26px;
@@ -391,9 +370,6 @@
 .modal::-webkit-scrollbar-track { background: transparent; }
 .modal::-webkit-scrollbar-thumb { background: #dce6f0; border-radius: 4px; }
 
-/* ══════════════════════════════════════
-   MODAL HERO — full-width cinematic top
-══════════════════════════════════════ */
 .modalHero {
   position: relative;
   width: 100%;
@@ -407,7 +383,6 @@
   flex-shrink: 0;
 }
 
-/* blurred ambient background */
 .modalHeroBlur {
   position: absolute;
   inset: -36px;
@@ -422,19 +397,17 @@
   display: block;
 }
 
-/* main contained image — never cropped */
 .modalHeroImg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center;
+  object-fit: cover;
+  object-position: center center;
   z-index: 1;
   display: block;
 }
 
-/* gradient: dark top (brand) + dark bottom (title) */
 .modalHeroGrad {
   position: absolute;
   inset: 0;
@@ -445,14 +418,12 @@
   pointer-events: none;
 }
 
-/* no-image fallback */
 .modalHeroFallback {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-/* brand + badge row — top of hero */
 .modalHeroTop {
   position: relative;
   z-index: 3;
@@ -462,7 +433,6 @@
   padding: 1.3rem 1.5rem;
 }
 
-/* title — overlaid at bottom */
 .modalHeroBottom {
   position: relative;
   z-index: 3;
@@ -536,7 +506,6 @@
   transform: scale(1.12);
 }
 
-/* hero title — large, white, bold */
 .modalTitle {
   font-size: 1.72rem;
   font-weight: 800;
@@ -547,9 +516,6 @@
   text-shadow: 0 2px 28px rgba(0,0,0,0.75);
 }
 
-/* ══════════════════════════════════════
-   MODAL BODY
-══════════════════════════════════════ */
 .modalBody {
   padding: 1.7rem 2.2rem 1.2rem;
   flex: 1;
@@ -591,9 +557,6 @@
   white-space: pre-wrap;
 }
 
-/* ══════════════════════════════════════
-   MODAL FOOTER
-══════════════════════════════════════ */
 .modalFooter {
   display: flex;
   align-items: center;
@@ -613,9 +576,6 @@
   text-transform: uppercase;
 }
 
-/* ══════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════ */
 @media (max-width: 900px) {
   .viewport { max-width: calc(250px * 2 + 24px + 48px); }
 }

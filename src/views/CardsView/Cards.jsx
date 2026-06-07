@@ -8,7 +8,6 @@ function Cards() {
   return (
     <div className={styles.cardsContainer}>
 
-      {/* ── Emergencias ── */}
       <div className={styles.card}>
         <div className={styles.cardTop}>
           <div className={styles.cardIconBox} style={{ background: "rgba(224,82,96,0.12)" }}>
@@ -51,7 +50,6 @@ function Cards() {
         </div>
       </div>
 
-      {/* ── Lugares de pago ── */}
       <div className={`${styles.card} ${styles.cardDark}`}>
         <div className={styles.cardTop}>
           <div className={styles.cardIconBox} style={{ background: "rgba(126,184,247,0.14)" }}>
@@ -66,10 +64,7 @@ function Cards() {
           <li><span className={styles.listVal}>Pampa Pagos</span></li>
           <li><span className={styles.listVal}>Banco Nación</span></li>
           <li><span className={styles.listVal}>Red Link · Pago Mis Cuentas</span></li>
-          <li>
-            <span className={styles.listVal}>Mercado Pago</span>
-            <span className={styles.comingSoon}>Próximamente</span>
-          </li>
+          <li><span className={styles.listVal}>Mercado Pago</span></li>
         </ul>
 
         <div className={styles.cardBrand}>
@@ -78,7 +73,6 @@ function Cards() {
         </div>
       </div>
 
-      {/* ── Pagá tu factura ── */}
       <a
         href={FACTURAS_URL || "#"}
         target={FACTURAS_URL ? "_blank" : "_self"}

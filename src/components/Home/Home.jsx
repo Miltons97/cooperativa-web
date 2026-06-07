@@ -16,8 +16,6 @@ function Home() {
 
   return (
     <div className={styles.pageContainer}>
-
-      {/* ── HERO ── */}
       <section className={styles.hero}>
         <div className={styles.content}>
           <p className={styles.eyebrow}>Cooperativa de Servicios Públicos</p>
@@ -30,7 +28,6 @@ function Home() {
         </div>
       </section>
 
-      {/* ── NOVEDADES ── */}
       {noticias.length > 0 && (
         <section className={styles.noticiasSection}>
           <div className={styles.sectionHeader}>
@@ -43,12 +40,9 @@ function Home() {
 
       <div className={styles.divider2}></div>
 
-      {/* ── CARDS ── */}
       <section className={styles.cardsSection}>
         <Cards />
       </section>
-
-
     </div>
   );
 }

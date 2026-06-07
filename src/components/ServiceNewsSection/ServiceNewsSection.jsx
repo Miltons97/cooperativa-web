@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+﻿import { useState, useRef, useEffect } from "react";
 import styles from "./serviceNewsSection.module.css";
 import { API_URL } from "../../config/api";
 
@@ -77,16 +77,12 @@ export default function ServiceNewsSection({ categoria, title }) {
   return (
     <section className={styles.section}>
       <h3 className={styles.title} style={{ color }}>{title}</h3>
-
-      {/* ── SLIDER ── */}
       <div className={styles.viewport}>
         <div ref={scrollRef} className={styles.scroll}>
           {noticias.map((n) => {
             const img = n.imagen ? `${API_URL}${n.imagen}` : null;
             return (
               <div key={n.id} className={styles.card} style={{ "--c": color }} onClick={() => setSelected(n)}>
-
-                {/* Imagen: blurred ambient + full contained image */}
                 <div className={styles.imageWrapper}>
                   {img ? (
                     <>
@@ -110,8 +106,6 @@ export default function ServiceNewsSection({ categoria, title }) {
                     <span className={styles.cardBrandLabel}>COPEOSPIL</span>
                   </div>
                 </div>
-
-                {/* Body */}
                 <div className={styles.cardBody}>
                   <h4 className={styles.cardTitle}>{n.titulo}</h4>
                   {n.contenido && (
@@ -130,8 +124,6 @@ export default function ServiceNewsSection({ categoria, title }) {
           })}
         </div>
       </div>
-
-      {/* Dots */}
       <div className={styles.dots}>
         {Array.from({ length: totalDots }).map((_, i) => (
           <span
@@ -142,13 +134,9 @@ export default function ServiceNewsSection({ categoria, title }) {
           />
         ))}
       </div>
-
-      {/* ── MODAL ── */}
       {selected && (
         <div className={styles.overlay} onClick={() => setSelected(null)}>
           <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-
-            {/* ── HERO: cinematic full-width image ── */}
             <div className={styles.modalHero}>
               {selected.imagen ? (
                 <>
@@ -170,8 +158,6 @@ export default function ServiceNewsSection({ categoria, title }) {
                 />
               )}
               <div className={styles.modalHeroGrad} />
-
-              {/* brand + badge */}
               <div className={styles.modalHeroTop}>
                 <div className={styles.modalBrand}>
                   <img src="/assets/logoSinFondo.jpg" alt="COPEOSPIL Ltda." className={styles.modalLogo} />
@@ -179,16 +165,12 @@ export default function ServiceNewsSection({ categoria, title }) {
                 </div>
                 <span className={styles.modalBadge}>{selected.categoria}</span>
               </div>
-
-              {/* title overlaid at bottom */}
               <div className={styles.modalHeroBottom}>
                 <h2 className={styles.modalTitle}>{selected.titulo}</h2>
               </div>
 
               <button className={styles.closeBtn} onClick={() => setSelected(null)}>✕</button>
             </div>
-
-            {/* ── BODY ── */}
             <div className={styles.modalBody}>
               <div className={styles.modalMeta}>
                 <span className={styles.modalDate}>{formattedDate}</span>
@@ -197,8 +179,6 @@ export default function ServiceNewsSection({ categoria, title }) {
               <div className={styles.modalAccent} style={{ background: color }} />
               <p className={styles.modalContent}>{selected.contenido}</p>
             </div>
-
-            {/* ── FOOTER ── */}
             <div className={styles.modalFooter}>
               <span className={styles.modalWebsite}>www.copeospil.com.ar</span>
             </div>

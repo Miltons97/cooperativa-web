@@ -1,5 +1,4 @@
-/* ── Container ── */
-.cardsContainer {
+﻿.cardsContainer {
   display: flex;
   gap: 1.75rem;
   flex-wrap: wrap;
@@ -7,9 +6,6 @@
   padding: 1rem 0 2rem;
 }
 
-/* ══════════════════════════════════════
-   BASE CARD
-══════════════════════════════════════ */
 .card {
   position: relative;
   background: rgba(255, 255, 255, 0.97);
@@ -23,8 +19,7 @@
   color: #1a2340;
   cursor: default;
 
-  /* Subtle default border */
-  box-shadow:
+box-shadow:
     0 1px 3px rgba(0,0,0,0.07),
     0 6px 28px rgba(0,0,0,0.09),
     inset 0 0 0 1px rgba(0,0,0,0.06);
@@ -35,7 +30,6 @@
   will-change: transform;
 }
 
-/* Gradient border on hover (mask technique) */
 .card::before {
   content: '';
   position: absolute;
@@ -63,7 +57,6 @@
   opacity: 1;
 }
 
-/* White card hover — red/pink glow */
 .card:not(.cardDark):not(.cardGreen):hover {
   transform: translateY(-10px) scale(1.018);
   box-shadow:
@@ -72,13 +65,11 @@
     0 24px 56px rgba(224, 82, 96, 0.18);
 }
 
-/* Press / active state */
 .card:not(.cardDark):not(.cardGreen):active {
   transform: translateY(-4px) scale(1.008);
   transition-duration: 0.15s;
 }
 
-/* ── Variants ── */
 .cardDark {
   background: linear-gradient(150deg, #0e1d38 0%, #0b1a2e 100%);
   color: #ddeaff;
@@ -128,7 +119,6 @@
   cursor: pointer;
 }
 
-/* ── Card top section ── */
 .cardTop {
   display: flex;
   flex-direction: column;
@@ -137,7 +127,6 @@
   width: 100%;
 }
 
-/* ── Icon box ── */
 .cardIconBox {
   width: 56px;
   height: 56px;
@@ -157,7 +146,6 @@
   font-size: 1.5rem;
 }
 
-/* ── Title ── */
 .cardTitle {
   font-size: 0.98rem;
   font-weight: 700;
@@ -166,7 +154,6 @@
   margin: 0;
 }
 
-/* ── Accent bar ── */
 .cardAccent {
   width: 32px;
   height: 2.5px;
@@ -175,7 +162,6 @@
   flex-shrink: 0;
 }
 
-/* ── List ── */
 .cardList {
   list-style: none;
   padding: 0;
@@ -202,7 +188,6 @@
   border-bottom: none;
 }
 
-/* Subtle row hover */
 .cardList li:hover {
   background: rgba(0,0,0,0.03);
   border-radius: 6px;
@@ -230,7 +215,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* ── "Próximamente" chip ── */
 .comingSoon {
   font-size: 0.62rem;
   font-weight: 600;
@@ -244,7 +228,6 @@
   white-space: nowrap;
 }
 
-/* ── Badge (card 3) ── */
 .cardBadge {
   font-size: 0.63rem;
   font-weight: 700;
@@ -257,7 +240,6 @@
   margin: 0.1rem 0 0;
 }
 
-/* ── Body text (card 3) ── */
 .cardText {
   font-size: 0.81rem;
   line-height: 1.6;
@@ -267,7 +249,6 @@
   flex: 1;
 }
 
-/* ── CTA button (card 3) ── */
 .cardCta {
   display: inline-flex;
   align-items: center;
@@ -289,9 +270,6 @@
   transform: translateX(3px);
 }
 
-/* ══════════════════════════════════════
-   LOGO BRAND — bottom of every card
-══════════════════════════════════════ */
 .cardBrand {
   display: flex;
   align-items: center;
@@ -338,7 +316,6 @@
   opacity: 0.60;
 }
 
-/* ── Responsive ── */
 @media (max-width: 1024px) {
   .card {
     width: 280px;

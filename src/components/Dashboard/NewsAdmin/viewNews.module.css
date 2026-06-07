@@ -1,6 +1,4 @@
-
-/* ── PAGE HEADER ── */
-.pageHeader {
+﻿.pageHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,7 +24,6 @@
   transform: translateY(-1px);
 }
 
-/* ── TABLE PAGE ── */
 .container {
   max-width: 1100px;
   margin: auto;
@@ -143,7 +140,6 @@
 }
 .btnDownloadRow:hover { background: #bbdefb !important; }
 
-/* ── MODAL ── */
 .overlay {
   position: fixed;
   inset: 0;
@@ -167,7 +163,6 @@
 }
 .modalBox::-webkit-scrollbar { display: none; }
 
-/* ── FORMAT TOGGLE ── */
 .formatToggle {
   display: flex;
   gap: 4px;
@@ -198,7 +193,6 @@
   color: #ffffff;
 }
 
-/* ── PREVIEW BOX ── */
 .previewBox {
   position: relative;
   border-radius: 16px;
@@ -220,11 +214,10 @@
   width: 100%;
   height: 100%;
   border-radius: 0;
-  /* object-fit fill — dimensions are always exact match to canvas ratio */
+  
   object-fit: fill;
 }
 
-/* ── PREVIEW SPINNER ── */
 .previewSpinner {
   position: absolute;
   inset: 0;
@@ -256,7 +249,6 @@
   font-family: "Space Grotesk", system-ui, sans-serif;
 }
 
-/* ── EXPORT HINT ── */
 .exportHint {
   color: rgba(255,255,255,0.34);
   font-size: 0.70rem;
@@ -266,13 +258,11 @@
   font-family: "Space Grotesk", system-ui, sans-serif;
 }
 
-/* ── MODAL ACTIONS ── */
 .modalActions {
   display: flex;
   gap: 0.75rem;
   width: 100%;
-  /* No max-width — let the flex column container drive the width
-     so actions always align with whichever card is shown above */
+  
 }
 
 .btnClose {
@@ -313,7 +303,6 @@
   cursor: not-allowed;
 }
 
-/* ── OBITUARY FORM MODAL ── */
 .obitFormBox {
   position: relative;
   background: #faf8f5;
@@ -479,8 +468,6 @@
 .obitSubmitBtn:hover:not(:disabled) { opacity: 0.88; }
 .obitSubmitBtn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-
-/* ── OBITUARY CARD ── */
 .obituaryCard {
   width: 520px;
   height: 520px;
@@ -517,7 +504,6 @@
   box-sizing: border-box;
 }
 
-/* branding */
 .obituaryHeader {
   display: flex;
   flex-direction: column;
@@ -550,7 +536,6 @@
   text-transform: uppercase;
 }
 
-/* decorative dividers */
 .obituaryDividerTop {
   display: flex;
   align-items: center;
@@ -579,7 +564,6 @@
   margin: 1rem 0 0.8rem;
 }
 
-/* main body */
 .obituaryBody {
   flex: 1;
   display: flex;
@@ -621,7 +605,6 @@
   overflow: hidden;
 }
 
-/* footer */
 .obituaryFooter {
   display: flex;
   align-items: center;
@@ -642,13 +625,11 @@
   letter-spacing: 0.06em;
 }
 
-/* dark download button for obituary */
 .btnDownloadObituary {
   background: linear-gradient(135deg, #1a1a2e, #2d2d4e) !important;
   border: 1px solid rgba(200, 180, 140, 0.35) !important;
 }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 580px) {
   .obituaryCard {
     width: calc(100vw - 2rem);

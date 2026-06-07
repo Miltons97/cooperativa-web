@@ -13,8 +13,7 @@ export default function SidebarAdmin() {
       try {
         const decoded = jwtDecode(token);
         setUserInfo({ email: decoded.email, role: decoded.role });
-      } catch (err) {
-        console.error("Error decodificando token:", err);
+      } catch {
       }
     }
   }, []);
@@ -27,11 +26,14 @@ export default function SidebarAdmin() {
   };
 
   const menuItems = [
-    { path: "/admin/dashboard",       label: "Dashboard",          icon: "📊" },
-    { path: "/admin/noticias/nueva",  label: "Crear Noticia",      icon: "✍️" },
+    { path: "/admin/dashboard",         label: "Dashboard",        icon: "📊" },
+    { path: "/admin/noticias/nueva",    label: "Crear Noticia",    icon: "✍️" },
     { path: "/admin/necrologica/nueva", label: "Necrológica",      icon: "✝" },
-    { path: "/admin/noticias",        label: "Ver / Descargar",    icon: "📰" },
-    { path: "/admin/perfil",          label: "Mi Perfil",          icon: "👤" },
+    { path: "/admin/noticias",          label: "Ver / Descargar",  icon: "📰" },
+    { path: "/admin/perfil",            label: "Mi Perfil",        icon: "👤" },
+    ...(userInfo.role === "superadmin"
+      ? [{ path: "/admin/usuarios", label: "Usuarios", icon: "🛡️" }]
+      : []),
   ];
 
   return (
