@@ -42,15 +42,22 @@
 }
 
 .hero {
-  min-height: 100vh;
+  min-height: 107vh;
   width: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
-  padding: 6rem clamp(32px, 7vw, 100px) 4rem;
   box-sizing: border-box;
   position: relative;
   z-index: 1;
+}
+
+.heroMain {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6rem clamp(32px, 7vw, 100px) 2rem;
   gap: 3rem;
 }
 
@@ -268,16 +275,15 @@
 }
 
 @media (max-width: 1024px) {
-  .hero { padding: 5rem clamp(20px, 4vw, 60px) 3rem; gap: 2rem; }
+  .heroMain { padding: 5rem clamp(20px, 4vw, 60px) 2rem; gap: 2rem; }
   .logo { max-width: 320px; }
 }
 
 @media (max-width: 900px) {
-  .hero {
+  .heroMain {
     flex-direction: column;
     text-align: center;
-    padding: 5rem 24px 3rem;
-    min-height: auto;
+    padding: 5rem 24px 2rem;
     gap: 2rem;
     align-items: center;
   }
@@ -290,7 +296,7 @@
 }
 
 @media (max-width: 768px) {
-  .hero { padding: 4.5rem 16px 2.5rem; }
+  .heroMain { padding: 4.5rem 16px 2rem; }
   .logo { max-width: 240px; }
   .cardsSection { padding: 2rem 16px 5rem; }
   .pageContainer::after {
@@ -329,6 +335,76 @@
   .hero          { padding: 4rem 12px 2rem; }
   .noticiasTitle { font-size: 1.2rem; }
 }
+
+/* ── Banner pago online ─────────────────────────────────────────────────── */
+.promoBanner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-top: auto;
+  padding: 3.6rem clamp(32px, 6vw, 100px);
+  background:
+    linear-gradient(90deg, rgba(0,51,102,0.92) 0%, rgba(26,74,26,0.88) 100%),
+    url("/assets/PagoOnline1.jpg") center center / cover no-repeat;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  transition: filter 0.25s ease;
+}
+.promoBanner:hover { filter: brightness(1.08); }
+
+.promoBannerLogo {
+  width: 72px;
+  height: auto;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+
+.promoBannerText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.promoBannerTitle {
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.promoBannerSub {
+  font-size: clamp(0.75rem, 1.2vw, 0.88rem);
+  color: rgba(192, 250, 152, 0.85);
+  letter-spacing: 0.03em;
+}
+
+.promoBannerCta {
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.55rem 1.4rem;
+  border-radius: 30px;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, border-color 0.2s;
+}
+.promoBanner:hover .promoBannerCta {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .promoBanner { display: none; }
+}
+/* ─────────────────────────────────────────────────────────────────────────── */
 
 .obituarySection {
   max-width: 1200px;

@@ -16,7 +16,6 @@ const NoticiasModel = {
     return result.rows;
   },
 
-  // ← NUEVO: Para inicio (últimas 3 noticias generales)
   async getNoticiasInicio() {
     const result = await pool.query(
       `SELECT * FROM noticias

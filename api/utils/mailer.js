@@ -41,4 +41,39 @@ async function sendTempPassword(toEmail, tempPassword) {
   });
 }
 
-module.exports = { sendTempPassword };
+async function sendWelcomeUser(toEmail, tempPassword, role) {
+  await transporter.sendMail({
+    from: `"COPEOSPIL Panel Admin" <${process.env.MAIL_USER}>`,
+    to: toEmail,
+    subject: "Bienvenido al Panel Admin - COPEOSPIL",
+    html: `
+      <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px;background:#f8fafd;border-radius:16px;">
+        <div style="text-align:center;margin-bottom:24px;">
+          <div style="display:inline-block;background:#003366;border-radius:50%;width:64px;height:64px;line-height:64px;font-size:28px;color:#fff;">👋</div>
+        </div>
+        <h2 style="color:#0b2b4a;text-align:center;margin:0 0 8px;font-size:1.3rem;">¡Tu acceso al Panel COPEOSPIL está listo!</h2>
+        <p style="color:#5a7a9a;text-align:center;font-size:0.85rem;margin:0 0 20px;">Se creó una cuenta con el rol <strong style="color:#003366;">${role}</strong> para este correo.</p>
+
+        <div style="background:#fff;border:1.5px solid #dde3ea;border-radius:12px;padding:24px;text-align:center;margin-bottom:24px;">
+          <p style="color:#8a9aaa;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 6px;">Tu correo</p>
+          <p style="font-size:1rem;font-weight:600;color:#003366;margin:0 0 16px;">${toEmail}</p>
+          <p style="color:#8a9aaa;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 10px;">Contraseña provisional</p>
+          <p style="font-size:1.8rem;font-weight:700;color:#003366;letter-spacing:0.15em;background:#f0f4ff;border:1.5px dashed #a0b4d0;border-radius:8px;padding:12px 24px;margin:0;">${tempPassword}</p>
+        </div>
+
+        <p style="color:#5a7a9a;font-size:0.82rem;line-height:1.7;text-align:center;margin:0 0 8px;">
+          Ingresá con estas credenciales en <strong style="color:#003366;">panel.copeospil.com.ar/admin/login</strong>.<br>
+          Una vez adentro, cambiá tu contraseña desde <strong style="color:#003366;">Mi Perfil</strong>.
+        </p>
+
+        <hr style="border:none;border-top:1px solid #eef0f4;margin:24px 0;">
+        <p style="color:#aab4be;font-size:0.7rem;text-align:center;margin:0;">
+          Si no esperabas este mensaje, podés ignorarlo o contactar al administrador.<br>
+          © ${new Date().getFullYear()} COPEOSPIL Ltda. · www.copeospil.com.ar
+        </p>
+      </div>
+    `,
+  });
+}
+
+module.exports = { sendTempPassword, sendWelcomeUser };

@@ -76,23 +76,21 @@ function Water() {
           {[
             {
               title: "¿Cómo solicitar la conexión de agua?",
-              text:
-                "La solicitud puede realizarse de forma presencial en nuestras oficinas o a través del sitio web.",
+              text: "La solicitud puede realizarse de forma presencial en nuestras oficinas o a través del sitio web.",
             },
             {
-              title: "Corte del servicio por mantenimiento",
-              text:
-                "Los cortes programados son informados con antelación.",
+              title: "¿Cómo solicito la suspensión del servicio?",
+              text: "Para solicitar la suspensión del servicio (no desconexión), es necesario presentarse en nuestras oficinas (Belgrano 654) y completar el formulario 'Suspensión a Pedido del Usuario'.\n\nDeberá adjuntar fotocopia de su Documento y la última factura de COPEOSPIL .Ltda.",
             },
             {
-              title: "Reclamos por baja presión",
-              text:
-                "Se recomienda verificar instalaciones internas y comunicarse con atención técnica.",
+              title: "El Medidor ¿Qué es y cómo leerlo?",
+              text: "El medidor de agua es el aparato que registra el volumen de agua consumido en tu domicilio. Para leerlo, observá los números que aparecen en el visor de izquierda a derecha: esos dígitos indican los metros cúbicos (m³) consumidos. La diferencia entre dos lecturas consecutivas determina tu consumo del período.",
+              image: "/assets/medidorAgua.png",
+              imageAlt: "Medidor de agua - cómo leerlo",
             },
             {
               title: "Facturación y tarifas",
-              text:
-                "Las tarifas se actualizan periódicamente y están disponibles para su consulta.",
+              text: "Las tarifas se actualizan periódicamente y están disponibles para su consulta.",
             },
           ].map((item, index) => (
             <div key={index} className={styles.accordionItem}>
@@ -103,7 +101,16 @@ function Water() {
 
               {open === index && (
                 <div className={styles.accordionContent}>
-                  <p>{item.text}</p>
+                  {item.image && (
+                    <img
+                      src={item.image}
+                      alt={item.imageAlt}
+                      className={styles.accordionImage}
+                    />
+                  )}
+                  {item.text.split("\n\n").map((paragraph, i) => (
+                    <p key={i}>{paragraph}</p>
+                  ))}
                 </div>
               )}
             </div>
