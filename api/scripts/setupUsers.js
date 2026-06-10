@@ -11,13 +11,13 @@ const pool = new Pool({
 });
 
 const KEEP_EMAIL  = "admin@ejemplo.com";
-const KEEP_PASS   = "Admin123!";
+const KEEP_PASS   = "Cop3Admin#2026";
 const KEEP_ROLE   = "admin";
 
 const NEW_USERS = [
-  { email: "gerencia@copeospil.com",       password: "Gerencia2024!",   role: "superadmin" },
-  { email: "ingenieria@copeospil.com.ar",  password: "Ingenieria2024!", role: "superadmin" },
-  { email: "milton.sosa1901@gmail.com",    password: "Milton2024!",     role: "superadmin" },
+  { email: "gerencia@copeospil.com",       password: "Ger3nci@Cop26!",   role: "superadmin" },
+  { email: "ingenieria@copeospil.com.ar",  password: "Ing3n!eria#2026",  role: "superadmin" },
+  { email: "milton.sosa1901@gmail.com",    password: "M1lton$Cop2026!",  role: "superadmin" },
 ];
 
 async function run() {
