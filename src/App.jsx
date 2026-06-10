@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
@@ -39,6 +39,7 @@ export default function App() {
             <Route path="/admin/perfil" element={<ChangePassword />} />
             <Route path="/admin/usuarios" element={<UserManagement />} />
           </Route>
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />
       </Router>
