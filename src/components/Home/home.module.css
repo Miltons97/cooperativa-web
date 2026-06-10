@@ -296,7 +296,8 @@
 }
 
 @media (max-width: 768px) {
-  .heroMain { padding: 4.5rem 16px 2rem; }
+  .hero { min-height: auto; }
+  .heroMain { padding: 4.5rem 16px 2rem; gap: 1.5rem; }
   .logo { max-width: 240px; }
   .cardsSection { padding: 2rem 16px 5rem; }
   .pageContainer::after {
@@ -316,7 +317,7 @@
       ),
       url("/assets/PinosVerdesFB.png") top center / 200% auto no-repeat;
   }
-  .eyebrow      { margin-top: 100px; }
+  .eyebrow      { margin-top: 60px; }
   .title        { font-size: 2rem; }
   .logo         { max-width: 200px; }
   .cardsSection { padding: 2rem 12px 4rem; }
