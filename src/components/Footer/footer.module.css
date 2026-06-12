@@ -7,7 +7,7 @@
 
 .footerContainer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1fr 1.5fr;
   gap: 40px;
   max-width: 1200px;
   margin: auto;
@@ -105,14 +105,27 @@
 
 @media (max-width: 768px) {
   .footer {
-    padding: 40px 15px 10px;
+    padding: 30px 12px 10px;
   }
   .footerContainer {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
     text-align: center;
   }
+  .footerColumn h3 {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+  }
+  .footerColumn p {
+    font-size: 0.75rem;
+    margin-bottom: 4px;
+  }
+  .footerColumn a {
+    font-size: 0.75rem;
+  }
   .footerColumn ul li {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
   .footerColumn a:hover {
     padding-left: 0;
@@ -120,11 +133,24 @@
   .socialRow {
     justify-content: center;
   }
+  .socialLink {
+    width: 34px;
+    height: 34px;
+  }
+  .footerBottom {
+    margin-top: 20px;
+    font-size: 0.7rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .footerColumn h3 { font-size: 0.9rem; }
-  .footerBottom    { font-size: 0.72rem; }
+  .footerContainer {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .footerColumn h3 { font-size: 0.78rem; }
+  .footerColumn p  { font-size: 0.72rem; }
+  .footerBottom    { font-size: 0.68rem; }
 }
 
 @media (max-width: 360px) {

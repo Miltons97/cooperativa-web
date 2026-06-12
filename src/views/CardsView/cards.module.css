@@ -92,6 +92,10 @@ box-shadow:
   transition-duration: 0.15s;
 }
 
+.cardGreen::before {
+  display: none;
+}
+
 .cardGreen {
   background: linear-gradient(150deg, #1c8038 0%, #156030 50%, #0f4d26 100%);
   color: #fff;
@@ -326,58 +330,89 @@ box-shadow:
   .cardsContainer {
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0 1.5rem;
   }
   .card {
-    width: 90%;
-    max-width: 360px;
+    width: 88%;
+    max-width: 340px;
+    padding: 1.2rem 1.1rem 1rem;
+    gap: 0.35rem;
+  }
+  .cardIconBox {
+    width: 44px;
+    height: 44px;
+  }
+  .cardIcon {
+    font-size: 1.2rem;
+  }
+  .cardTitle {
+    font-size: 0.88rem;
+  }
+  .cardList li {
+    font-size: 0.73rem;
+    padding: 0.35rem 0;
+  }
+  .listLabel {
+    font-size: 0.70rem;
+    white-space: normal;
+    max-width: 52%;
+  }
+  .listVal {
+    font-size: 0.73rem;
+    max-width: 46%;
+    text-align: right;
+  }
+  .cardList li:only-child .listVal,
+  .cardList li .listVal:only-child {
+    text-align: left;
+    max-width: 100%;
+  }
+  .cardText {
+    font-size: 0.76rem;
+  }
+  .cardBrand {
+    padding-top: 0.6rem;
+  }
+  .brandLogo {
+    width: 20px;
+    height: 20px;
+  }
+  .brandName {
+    font-size: 0.65rem;
   }
 }
 
 @media (max-width: 480px) {
   .card {
-    padding: 1.5rem 1.25rem 1.2rem;
-    gap: 0.4rem;
+    width: 92%;
+    padding: 1rem 0.9rem 0.85rem;
   }
   .cardList li {
-    font-size: 0.75rem;
-    padding: 0.4rem 0;
+    flex-wrap: wrap;
+    gap: 0.1rem;
   }
   .listLabel {
-    white-space: normal;
-    max-width: 48%;
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
   }
   .listVal {
-    max-width: 48%;
-  }
-  .cardText {
-    font-size: 0.78rem;
+    text-align: left;
+    max-width: 100%;
   }
 }
 
 @media (max-width: 360px) {
   .card {
     width: 95%;
-    padding: 1.2rem 1rem 1rem;
+    padding: 0.9rem 0.8rem 0.8rem;
   }
   .cardTitle {
-    font-size: 0.9rem;
-  }
-  .cardList li {
-    font-size: 0.72rem;
-    flex-wrap: wrap;
-    gap: 0.2rem;
-  }
-  .listLabel {
-    width: 100%;
-    opacity: 0.55;
-    margin-right: 0;
-  }
-  .listVal {
-    text-align: left;
-    width: 100%;
+    font-size: 0.82rem;
   }
   .cardIconBox {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
   }
 }

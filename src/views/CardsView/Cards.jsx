@@ -23,15 +23,15 @@ function Cards() {
             <span className={styles.listVal}>(2302) 51-8297</span>
           </li>
           <li>
-            <span className={styles.listLabel}>Luz — Luiggi</span>
+            <span className={styles.listLabel}>Energía — Ing. Luiggi</span>
             <span className={styles.listVal}>(2302) 51-8301</span>
           </li>
           <li>
-            <span className={styles.listLabel}>Luz — E. Martini</span>
+            <span className={styles.listLabel}>Energía — E. Martini</span>
             <span className={styles.listVal}>(2302) 51-8306</span>
           </li>
           <li>
-            <span className={styles.listLabel}>Luz — Alta Italia</span>
+            <span className={styles.listLabel}>Energía — Alta Italia</span>
             <span className={styles.listVal}>(2302) 51-8307</span>
           </li>
           <li>
@@ -60,7 +60,7 @@ function Cards() {
         </div>
 
         <ul className={styles.cardList}>
-          <li><span className={styles.listVal}>Belgrano 654 — COPEOSPIL Ltda.</span></li>
+          <li><span className={styles.listVal}>Belgrano 324 — COPEOSPIL Ltda.</span></li>
           <li><span className={styles.listVal}>Pampa Pagos</span></li>
           <li><span className={styles.listVal}>Banco Nación</span></li>
           <li><span className={styles.listVal}>Red Link · Pago Mis Cuentas</span></li>

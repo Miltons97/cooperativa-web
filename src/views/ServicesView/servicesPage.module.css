@@ -161,6 +161,109 @@
   gap: 8px;
 }
 
+.scrollDots {
+  display: none;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(0, 51, 102, 0.2);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.dotActive {
+  background: #003366;
+  transform: scale(1.3);
+}
+
+.bannerSection {
+  margin-top: clamp(1.5rem, 15vh, 8rem);
+  border-radius: 20px;
+  overflow: hidden;
+  height: clamp(220px, 28vw, 340px);
+  background: url("/assets/luiggi1.jpg") center center / cover no-repeat;
+  position: relative;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bannerOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(0,15,50,0.55) 0%, rgba(0,30,80,0.30) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.bannerLogo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  background: rgba(200,210,230,0.18);
+  border: 2px solid rgba(200,210,230,0.45);
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 0 0 3px rgba(200,210,230,0.12), 0 4px 16px rgba(0,0,0,0.35);
+  backdrop-filter: blur(4px);
+}
+
+@media (min-width: 701px) {
+  .bannerLogo {
+    width: 90px;
+    height: 90px;
+    padding: 7px;
+  }
+}
+
+.br { display: none; }
+
+.bannerTitle {
+  font-size: clamp(0.95rem, 1.8vw, 1.35rem);
+  font-weight: 400;
+  font-style: italic;
+  color: #fff;
+  margin: 0;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  max-width: 680px;
+}
+
+.bannerSub {
+  font-size: clamp(0.75rem, 1.3vw, 0.92rem);
+  color: rgba(255,255,255,0.72);
+  margin: 0;
+  max-width: 420px;
+  line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+  .scrollDots { display: flex; }
+  .bannerSection {
+    height: 160px;
+    margin-top: 1rem;
+    border-radius: 14px;
+  }
+  .bannerLogo { width: 40px; height: 40px; }
+  .bannerTitle { font-size: 0.82rem; }
+  .bannerSub { font-size: 0.75rem; }
+}
+
+@media (max-width: 380px) {
+  .bannerSection { height: 140px; }
+  .bannerTitle { font-size: 1rem; }
+}
+
 .servicioContent {
   margin-top: clamp(2rem, 4vw, 3.5rem);
   max-width: 1400px;
@@ -198,7 +301,7 @@
 
   .servicioCard {
     flex: 0 0 calc(100vw - 32px);
-    height: 360px;
+    height: 210px;
     scroll-snap-align: center;
   }
 
@@ -223,7 +326,7 @@
 @media (max-width: 380px) {
   .servicioCard {
     flex: 0 0 calc(100vw - 32px);
-    height: 330px;
+    height: 240px;
     scroll-snap-align: center;
   }
   .serviciosTitle { font-size: 1.6rem; }

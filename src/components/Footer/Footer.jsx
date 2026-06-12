@@ -47,20 +47,11 @@ export default function Footer() {
         <div className={styles.footerColumn}>
           <h3>Ubicación</h3>
           <p>Ingeniero Luiggi, La Pampa</p>
-          <p>Belgrano 654</p>
+          <p>Belgrano 324</p>
         </div>
 
-        <div className={styles.footerColumn}>
-          <h3>Teléfonos</h3>
-          <p>Administración: (2302) 51-8297</p>
-          <p>Guardia Luz Ingeniero Luiggi: (2302) 51-8301</p>
-          <p>Guardia Luz Embajador Martini: (2302) 51-8306</p>
-          <p>Guardia Luz Alta Italia: (2302) 51-8307</p>
-          <p>Guardia Internet: (2302) 54-0924</p>
-          <p>Guardia Social: (2302)-444444</p>
-        </div>
 
-        <div className={styles.footerColumn}>
+<div className={styles.footerColumn}>
           <h3>Contacto</h3>
           <p>administracion@copeospil.com</p>
           <p>

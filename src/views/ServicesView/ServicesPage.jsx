@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./servicesPage.module.css";
 
@@ -46,9 +46,18 @@ const serviciosData = [
   },
 ];
 
+
 export default function ServicesPage() {
   const location = useLocation();
   const isServiciosHome = location.pathname === "/servicios";
+  const gridRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleScroll = useCallback(() => {
+    if (!gridRef.current) return;
+    const { scrollLeft, clientWidth } = gridRef.current;
+    setActiveIndex(Math.round(scrollLeft / clientWidth));
+  }, []);
 
   return (
     <div className={styles.serviciosContainer}>
@@ -61,7 +70,7 @@ export default function ServicesPage() {
             Accedé a la información de cada servicio de forma rápida y sencilla.
             Seleccioná una categoría para conocer más detalles.
           </p>
-          <div className={styles.serviciosGrid}>
+          <div className={styles.serviciosGrid} ref={gridRef} onScroll={handleScroll}>
             {serviciosData.map((serv) => (
               <Link key={serv.id} to={serv.route} className={styles.servicioCard}>
                 <img src={serv.image} alt={serv.name} className={styles.cardImage} />
@@ -73,6 +82,19 @@ export default function ServicesPage() {
                 </div>
               </Link>
             ))}
+          </div>
+
+          <div className={styles.scrollDots}>
+            {serviciosData.map((_, i) => (
+              <span key={i} className={`${styles.dot} ${i === activeIndex ? styles.dotActive : ""}`} />
+            ))}
+          </div>
+
+          <div className={styles.bannerSection}>
+            <div className={styles.bannerOverlay}>
+              <img src="/assets/LogoSinFondo.png" alt="COPEOSPIL" className={styles.bannerLogo} />
+              <h2 className={styles.bannerTitle}>Porque detrás de cada hogar hay una familia,<br className={styles.br} /> y detrás de cada familia, una historia<br className={styles.br} /> que merece ser acompañada.</h2>
+            </div>
           </div>
         </>
       )}
