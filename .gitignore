@@ -3,6 +3,9 @@
 .env.*
 !.env.example
 
+# Scripts con credenciales
+api/scripts/
+
 # Logs
 logs
 *.log
