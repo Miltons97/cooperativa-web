@@ -5,7 +5,7 @@ import styles from "./home.module.css";
 import { API_URL } from "../../config/api";
 
 // ── Configurar la URL del portal de pago online ──────────────────────────────
-const PAGO_ONLINE_URL = "https://www.coopfun.com.ar/cooperativas/copeospil";
+const PAGO_ONLINE_URL = "https://copeospil-001-site1.ctempurl.com/login";
 // ─────────────────────────────────────────────────────────────────────────────
 
 function Home() {
