@@ -80,7 +80,7 @@ function Water() {
             },
             {
               title: "¿Cómo solicito la suspensión del servicio?",
-              text: "Para solicitar la suspensión del servicio (no desconexión), es necesario presentarse en nuestras oficinas (Belgrano 654) y completar el formulario 'Suspensión a Pedido del Usuario'.\n\nDeberá adjuntar fotocopia de su Documento y la última factura de COPEOSPIL .Ltda.",
+              text: "Para solicitar la suspensión del servicio (no desconexión), es necesario presentarse en nuestras oficinas (Belgrano 324) y completar el formulario 'Suspensión a Pedido del Usuario'.\n\nDeberá adjuntar fotocopia de su Documento y la última factura de COPEOSPIL .Ltda.",
             },
             {
               title: "El Medidor ¿Qué es y cómo leerlo?",
