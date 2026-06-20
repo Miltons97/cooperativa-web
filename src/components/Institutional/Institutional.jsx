@@ -3,8 +3,24 @@ import styles from "./institutional.module.css";
 
 function Institutional() {
   const sliderImages = [
+    "/assets/Sede1_001.jpg",
+    "/assets/Historica1.jpg",
+    "/assets/Historica2.jpg",
     "/assets/Lineas1.jpg",
+    "/assets/Historica5.jpg",
+    "/assets/Historica6.jpg",
     "/assets/Galpon1.jpg",
+    "/assets/Historica7.jpg",
+    "/assets/Historica8.jpg",
+    "/assets/VIEJA USINA ING. LUIGGI_001.jpg",
+    "/assets/Historica11.jpg",
+    "/assets/Historica12.jpg",
+    "/assets/Trabajando en Subestaciones_001.jpg",
+    "/assets/Historica13.jpg",
+    "/assets/Historica14.jpg",
+    "/assets/4-CASA DE LA CULTURA - EX USINA_001.jpg",
+    "/assets/lagunaEmbajador.jpg",
+    "/assets/luiggi1.jpg",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -14,7 +30,7 @@ function Institutional() {
       setCurrentIndex((prev) =>
         prev === sliderImages.length - 1 ? 0 : prev + 1
       );
-    }, 10000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
