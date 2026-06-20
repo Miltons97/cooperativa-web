@@ -30,7 +30,7 @@
 .heroBanner {
   position: relative;
   width: 100%;
-  min-height: clamp(280px, 45vh, 480px);
+  min-height: clamp(420px, 72vh, 700px);
   background: linear-gradient(135deg, #001a40 0%, #003070 60%, #00204e 100%);
   overflow: hidden;
   display: flex;
