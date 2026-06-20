@@ -27,46 +27,26 @@
   min-height: 100vh;
 }
 
-.sliderContainer {
+.heroBanner {
   position: relative;
   width: 100%;
-  height: 88vh;
-  min-height: 480px;
-  max-height: 860px;
-  overflow: hidden;
+  height: clamp(220px, 38vh, 400px);
+  background: linear-gradient(135deg, #001a40 0%, #003070 60%, #00204e 100%);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #00112e;
+  align-items: flex-end;
+  overflow: hidden;
 }
 
-.sliderImage {
+.heroBannerOverlay {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center center;
-  display: block;
-  transition: opacity 0.8s ease;
+  background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.04) 0%, transparent 70%);
 }
 
-.sliderOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 15, 40, 0.35) 0%,
-    rgba(0, 15, 40, 0.55) 100%
-  );
-  z-index: 1;
-}
-
-.sliderBottomLeft {
-  position: absolute;
-  bottom: clamp(20px, 4vh, 48px);
-  left: clamp(20px, 4vw, 60px);
+.heroBannerContent {
+  position: relative;
   z-index: 2;
+  padding: clamp(20px, 4vw, 48px);
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
@@ -87,36 +67,35 @@
   letter-spacing: -0.02em;
   line-height: 1;
   margin: 0;
-  text-shadow: 0 2px 16px rgba(0,0,0,0.5);
 }
 
 .sliderSub {
   font-size: clamp(0.78rem, 1.3vw, 0.92rem);
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.55);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin: 0;
+  margin: 0 0 clamp(16px, 3vw, 36px);
 }
 
 .aniosBadge {
   position: absolute;
-  bottom: clamp(16px, 3vh, 40px);
-  right: clamp(20px, 4vw, 60px);
+  top: 50%;
+  right: clamp(24px, 5vw, 72px);
+  transform: translateY(-50%);
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(0, 20, 55, 0.72);
-  border: 1px solid rgba(240, 192, 64, 0.45);
-  border-radius: 14px;
-  padding: clamp(10px, 2vw, 18px) clamp(14px, 2.5vw, 24px);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  gap: 0.1rem;
+  background: rgba(0, 10, 35, 0.6);
+  border: 1px solid rgba(240, 192, 64, 0.5);
+  border-radius: 16px;
+  padding: clamp(12px, 2vw, 20px) clamp(18px, 3vw, 32px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .aniosNum {
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-size: clamp(2.8rem, 6vw, 5rem);
   font-weight: 700;
   color: #f0c040;
   line-height: 1;
@@ -124,7 +103,7 @@
 }
 
 .aniosLabel {
-  font-size: clamp(0.65rem, 1.3vw, 0.9rem);
+  font-size: clamp(0.65rem, 1.2vw, 0.85rem);
   font-weight: 700;
   color: #fff;
   letter-spacing: 0.4em;
@@ -132,12 +111,116 @@
 }
 
 .aniosFrase {
-  font-size: clamp(0.6rem, 1vw, 0.75rem);
-  color: rgba(255,255,255,0.65);
+  font-size: clamp(0.58rem, 0.9vw, 0.72rem);
+  color: rgba(255,255,255,0.6);
   text-align: center;
   margin: 0.5rem 0 0;
   line-height: 1.5;
   font-style: italic;
+}
+
+.galeriaTitle {
+  margin-top: 2.5rem !important;
+}
+
+.galeriaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 3rem;
+}
+
+.galeriaItem {
+  border: none;
+  padding: 0;
+  background: #001a40;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 4/3;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.galeriaItem:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.galeriaImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.modalImg {
+  max-width: 85vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 8px 60px rgba(0,0,0,0.6);
+}
+
+.modalClose {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.modalClose:hover { opacity: 1; }
+
+.modalPrev, .modalNext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 8px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.modalPrev { left: -52px; }
+.modalNext { right: -52px; }
+.modalPrev:hover, .modalNext:hover { opacity: 1; }
+
+.modalCounter {
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+  margin: 0;
 }
 
 .institucionalContent {
@@ -296,28 +379,24 @@
     grid-template-columns: 1fr;
   }
 
-  .sliderContainer {
-    height: 70vh;
-    min-height: 320px;
+  .galeriaGrid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
   }
-  .sliderContent {
-    flex-direction: column;
-    gap: 1.5rem;
-    text-align: center;
+  .aniosBadge {
+    top: auto;
+    bottom: 12px;
+    right: 12px;
+    transform: none;
   }
-  .sliderDivider {
-    width: clamp(60px, 20vw, 120px);
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(240,192,64,0.7), transparent);
-  }
-  .sliderLeft { align-items: center; }
 }
 
 @media (max-width: 600px) {
-  .sliderContainer {
-    height: 60vh;
-    min-height: 280px;
+  .galeriaGrid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 7px;
   }
+  .modalPrev { left: -38px; }
+  .modalNext { right: -38px; }
 
   .institucionalContent {
     padding: 2.5rem 16px;

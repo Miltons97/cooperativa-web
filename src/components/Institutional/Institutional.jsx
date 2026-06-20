@@ -1,50 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./institutional.module.css";
 
+const fotos = [
+  "/assets/Sede1_001.jpg",
+  "/assets/Historica1.jpg",
+  "/assets/Historica2.jpg",
+  "/assets/Lineas1.jpg",
+  "/assets/Historica5.jpg",
+  "/assets/Historica6.jpg",
+  "/assets/Galpon1.jpg",
+  "/assets/Historica7.jpg",
+  "/assets/Historica8.jpg",
+  "/assets/VIEJA USINA ING. LUIGGI_001.jpg",
+  "/assets/Historica11.jpg",
+  "/assets/Historica12.jpg",
+  "/assets/Trabajando en Subestaciones_001.jpg",
+  "/assets/Historica13.jpg",
+  "/assets/Historica14.jpg",
+  "/assets/4-CASA DE LA CULTURA - EX USINA_001.jpg",
+  "/assets/luiggi1.jpg",
+];
+
 function Institutional() {
-  const sliderImages = [
-    "/assets/Sede1_001.jpg",
-    "/assets/Historica1.jpg",
-    "/assets/Historica2.jpg",
-    "/assets/Lineas1.jpg",
-    "/assets/Historica5.jpg",
-    "/assets/Historica6.jpg",
-    "/assets/Galpon1.jpg",
-    "/assets/Historica7.jpg",
-    "/assets/Historica8.jpg",
-    "/assets/VIEJA USINA ING. LUIGGI_001.jpg",
-    "/assets/Historica11.jpg",
-    "/assets/Historica12.jpg",
-    "/assets/Trabajando en Subestaciones_001.jpg",
-    "/assets/Historica13.jpg",
-    "/assets/Historica14.jpg",
-    "/assets/4-CASA DE LA CULTURA - EX USINA_001.jpg",
-    "/assets/luiggi1.jpg",
-  ];
+  const [modalIdx, setModalIdx] = useState(null);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) =>
-        prev === sliderImages.length - 1 ? 0 : prev + 1
-      );
-    }, 8000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const prev = () => setModalIdx((i) => (i === 0 ? fotos.length - 1 : i - 1));
+  const next = () => setModalIdx((i) => (i === fotos.length - 1 ? 0 : i + 1));
 
   return (
     <div className={styles.institucionalContainer}>
 
-      <div className={styles.sliderContainer}>
-        <img
-          src={sliderImages[currentIndex]}
-          alt="Institucional"
-          className={styles.sliderImage}
-        />
-        <div className={styles.sliderOverlay} />
-        <div className={styles.sliderBottomLeft}>
+      <div className={styles.heroBanner}>
+        <div className={styles.heroBannerOverlay} />
+        <div className={styles.heroBannerContent}>
           <span className={styles.sliderSince}>1956 — 2026</span>
           <h1 className={styles.sliderTitle}>Institucional</h1>
           <p className={styles.sliderSub}>COPEOSPIL Ltda.</p>
@@ -57,56 +45,52 @@ function Institutional() {
       </div>
 
       <section className={styles.institucionalContent}>
-<h2>Quiénes somos</h2>
-<p>
-  La Cooperativa Eléctrica de Servicios Públicos COPEOSPIL Ltda. nació por decisión
-  de la comunidad de Ingeniero Luiggi, reunida en asamblea popular el 30 de junio de 1956,
-  con el objetivo de brindar el servicio de energía eléctrica a la localidad.
-</p>
+        <h2>Quiénes somos</h2>
+        <p>
+          La Cooperativa Eléctrica de Servicios Públicos COPEOSPIL Ltda. nació por decisión
+          de la comunidad de Ingeniero Luiggi, reunida en asamblea popular el 30 de junio de 1956,
+          con el objetivo de brindar el servicio de energía eléctrica a la localidad.
+        </p>
+        <p>
+          Con el paso de los años, la cooperativa amplió sus servicios y su alcance regional.
+          El 3 de diciembre de 1971 comenzó la extensión hacia las localidades de Embajador Martini
+          y Alta Italia. En 1983 quedaron oficialmente inaugurados los primeros 250 kilómetros de
+          líneas rurales, fortaleciendo el desarrollo productivo de la zona.
+        </p>
+        <p>
+          Posteriormente, COPEOSPIL incorporó nuevos servicios esenciales para la comunidad:
+          agua de red en 1984, planta de agua mineralizada en 1991, servicio de sepelio desde 1999
+          e internet desde 2008, evolucionando con el tiempo hacia la conectividad mediante fibra
+          óptica al hogar (FTTH).
+        </p>
+        <p>
+          Actualmente, la cooperativa cubre la totalidad de Ingeniero Luiggi con disponibilidad
+          de conectividad de fibra óptica, brindando un servicio moderno y de calidad para hogares,
+          comercios e instituciones.
+        </p>
+        <p>
+          Desde sus inicios hasta hoy, la cooperativa continúa creciendo junto a la comunidad,
+          sosteniendo los valores de compromiso, solidaridad y desarrollo para Ingeniero Luiggi, Embajador Martini, Alta Italia y Ojeda.
+        </p>
 
-<p>
-  Con el paso de los años, la cooperativa amplió sus servicios y su alcance regional.
-  El 3 de diciembre de 1971 comenzó la extensión hacia las localidades de Embajador Martini
-  y Alta Italia. En 1983 quedaron oficialmente inaugurados los primeros 250 kilómetros de
-  líneas rurales, fortaleciendo el desarrollo productivo de la zona.
-</p>
-
-<p>
-  Posteriormente, COPEOSPIL incorporó nuevos servicios esenciales para la comunidad:
-  agua de red en 1984, planta de agua mineralizada en 1991, servicio de sepelio desde 1999
-  e internet desde 2008, evolucionando con el tiempo hacia la conectividad mediante fibra
-  óptica al hogar (FTTH).
-</p>
-
-<p>
-  Actualmente, la cooperativa cubre la totalidad de Ingeniero Luiggi con disponibilidad
-  de conectividad de fibra óptica, brindando un servicio moderno y de calidad para hogares,
-  comercios e instituciones.
-</p>
-
-<p>
-  Desde sus inicios hasta hoy, la cooperativa continúa creciendo junto a la comunidad,
-  sosteniendo los valores de compromiso, solidaridad y desarrollo para Ingeniero Luiggi, Embajador Martini, Alta Italia y Ojeda.
-</p>
-
+        <h2 className={styles.galeriaTitle}>Galería Histórica</h2>
+        <div className={styles.galeriaGrid}>
+          {fotos.map((src, i) => (
+            <button key={i} className={styles.galeriaItem} onClick={() => setModalIdx(i)}>
+              <img src={src} alt={`Foto histórica ${i + 1}`} className={styles.galeriaImg} />
+            </button>
+          ))}
+        </div>
 
         <div className={styles.mvvGrid}>
           <div className={styles.mvvItem}>
             <h3>Misión</h3>
-            <p>
-              Brindar servicios públicos eficientes y confiables, priorizando el
-              bienestar de nuestros asociados y el desarrollo sustentable.
-            </p>
+            <p>Brindar servicios públicos eficientes y confiables, priorizando el bienestar de nuestros asociados y el desarrollo sustentable.</p>
           </div>
-
           <div className={styles.mvvItem}>
             <h3>Visión</h3>
-            <p>
-              Ser una cooperativa referente en la región por su compromiso
-              social, innovación y transparencia en la gestión.
-            </p>
+            <p>Ser una cooperativa referente en la región por su compromiso social, innovación y transparencia en la gestión.</p>
           </div>
-
           <div className={styles.mvvItem}>
             <h3>Valores</h3>
             <ul>
@@ -120,7 +104,6 @@ function Institutional() {
         </div>
 
         <h2>Autoridades</h2>
-
         <div className={styles.autoridadesGrid}>
           <div className={styles.autoridadItem}>Presidente: Tarditi Marcelo Javier</div>
           <div className={styles.autoridadItem}>Vicepresidente: Gorodo Rubén Omar</div>
@@ -136,8 +119,20 @@ function Institutional() {
           <div className={styles.autoridadItem}>Vocal Suplente: Muñoz Pedro Matías</div>
           <div className={styles.autoridadItem}>Vocal Suplente: Garro Vanesa Lujan</div>
         </div>
-
       </section>
+
+      {modalIdx !== null && (
+        <div className={styles.modal} onClick={() => setModalIdx(null)}>
+          <div className={styles.modalBox} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.modalClose} onClick={() => setModalIdx(null)}>✕</button>
+            <button className={styles.modalPrev} onClick={prev}>‹</button>
+            <img src={fotos[modalIdx]} alt="Foto histórica" className={styles.modalImg} />
+            <button className={styles.modalNext} onClick={next}>›</button>
+            <p className={styles.modalCounter}>{modalIdx + 1} / {fotos.length}</p>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
