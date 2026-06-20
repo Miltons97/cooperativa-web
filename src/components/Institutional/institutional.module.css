@@ -27,16 +27,15 @@
   min-height: 100vh;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=IM+Fell+English:ital@1&display=swap');
 
 .heroBanner {
   position: relative;
   width: 100%;
-  min-height: clamp(480px, 80vh, 780px);
+  min-height: 100vh;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(180,130,0,0.08) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 50%, rgba(0,60,140,0.25) 0%, transparent 55%),
-    linear-gradient(160deg, #0a0e1a 0%, #0d1f3c 40%, #091528 100%);
+    radial-gradient(ellipse at 50% 40%, rgba(180,130,0,0.07) 0%, transparent 60%),
+    linear-gradient(160deg, #080c18 0%, #0c1a32 45%, #070f1e 100%);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -45,6 +44,18 @@
 
 .heroBannerOverlay { display: none; }
 
+.bgLogo {
+  position: absolute;
+  width: clamp(320px, 55vw, 680px);
+  opacity: 0.04;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  filter: grayscale(1);
+}
+
 .bannerCenter {
   position: relative;
   z-index: 2;
@@ -52,62 +63,101 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 0.4rem;
-  padding: 2rem;
+  gap: 0.5rem;
+  padding: 5rem 2rem 4rem;
 }
 
-.bannerLogo {
-  width: clamp(70px, 10vw, 120px);
-  opacity: 0.95;
-  filter: drop-shadow(0 0 18px rgba(240,192,64,0.3));
-  margin-bottom: 0.5rem;
+.institucionalTitulo {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  color: rgba(240,192,64,0.6);
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
 }
 
 .aniversario {
   display: flex;
   align-items: baseline;
-  gap: 0.3rem;
+  gap: 0.5rem;
   line-height: 1;
 }
 
 .aniosNum {
-  font-size: clamp(5rem, 14vw, 11rem);
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(6rem, 16vw, 13rem);
   font-weight: 900;
   color: transparent;
-  background: linear-gradient(180deg, #f5d060 0%, #c8960a 60%, #a07000 100%);
+  background: linear-gradient(175deg, #f8e070 0%, #d4a012 45%, #8a6000 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   line-height: 1;
-  filter: drop-shadow(0 2px 24px rgba(240,192,64,0.4));
+  filter: drop-shadow(0 4px 32px rgba(240,192,64,0.35));
 }
 
 .aniosLabel {
-  font-size: clamp(1.4rem, 3.5vw, 3rem);
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.6rem, 4vw, 3.4rem);
   font-weight: 700;
-  color: #e8c84a;
-  letter-spacing: 0.45em;
-  text-transform: uppercase;
+  color: #d4a012;
+  letter-spacing: 0.15em;
   align-self: flex-end;
-  padding-bottom: 0.6em;
+  padding-bottom: 1em;
 }
 
 .frase {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(1.6rem, 3.8vw, 3rem);
-  color: rgba(255, 240, 190, 0.92);
-  margin: 0.4rem 0 0.2rem;
-  line-height: 1.4;
-  text-shadow: 0 2px 20px rgba(200,150,0,0.3);
-  letter-spacing: 0.02em;
+  font-family: 'IM Fell English', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.4rem, 3.2vw, 2.6rem);
+  color: rgba(255, 242, 195, 0.88);
+  margin: 0.6rem 0 0.3rem;
+  line-height: 1.5;
+  text-shadow: 0 2px 24px rgba(200,150,0,0.25);
 }
 
 .fechas {
-  font-size: clamp(0.7rem, 1.3vw, 0.95rem);
-  color: rgba(255,255,255,0.45);
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  margin-top: 0.3rem;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(0.6rem, 1.1vw, 0.82rem);
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.35em;
+  margin-top: 0.5rem;
+}
+
+.scrollArrow {
+  position: absolute;
+  bottom: clamp(20px, 4vh, 40px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  background: none;
+  border: 1.5px solid rgba(240,192,64,0.4);
+  border-radius: 50%;
+  width: clamp(40px, 5vw, 56px);
+  height: clamp(40px, 5vw, 56px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgba(240,192,64,0.7);
+  animation: bounceArrow 2s ease-in-out infinite;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.scrollArrow:hover {
+  border-color: rgba(240,192,64,0.9);
+  color: #f0c040;
+}
+
+.scrollArrow svg {
+  width: 60%;
+  height: 60%;
+}
+
+@keyframes bounceArrow {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
 }
 
 .polaroid {

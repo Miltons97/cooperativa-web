@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styles from "./institutional.module.css";
 
 const fotos = [
@@ -22,16 +22,21 @@ const fotos = [
 ];
 
 const polaroids = [
-  { src: fotos[0],  style: { top: "8%",  left: "2%",   rotate: "-7deg"  } },
-  { src: fotos[1],  style: { top: "5%",  right: "3%",  rotate: "6deg"   } },
-  { src: fotos[2],  style: { bottom: "6%", left: "1%", rotate: "5deg"   } },
-  { src: fotos[3],  style: { bottom: "4%", right: "2%",rotate: "-6deg"  } },
-  { src: fotos[5],  style: { top: "18%", left: "18%",  rotate: "-4deg"  } },
-  { src: fotos[7],  style: { top: "15%", right: "17%", rotate: "8deg"   } },
+  { src: fotos[0],  style: { top: "8%",    left: "2%",    rotate: "-7deg" } },
+  { src: fotos[1],  style: { top: "5%",    right: "3%",   rotate: "6deg"  } },
+  { src: fotos[2],  style: { bottom: "8%", left: "1%",    rotate: "5deg"  } },
+  { src: fotos[3],  style: { bottom: "6%", right: "2%",   rotate: "-6deg" } },
+  { src: fotos[5],  style: { top: "20%",   left: "17%",   rotate: "-4deg" } },
+  { src: fotos[7],  style: { top: "18%",   right: "16%",  rotate: "8deg"  } },
 ];
 
 function Institutional() {
   const [modalIdx, setModalIdx] = useState(null);
+  const contentRef = useRef(null);
+
+  const scrollToContent = () => {
+    contentRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const prev = () => setModalIdx((i) => (i === 0 ? fotos.length - 1 : i - 1));
   const next = () => setModalIdx((i) => (i === fotos.length - 1 ? 0 : i + 1));
@@ -40,6 +45,8 @@ function Institutional() {
     <div className={styles.institucionalContainer}>
 
       <div className={styles.heroBanner}>
+
+        <img src="/assets/LogoSinFondo.png" alt="" className={styles.bgLogo} />
 
         {polaroids.map((p, i) => (
           <button
@@ -53,18 +60,24 @@ function Institutional() {
         ))}
 
         <div className={styles.bannerCenter}>
-          <img src="/assets/LogoSinFondo.png" alt="COPEOSPIL" className={styles.bannerLogo} />
+          <h1 className={styles.institucionalTitulo}>Institucional</h1>
           <div className={styles.aniversario}>
             <span className={styles.aniosNum}>70</span>
-            <span className={styles.aniosLabel}>AÑOS</span>
+            <span className={styles.aniosLabel}>Años</span>
           </div>
           <p className={styles.frase}>"Trabajando juntos,<br />construyendo futuro"</p>
           <span className={styles.fechas}>1956 · 30 de Junio · 2026</span>
         </div>
 
+        <button className={styles.scrollArrow} onClick={scrollToContent} aria-label="Ver más">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+
       </div>
 
-      <section className={styles.institucionalContent}>
+      <section className={styles.institucionalContent} ref={contentRef}>
         <h2>Quiénes somos</h2>
         <p>
           La Cooperativa Eléctrica de Servicios Públicos COPEOSPIL Ltda. nació por decisión
