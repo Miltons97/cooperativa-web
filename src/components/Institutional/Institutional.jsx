@@ -29,7 +29,7 @@ function Institutional() {
       setCurrentIndex((prev) =>
         prev === sliderImages.length - 1 ? 0 : prev + 1
       );
-    }, 4000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, []);
