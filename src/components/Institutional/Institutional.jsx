@@ -32,15 +32,27 @@ function Institutional() {
 
       <div className={styles.heroBanner}>
         <div className={styles.heroBannerOverlay} />
-        <div className={styles.heroBannerContent}>
-          <span className={styles.sliderSince}>1956 — 2026</span>
-          <h1 className={styles.sliderTitle}>Institucional</h1>
-          <p className={styles.sliderSub}>COPEOSPIL Ltda.</p>
-        </div>
+
         <div className={styles.aniosBadge}>
           <span className={styles.aniosNum}>70</span>
           <span className={styles.aniosLabel}>AÑOS</span>
           <p className={styles.aniosFrase}>Trabajando juntos,<br />construyendo futuro</p>
+        </div>
+
+        <div className={styles.bannerInner}>
+          <div className={styles.heroBannerContent}>
+            <span className={styles.sliderSince}>1956 — 2026</span>
+            <h1 className={styles.sliderTitle}>Institucional</h1>
+            <p className={styles.sliderSub}>COPEOSPIL Ltda.</p>
+          </div>
+
+          <div className={styles.bannerMosaico}>
+            {fotos.slice(0, 6).map((src, i) => (
+              <button key={i} className={styles.mosaicItem} onClick={() => setModalIdx(i)}>
+                <img src={src} alt={`Foto ${i + 1}`} className={styles.mosaicImg} />
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
