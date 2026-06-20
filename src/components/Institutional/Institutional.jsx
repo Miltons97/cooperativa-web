@@ -19,7 +19,6 @@ function Institutional() {
     "/assets/Historica13.jpg",
     "/assets/Historica14.jpg",
     "/assets/4-CASA DE LA CULTURA - EX USINA_001.jpg",
-    "/assets/lagunaEmbajador.jpg",
     "/assets/luiggi1.jpg",
   ];
 
