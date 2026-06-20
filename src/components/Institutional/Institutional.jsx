@@ -27,12 +27,12 @@ const fotos = [
 ];
 
 const posiciones = [
-  { top: "8%",    left: "2%",    rotate: "-7deg" },
-  { top: "5%",    right: "3%",   rotate: "6deg"  },
+  { top: "14%",   left: "2%",    rotate: "-7deg" },
+  { top: "12%",   right: "3%",   rotate: "6deg"  },
   { bottom: "8%", left: "1%",    rotate: "5deg"  },
   { bottom: "6%", right: "2%",   rotate: "-6deg" },
-  { top: "20%",   left: "17%",   rotate: "-4deg" },
-  { top: "18%",   right: "16%",  rotate: "8deg"  },
+  { top: "28%",   left: "16%",   rotate: "-4deg" },
+  { top: "26%",   right: "15%",  rotate: "8deg"  },
 ];
 
 function Institutional() {
@@ -81,6 +81,14 @@ function Institutional() {
           </div>
           <p className={styles.frase}>"Trabajando juntos,<br />construyendo futuro"</p>
           <span className={styles.fechas}>1956 · 30 de Junio · 2026</span>
+
+          <div className={styles.mobileFotos}>
+            {fotosGrupo.map((src, i) => (
+              <button key={i} className={styles.mobileFotoBtn} onClick={() => setModalIdx(fotos.indexOf(src))}>
+                <img src={src} alt="" className={styles.mobileFotoImg} />
+              </button>
+            ))}
+          </div>
         </div>
 
         <button className={styles.scrollArrow} onClick={scrollToContent} aria-label="Ver más">

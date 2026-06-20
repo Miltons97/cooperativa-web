@@ -514,42 +514,66 @@
   .polaroid { width: clamp(65px, 13vw, 100px); padding: 4px 4px 13px; }
 }
 
-@media (max-width: 640px) {
-  /* Ocultar polaroids del interior en mobile para no tapar el texto */
-  .polaroid:nth-child(6),
-  .polaroid:nth-child(7) { display: none; }
+/* fila de fotos mobile — oculta en desktop */
+.mobileFotos {
+  display: none;
+}
 
-  .polaroid { width: clamp(55px, 18vw, 80px); padding: 3px 3px 10px; }
+@media (max-width: 640px) {
+  /* ocultar todos los polaroids flotantes en mobile */
+  .polaroid { display: none; }
+
+  /* mostrar la fila de fotos dentro del bannerCenter */
+  .mobileFotos {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1.2rem;
+    width: 100%;
+  }
+
+  .mobileFotoBtn {
+    border: none;
+    padding: 4px 4px 12px;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+    cursor: pointer;
+    width: calc(33% - 6px);
+    aspect-ratio: 1;
+    transform: rotate(var(--rot, -2deg));
+  }
+
+  .mobileFotoBtn:nth-child(even) { --rot: 3deg; }
+  .mobileFotoBtn:nth-child(3n)   { --rot: -4deg; }
+
+  .mobileFotoImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: sepia(15%);
+  }
 
   .heroBanner { min-height: 100svh; }
-
-  .bannerCenter { padding: 4rem 1.5rem 3.5rem; }
-
-  .institucionalTitulo { font-size: clamp(0.7rem, 4vw, 1rem); letter-spacing: 0.35em; }
-
-  .aniosNum { font-size: clamp(4.5rem, 22vw, 8rem); }
-
-  .aniosLabel { font-size: clamp(1.2rem, 6vw, 2rem); }
-
-  .frase { font-size: clamp(1.2rem, 5.5vw, 1.8rem); }
-
+  .bannerCenter { padding: 3rem 1rem 2rem; }
+  .institucionalTitulo { font-size: clamp(0.65rem, 3.5vw, 0.95rem); letter-spacing: 0.35em; }
+  .aniosNum { font-size: clamp(4rem, 20vw, 7rem); }
+  .aniosLabel { font-size: clamp(1rem, 5.5vw, 1.8rem); }
+  .frase { font-size: clamp(1.1rem, 5vw, 1.6rem); }
   .galeriaGrid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 7px; }
-
   .modalPrev { left: -36px; }
   .modalNext { right: -36px; }
-
   .institucionalContent { padding: 2.5rem 16px; }
   .mvvItem { padding: 1.2rem; }
   .autoridadItem { font-size: 0.82rem; padding: 0.7rem 0.9rem; }
 }
 
 @media (max-width: 380px) {
-  .polaroid:nth-child(5),
-  .polaroid:nth-child(6),
-  .polaroid:nth-child(7) { display: none; }
-
-  .aniosNum { font-size: 5rem; }
-  .frase { font-size: 1.15rem; }
+  .aniosNum { font-size: 4rem; }
+  .frase { font-size: 1.1rem; }
   .institucionalContent > h2 { font-size: 1.35rem; }
   .mvvItem h3 { font-size: 0.82rem; }
+  .mobileFotoBtn { width: calc(50% - 5px); }
 }
