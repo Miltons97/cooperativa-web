@@ -1,5 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./institutional.module.css";
+
+const GRUPO_SIZE = 6;
+const INTERVALO_MS = 30 * 60 * 1000;
+const totalGrupos = Math.ceil(17 / GRUPO_SIZE);
+const getGrupoActual = () => Math.floor(Date.now() / INTERVALO_MS) % totalGrupos;
 
 const fotos = [
   "/assets/Sede1_001.jpg",
@@ -21,18 +26,27 @@ const fotos = [
   "/assets/luiggi1.jpg",
 ];
 
-const polaroids = [
-  { src: fotos[0],  style: { top: "8%",    left: "2%",    rotate: "-7deg" } },
-  { src: fotos[1],  style: { top: "5%",    right: "3%",   rotate: "6deg"  } },
-  { src: fotos[2],  style: { bottom: "8%", left: "1%",    rotate: "5deg"  } },
-  { src: fotos[3],  style: { bottom: "6%", right: "2%",   rotate: "-6deg" } },
-  { src: fotos[5],  style: { top: "20%",   left: "17%",   rotate: "-4deg" } },
-  { src: fotos[7],  style: { top: "18%",   right: "16%",  rotate: "8deg"  } },
+const posiciones = [
+  { top: "8%",    left: "2%",    rotate: "-7deg" },
+  { top: "5%",    right: "3%",   rotate: "6deg"  },
+  { bottom: "8%", left: "1%",    rotate: "5deg"  },
+  { bottom: "6%", right: "2%",   rotate: "-6deg" },
+  { top: "20%",   left: "17%",   rotate: "-4deg" },
+  { top: "18%",   right: "16%",  rotate: "8deg"  },
 ];
 
 function Institutional() {
   const [modalIdx, setModalIdx] = useState(null);
+  const [grupoIdx, setGrupoIdx] = useState(getGrupoActual);
   const contentRef = useRef(null);
+
+  useEffect(() => {
+    const timer = setInterval(() => setGrupoIdx(getGrupoActual()), INTERVALO_MS);
+    return () => clearInterval(timer);
+  }, []);
+
+  const fotosGrupo = fotos.slice(grupoIdx * GRUPO_SIZE, grupoIdx * GRUPO_SIZE + GRUPO_SIZE);
+  const polaroids = posiciones.map((pos, i) => ({ src: fotosGrupo[i] ?? fotos[i % fotos.length], style: pos }));
 
   const scrollToContent = () => {
     contentRef.current?.scrollIntoView({ behavior: "smooth" });
