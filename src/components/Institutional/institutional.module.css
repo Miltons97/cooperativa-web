@@ -506,43 +506,50 @@
 }
 
 @media (max-width: 900px) {
-  .mvvGrid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .autoridadesGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .polaroid { width: clamp(70px, 16vw, 110px); padding: 4px 4px 14px; }
+  .mvvGrid { grid-template-columns: 1fr; gap: 1rem; }
+  .autoridadesGrid { grid-template-columns: 1fr; }
   .galeriaGrid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+
+  /* En tablet los polaroids solo en esquinas extremas */
+  .polaroid { width: clamp(65px, 13vw, 100px); padding: 4px 4px 13px; }
 }
 
-@media (max-width: 600px) {
-  .galeriaGrid {
-    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-    gap: 7px;
-  }
-  .modalPrev { left: -38px; }
-  .modalNext { right: -38px; }
+@media (max-width: 640px) {
+  /* Ocultar polaroids del interior en mobile para no tapar el texto */
+  .polaroid:nth-child(6),
+  .polaroid:nth-child(7) { display: none; }
 
-  .institucionalContent {
-    padding: 2.5rem 16px;
-  }
+  .polaroid { width: clamp(55px, 18vw, 80px); padding: 3px 3px 10px; }
 
-  .mvvItem {
-    padding: 1.2rem;
-  }
+  .heroBanner { min-height: 100svh; }
 
-  .autoridadItem {
-    font-size: 0.82rem;
-    padding: 0.7rem 0.9rem;
-  }
+  .bannerCenter { padding: 4rem 1.5rem 3.5rem; }
+
+  .institucionalTitulo { font-size: clamp(0.7rem, 4vw, 1rem); letter-spacing: 0.35em; }
+
+  .aniosNum { font-size: clamp(4.5rem, 22vw, 8rem); }
+
+  .aniosLabel { font-size: clamp(1.2rem, 6vw, 2rem); }
+
+  .frase { font-size: clamp(1.2rem, 5.5vw, 1.8rem); }
+
+  .galeriaGrid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 7px; }
+
+  .modalPrev { left: -36px; }
+  .modalNext { right: -36px; }
+
+  .institucionalContent { padding: 2.5rem 16px; }
+  .mvvItem { padding: 1.2rem; }
+  .autoridadItem { font-size: 0.82rem; padding: 0.7rem 0.9rem; }
 }
 
 @media (max-width: 380px) {
-  .institucionalTitle { font-size: 1.5rem; }
+  .polaroid:nth-child(5),
+  .polaroid:nth-child(6),
+  .polaroid:nth-child(7) { display: none; }
+
+  .aniosNum { font-size: 5rem; }
+  .frase { font-size: 1.15rem; }
   .institucionalContent > h2 { font-size: 1.35rem; }
   .mvvItem h3 { font-size: 0.82rem; }
 }
