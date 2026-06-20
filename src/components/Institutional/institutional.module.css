@@ -46,11 +46,10 @@
 
 .bgLogo {
   position: absolute;
-  width: clamp(320px, 55vw, 680px);
-  opacity: 0.04;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: clamp(160px, 22vw, 280px);
+  opacity: 0.08;
+  bottom: 4%;
+  left: 18%;
   pointer-events: none;
   z-index: 0;
   filter: grayscale(1);
@@ -556,6 +555,7 @@
     filter: sepia(15%);
   }
 
+  .bgLogo { width: 70px; bottom: auto; left: 12px; top: 60px; opacity: 0.12; }
   .heroBanner { min-height: 100svh; }
   .bannerCenter { padding: 3rem 1rem 2rem; }
   .institucionalTitulo { font-size: clamp(0.65rem, 3.5vw, 0.95rem); letter-spacing: 0.35em; }
