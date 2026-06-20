@@ -78,7 +78,7 @@ export default function Footer() {
       </div>
 
       <div className={styles.footerBottom}>
-        <p>© 2025 - Cooperativa Eléctrica de Ingeniero Luiggi Ltda. - Todos los derechos reservados</p>
+        <p>© 2025 - COPEOSPIL Ltda. - Todos los derechos reservados</p>
         <p className={styles.dev}>Desarrollo Web / Creadores de Sitios</p>
       </div>
     </footer>

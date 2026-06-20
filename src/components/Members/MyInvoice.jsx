@@ -1,10 +1,5 @@
-import { useEffect } from "react";
-
 function MyInvoice() {
-  useEffect(() => {
-    window.location.href = "https://socios.copeospilltda.com/login";
-  }, []);
-
+  window.open("https://socios.copeospilltda.com/login", "_blank", "noopener,noreferrer");
   return null;
 }
 
