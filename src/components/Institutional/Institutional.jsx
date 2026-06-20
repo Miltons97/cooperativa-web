@@ -44,18 +44,15 @@ function Institutional() {
           className={styles.sliderImage}
         />
         <div className={styles.sliderOverlay} />
-        <div className={styles.sliderContent}>
-          <div className={styles.sliderLeft}>
-            <span className={styles.sliderSince}>1956 — 2026</span>
-            <h1 className={styles.sliderTitle}>Institucional</h1>
-            <p className={styles.sliderSub}>COPEOSPIL Ltda.</p>
-          </div>
-          <div className={styles.sliderDivider} />
-          <div className={styles.sliderRight}>
-            <span className={styles.aniosNum}>70</span>
-            <span className={styles.aniosLabel}>AÑOS</span>
-            <p className={styles.aniosFrase}>Trabajando juntos,<br />construyendo futuro</p>
-          </div>
+        <div className={styles.sliderBottomLeft}>
+          <span className={styles.sliderSince}>1956 — 2026</span>
+          <h1 className={styles.sliderTitle}>Institucional</h1>
+          <p className={styles.sliderSub}>COPEOSPIL Ltda.</p>
+        </div>
+        <div className={styles.aniosBadge}>
+          <span className={styles.aniosNum}>70</span>
+          <span className={styles.aniosLabel}>AÑOS</span>
+          <p className={styles.aniosFrase}>Trabajando juntos,<br />construyendo futuro</p>
         </div>
       </div>
 
