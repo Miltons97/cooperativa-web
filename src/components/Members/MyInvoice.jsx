@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 function MyInvoice() {
   useEffect(() => {
-    window.location.href = "https://copeospil-001-site1.ctempurl.com/login";
+    window.location.href = "https://socios.copeospilltda.com/login";
   }, []);
 
   return null;
