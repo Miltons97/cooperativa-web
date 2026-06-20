@@ -21,6 +21,15 @@ const fotos = [
   "/assets/luiggi1.jpg",
 ];
 
+const polaroids = [
+  { src: fotos[0],  style: { top: "8%",  left: "2%",   rotate: "-7deg"  } },
+  { src: fotos[1],  style: { top: "5%",  right: "3%",  rotate: "6deg"   } },
+  { src: fotos[2],  style: { bottom: "6%", left: "1%", rotate: "5deg"   } },
+  { src: fotos[3],  style: { bottom: "4%", right: "2%",rotate: "-6deg"  } },
+  { src: fotos[5],  style: { top: "18%", left: "18%",  rotate: "-4deg"  } },
+  { src: fotos[7],  style: { top: "15%", right: "17%", rotate: "8deg"   } },
+];
+
 function Institutional() {
   const [modalIdx, setModalIdx] = useState(null);
 
@@ -31,29 +40,28 @@ function Institutional() {
     <div className={styles.institucionalContainer}>
 
       <div className={styles.heroBanner}>
-        <div className={styles.heroBannerOverlay} />
 
-        <div className={styles.aniosBadge}>
-          <span className={styles.aniosNum}>70</span>
-          <span className={styles.aniosLabel}>AÑOS</span>
-          <p className={styles.aniosFrase}>Trabajando juntos,<br />construyendo futuro</p>
+        {polaroids.map((p, i) => (
+          <button
+            key={i}
+            className={styles.polaroid}
+            style={{ top: p.style.top, left: p.style.left, right: p.style.right, bottom: p.style.bottom, "--rot": p.style.rotate }}
+            onClick={() => setModalIdx(fotos.indexOf(p.src))}
+          >
+            <img src={p.src} alt="" className={styles.polaroidImg} />
+          </button>
+        ))}
+
+        <div className={styles.bannerCenter}>
+          <img src="/assets/LogoSinFondo.png" alt="COPEOSPIL" className={styles.bannerLogo} />
+          <div className={styles.aniversario}>
+            <span className={styles.aniosNum}>70</span>
+            <span className={styles.aniosLabel}>AÑOS</span>
+          </div>
+          <p className={styles.frase}>"Trabajando juntos,<br />construyendo futuro"</p>
+          <span className={styles.fechas}>1956 · 30 de Junio · 2026</span>
         </div>
 
-        <div className={styles.bannerInner}>
-          <div className={styles.heroBannerContent}>
-            <span className={styles.sliderSince}>1956 — 2026</span>
-            <h1 className={styles.sliderTitle}>Institucional</h1>
-            <p className={styles.sliderSub}>COPEOSPIL Ltda.</p>
-          </div>
-
-          <div className={styles.bannerMosaico}>
-            {fotos.slice(0, 6).map((src, i) => (
-              <button key={i} className={styles.mosaicItem} onClick={() => setModalIdx(i)}>
-                <img src={src} alt={`Foto ${i + 1}`} className={styles.mosaicImg} />
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
 
       <section className={styles.institucionalContent}>
