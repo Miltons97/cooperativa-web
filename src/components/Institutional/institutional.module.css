@@ -555,7 +555,7 @@
     filter: sepia(15%);
   }
 
-  .bgLogo { width: 70px; bottom: auto; left: 12px; top: 60px; opacity: 0.12; }
+  .bgLogo { width: 130px; bottom: auto; left: 12px; top: 90px; opacity: 0.12; }
   .heroBanner { min-height: 100svh; }
   .bannerCenter { padding: 3rem 1rem 2rem; }
   .institucionalTitulo { font-size: clamp(0.65rem, 3.5vw, 0.95rem); letter-spacing: 0.35em; }
