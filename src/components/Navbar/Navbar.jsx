@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const FACTURAS_URL = "https://copeospil-001-site1.ctempurl.com/login";
+const FACTURAS_URL = "https://socios.copeospilltda.com/login";
 import { useContext, useEffect, useState } from "react";
 import { InstitucionContext } from "../context/InstitutionContext";
 import { FaBars, FaTimes } from "react-icons/fa";
