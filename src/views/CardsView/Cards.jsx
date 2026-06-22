@@ -2,7 +2,7 @@ import React from "react";
 import { FaBolt, FaTint, FaLeaf, FaPhoneAlt, FaMapMarkerAlt, FaCreditCard, FaArrowRight } from "react-icons/fa";
 import styles from "./cards.module.css";
 
-const FACTURAS_URL = "https://socios.copeospilltda.com/login";
+const FACTURAS_URL = "https://copeospil-001-site1.ctempurl.com/login";
 
 function Cards() {
   return (
