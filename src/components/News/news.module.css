@@ -1,17 +1,17 @@
-﻿.novedadesContainer {
+.novedadesContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: "Space Grotesk", system-ui, sans-serif;
-  background: linear-gradient(135deg, #7b7a7a, #ffffff);
+  background: #f4f6f9;
   min-height: 100vh;
 }
 
 .sliderContainer {
   position: relative;
   width: 100vw;
-  height: 70vh;
+  height: 60vh;
   overflow: hidden;
   margin-left: calc(-50vw + 50%);
 }
@@ -20,175 +20,205 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 74%;
-  transform: scale(1.01);
-  transition: transform 6s ease;
-}
-
-.sliderImage:hover {
-  transform: scale(1.05);
+  object-position: center 60%;
 }
 
 .novedadesTitle {
   position: absolute;
   bottom: 30px;
   left: 30px;
-  font-size: 3rem;
-  font-weight: bold;
-  color: black;
-  background: rgba(255, 255, 255, 0.65);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(0, 40, 80, 0.55);
   padding: 12px 28px;
   border-radius: 12px;
-  backdrop-filter: blur(6px);
-  letter-spacing: 1px;
+  backdrop-filter: blur(8px);
+  letter-spacing: 2px;
 }
 
+/* ── GRID DE CARDS ── */
 .novedadesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  margin: 4rem 0;
-  width: 85%;
-  max-width: 1100px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.6rem;
+  margin: 3rem 0 4rem;
+  width: 90%;
+  max-width: 1200px;
 }
 
+/* ── CARD ── */
 .novedad {
   cursor: pointer;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
-  background: rgba(255,255,255,0.75);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .novedad:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.13);
 }
 
 .novedadImageContainer {
   position: relative;
-}
-
-.novedad img {
   width: 100%;
-  height: 160px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+  height: 190px;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
-.novedad:hover img {
-  transform: scale(1.05);
+.novedadImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.novedad:hover .novedadImageContainer img {
+  transform: scale(1.03);
 }
 
 .novedadCategory {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: #5B7F66;
-  color: white;
+  top: 12px;
+  left: 12px;
+  background: #003366;
+  color: #fff;
   padding: 4px 10px;
-  font-size: 0.7rem;
-  font-weight: bold;
+  font-size: 0.68rem;
+  font-weight: 700;
   border-radius: 6px;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
 }
 
 .novedadCaption {
-  padding: 0.8rem;
+  padding: 1rem 1.1rem 1.2rem;
   font-weight: 600;
-  font-size: 0.9rem;
-  line-height: 1.4;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: #1a2a3a;
+  flex: 1;
 }
 
+/* ── MODAL ── */
 .modalOverlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.65);
+  inset: 0;
+  background: rgba(0,0,0,0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 999;
   backdrop-filter: blur(4px);
+  padding: 1rem;
 }
 
 .modalContent {
-  background: white;
-  width: 90%;
-  max-width: 750px;
-  max-height: 90vh;
-  overflow-y: auto;
-  border-radius: 18px;
-  padding: 2rem;
-  position: relative;
-  animation: fadeIn 0.3s ease;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-}
-
-.modalImage {
+  background: #fff;
   width: 100%;
-  border-radius: 14px;
-  margin-bottom: 1rem;
+  max-width: 680px;
+  max-height: 88vh;
+  overflow-y: auto;
+  border-radius: 20px;
+  position: relative;
+  animation: fadeIn 0.25s ease;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
 }
 
-.modalContent h2 {
-  margin-bottom: 0.5rem;
+.modalImageContainer {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+  flex-shrink: 0;
 }
 
-.modalCategoria {
-  font-weight: bold;
-  color: #5B7F66;
-  margin-bottom: 1rem;
+.modalImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.modalCategoriaBadge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #003366;
+  color: #fff;
+  padding: 5px 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 6px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.modalBody {
+  padding: 1.6rem 2rem 2rem;
+}
+
+.modalBody h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0a1f3a;
+  margin: 0 0 1rem;
+  line-height: 1.4;
+  padding-right: 2rem;
+}
+
+.modalBody p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #4a5568;
+  margin: 0;
+  white-space: pre-wrap;
 }
 
 .modalClose {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background: #5B7F66;
-  color: white;
+  top: 14px;
+  right: 14px;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
   border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: background 0.2s ease;
+  z-index: 2;
 }
 
 .modalClose:hover {
-  background: #46624e;
+  background: rgba(0,0,0,0.7);
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 @media (max-width: 768px) {
-  .sliderContainer {
-    height: 50vh;
-  }
-
-  .novedadesTitle {
-    font-size: 2rem;
-    padding: 8px 16px;
-  }
-
-  .novedad img {
-    height: 140px;
-  }
-
-  .modalContent {
-    padding: 1.5rem;
-  }
+  .sliderContainer { height: 45vh; }
+  .novedadesTitle  { font-size: 1.8rem; padding: 8px 16px; }
+  .novedadesGrid   { grid-template-columns: 1fr; width: 92%; gap: 1.2rem; }
+  .novedadImageContainer { height: 200px; }
+  .modalImageContainer   { height: 220px; }
+  .modalBody { padding: 1.2rem 1.4rem 1.6rem; }
+  .modalBody h2 { font-size: 1.15rem; }
 }
