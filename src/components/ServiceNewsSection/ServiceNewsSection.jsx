@@ -15,6 +15,7 @@ export default function ServiceNewsSection({ categoria, title }) {
   const [noticias, setNoticias]     = useState([]);
   const [loading, setLoading]       = useState(true);
   const [selected, setSelected]     = useState(null);
+  const [heroRatio, setHeroRatio]   = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollRef = useRef(null);
 
@@ -82,7 +83,7 @@ export default function ServiceNewsSection({ categoria, title }) {
           {noticias.map((n) => {
             const img = n.imagen ? `${API_URL}${n.imagen}` : null;
             return (
-              <div key={n.id} className={styles.card} style={{ "--c": color }} onClick={() => setSelected(n)}>
+              <div key={n.id} className={styles.card} style={{ "--c": color }} onClick={() => { setSelected(n); setHeroRatio(null); }}>
                 <div className={styles.imageWrapper}>
                   {img ? (
                     <>
@@ -137,7 +138,10 @@ export default function ServiceNewsSection({ categoria, title }) {
       {selected && (
         <div className={styles.overlay} onClick={() => setSelected(null)}>
           <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-            <div className={styles.modalHero}>
+            <div
+              className={styles.modalHero}
+              style={heroRatio ? { aspectRatio: heroRatio } : undefined}
+            >
               {selected.imagen ? (
                 <>
                   <img
@@ -149,6 +153,9 @@ export default function ServiceNewsSection({ categoria, title }) {
                     src={`${API_URL}${selected.imagen}`}
                     alt={selected.titulo}
                     className={styles.modalHeroImg}
+                    onLoad={(e) =>
+                      setHeroRatio(e.target.naturalWidth / e.target.naturalHeight)
+                    }
                   />
                 </>
               ) : (

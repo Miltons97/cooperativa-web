@@ -136,7 +136,9 @@
 .modalImageContainer {
   position: relative;
   width: 100%;
-  height: 320px;
+  aspect-ratio: 16 / 9;
+  min-height: 220px;
+  max-height: 460px;
   overflow: hidden;
   border-radius: 20px 20px 0 0;
   flex-shrink: 0;
@@ -156,10 +158,11 @@
 }
 
 .modalImageMain {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   display: block;
 }
@@ -232,7 +235,7 @@
   .novedadesTitle  { font-size: 1.8rem; padding: 8px 16px; }
   .novedadesGrid   { grid-template-columns: 1fr; width: 92%; gap: 1.2rem; }
   .novedadImageContainer { height: 200px; }
-  .modalImageContainer   { height: 240px; }
+  .modalImageContainer   { min-height: 190px; max-height: 380px; }
   .modalBody { padding: 1.2rem 1.4rem 1.6rem; }
   .modalBody h2 { font-size: 1.15rem; }
 }

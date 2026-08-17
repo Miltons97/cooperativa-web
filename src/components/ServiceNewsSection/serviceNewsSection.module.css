@@ -404,7 +404,9 @@
 .modalHero {
   position: relative;
   width: 100%;
-  height: 330px;
+  aspect-ratio: 16 / 9;
+  min-height: 220px;
+  max-height: 460px;
   background: #070b12;
   overflow: hidden;
   display: flex;
@@ -433,7 +435,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center center;
   z-index: 1;
   display: block;
@@ -618,7 +620,7 @@
 @media (max-width: 680px) {
   .viewport    { max-width: min(280px, 92vw); }
   .modal       { border-radius: 22px; }
-  .modalHero   { border-radius: 22px 22px 0 0; height: 280px; }
+  .modalHero   { border-radius: 22px 22px 0 0; min-height: 190px; max-height: 380px; }
   .modalFooter { border-radius: 0 0 22px 22px; }
   .modalBody   { padding: 1.4rem 1.6rem 0.9rem; }
   .modalTitle  { font-size: 1.4rem; }
@@ -631,7 +633,7 @@
   .modalContent { font-size: 0.95rem; }
   .modalBody    { padding: 1.3rem 1.4rem 0.7rem; }
   .modalFooter  { padding: 0.8rem 1.4rem; }
-  .modalHero    { height: 250px; }
+  .modalHero    { min-height: 170px; max-height: 340px; }
 }
 
 @media (max-width: 360px) {

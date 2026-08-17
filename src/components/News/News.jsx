@@ -12,6 +12,7 @@ function News() {
   const [noticias, setNoticias] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedNoticia, setSelectedNoticia] = useState(null);
+  const [heroRatio, setHeroRatio] = useState(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -56,7 +57,7 @@ function News() {
             <div
               key={noticia.id}
               className={styles.novedad}
-              onClick={() => setSelectedNoticia(noticia)}
+              onClick={() => { setSelectedNoticia(noticia); setHeroRatio(null); }}
             >
               <div className={styles.novedadImageContainer}>
                 {noticia.imagen && (
@@ -95,7 +96,10 @@ function News() {
             </button>
 
             {selectedNoticia.imagen && (
-              <div className={styles.modalImageContainer}>
+              <div
+                className={styles.modalImageContainer}
+                style={heroRatio ? { aspectRatio: heroRatio } : undefined}
+              >
                 <img
                   src={`${API_URL}${selectedNoticia.imagen}`}
                   alt=""
@@ -106,6 +110,9 @@ function News() {
                   src={`${API_URL}${selectedNoticia.imagen}`}
                   alt={selectedNoticia.titulo}
                   className={styles.modalImageMain}
+                  onLoad={(e) =>
+                    setHeroRatio(e.target.naturalWidth / e.target.naturalHeight)
+                  }
                 />
                 <span className={styles.modalCategoriaBadge}>
                   {selectedNoticia.categoria}

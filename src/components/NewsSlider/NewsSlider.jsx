@@ -16,6 +16,7 @@ function NewsSlider({ noticias }) {
   const scrollRef  = useRef(null);
   const [activeIndex, setActiveIndex]         = useState(0);
   const [selectedNoticia, setSelectedNoticia] = useState(null);
+  const [heroRatio, setHeroRatio]             = useState(null);
 
   const visibleCards = 3;
   const cardWidth    = 300;
@@ -72,7 +73,7 @@ function NewsSlider({ noticias }) {
                   key={n.id}
                   className={styles.card}
                   style={{ "--c": color }}
-                  onClick={() => setSelectedNoticia(n)}
+                  onClick={() => { setSelectedNoticia(n); setHeroRatio(null); }}
                 >
                   <div className={styles.imageWrapper}>
                     {imageUrl ? (
@@ -130,7 +131,10 @@ function NewsSlider({ noticias }) {
       {sel && (
         <div className={styles.modalOverlay} onClick={() => setSelectedNoticia(null)}>
           <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-            <div className={styles.modalHero}>
+            <div
+              className={styles.modalHero}
+              style={heroRatio ? { aspectRatio: heroRatio } : undefined}
+            >
               {sel.imagen ? (
                 <>
                   <img
@@ -142,6 +146,9 @@ function NewsSlider({ noticias }) {
                     src={`${API_URL}${sel.imagen.startsWith("/") ? sel.imagen : "/" + sel.imagen}`}
                     alt={sel.titulo}
                     className={styles.modalHeroImg}
+                    onLoad={(e) =>
+                      setHeroRatio(e.target.naturalWidth / e.target.naturalHeight)
+                    }
                   />
                 </>
               ) : (
