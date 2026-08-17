@@ -98,7 +98,14 @@ function News() {
               <div className={styles.modalImageContainer}>
                 <img
                   src={`${API_URL}${selectedNoticia.imagen}`}
+                  alt=""
+                  aria-hidden="true"
+                  className={styles.modalImageBlur}
+                />
+                <img
+                  src={`${API_URL}${selectedNoticia.imagen}`}
                   alt={selectedNoticia.titulo}
+                  className={styles.modalImageMain}
                 />
                 <span className={styles.modalCategoriaBadge}>
                   {selectedNoticia.categoria}
