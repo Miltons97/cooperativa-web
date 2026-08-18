@@ -5,10 +5,12 @@
 
   background-color: #f2f5f8;
   background-image:
-    radial-gradient(ellipse at 12% 12%, rgba(11, 43, 74, 0.10) 0%, transparent 50%),
-    radial-gradient(ellipse at 88% 18%, rgba(47, 158, 68, 0.08) 0%, transparent 45%),
-    radial-gradient(ellipse at 50% 85%, rgba(245, 197, 24, 0.07) 0%, transparent 55%),
-    radial-gradient(ellipse at 92% 92%, rgba(11, 43, 74, 0.06) 0%, transparent 42%);
+    linear-gradient(135deg,
+      rgba(11, 43, 74, 0.22) 0%,
+      rgba(47, 158, 68, 0.14) 42%,
+      rgba(245, 197, 24, 0.16) 72%,
+      rgba(242, 245, 248, 0) 100%),
+    radial-gradient(ellipse at 92% 92%, rgba(11, 43, 74, 0.14) 0%, transparent 46%);
 
   padding: calc(76px + clamp(2rem, 4vw, 3.5rem)) clamp(16px, 4vw, 48px) clamp(4rem, 8vw, 7rem);
   box-sizing: border-box;
