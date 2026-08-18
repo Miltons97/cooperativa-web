@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./news.module.css";
 import { API_URL } from "../../config/api";
+import NewsCard from "./shared/NewsCard";
+import NewsModal from "./shared/NewsModal";
+import { getCategoryColor } from "./shared/categoryColors";
 
 function News() {
   const sliderImages = [
@@ -12,7 +15,6 @@ function News() {
   const [noticias, setNoticias] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedNoticia, setSelectedNoticia] = useState(null);
-  const [heroRatio, setHeroRatio] = useState(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,6 +39,9 @@ function News() {
       });
   }, []);
 
+  const resolveImageUrl = (noticia) =>
+    noticia?.imagen ? `${API_URL}${noticia.imagen}` : null;
+
   return (
     <div className={styles.novedadesContainer}>
 
@@ -50,86 +55,27 @@ function News() {
       </div>
 
       <div className={styles.novedadesGrid}>
-        {loading ? (
-          <p>Cargando novedades...</p>
-        ) : (
-          noticias.map((noticia) => (
-            <div
-              key={noticia.id}
-              className={styles.novedad}
-              onClick={() => { setSelectedNoticia(noticia); setHeroRatio(null); }}
-            >
-              <div className={styles.novedadImageContainer}>
-                {noticia.imagen && (
-                  <img
-                    src={`${API_URL}${noticia.imagen}`}
-                    alt={noticia.titulo}
-                  />
-                )}
-                <span className={styles.novedadCategory}>
-                  {noticia.categoria}
-                </span>
-              </div>
-
-              <div className={styles.novedadCaption}>
-                {noticia.titulo}
-              </div>
-            </div>
-          ))
-        )}
+        {loading
+          ? Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className={styles.skeletonCard} />
+            ))
+          : noticias.map((noticia) => (
+              <NewsCard
+                key={noticia.id}
+                noticia={noticia}
+                imageUrl={resolveImageUrl(noticia)}
+                color={getCategoryColor(noticia.categoria)}
+                onClick={() => setSelectedNoticia(noticia)}
+              />
+            ))}
       </div>
 
-      {selectedNoticia && (
-        <div
-          className={styles.modalOverlay}
-          onClick={() => setSelectedNoticia(null)}
-        >
-          <div
-            className={styles.modalContent}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className={styles.modalClose}
-              onClick={() => setSelectedNoticia(null)}
-            >
-              ✕
-            </button>
-
-            {selectedNoticia.imagen && (
-              <div
-                className={styles.modalImageContainer}
-                style={heroRatio ? { aspectRatio: heroRatio } : undefined}
-              >
-                <img
-                  src={`${API_URL}${selectedNoticia.imagen}`}
-                  alt=""
-                  aria-hidden="true"
-                  className={styles.modalImageBlur}
-                />
-                <img
-                  src={`${API_URL}${selectedNoticia.imagen}`}
-                  alt={selectedNoticia.titulo}
-                  className={styles.modalImageMain}
-                  onLoad={(e) =>
-                    setHeroRatio(e.target.naturalWidth / e.target.naturalHeight)
-                  }
-                />
-                <span className={styles.modalCategoriaBadge}>
-                  {selectedNoticia.categoria}
-                </span>
-              </div>
-            )}
-
-            <div className={styles.modalBody}>
-              <h2>{selectedNoticia.titulo}</h2>
-              {selectedNoticia.resumen && (
-                <div className={styles.modalSubtitle}>{selectedNoticia.resumen}</div>
-              )}
-              <p>{selectedNoticia.contenido}</p>
-            </div>
-          </div>
-        </div>
-      )}
+      <NewsModal
+        noticia={selectedNoticia}
+        imageUrl={resolveImageUrl(selectedNoticia)}
+        color={getCategoryColor(selectedNoticia?.categoria)}
+        onClose={() => setSelectedNoticia(null)}
+      />
     </div>
   );
 }

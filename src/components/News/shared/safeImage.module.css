@@ -1,0 +1,48 @@
+.frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #eef2f6;
+  flex-shrink: 0;
+}
+
+.img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  display: block;
+  transition: opacity 0.35s ease;
+}
+
+.skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, #eef2f6 30%, #e2e8f0 50%, #eef2f6 70%);
+  background-size: 220% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 140% 0; }
+  100% { background-position: -40% 0; }
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #9fb0bf;
+  background: linear-gradient(155deg, #eef2f6, #e4e9ee);
+}
+
+.placeholder span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
