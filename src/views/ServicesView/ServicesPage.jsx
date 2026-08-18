@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./servicesPage.module.css";
+import { getCategoryColor } from "../../components/News/shared/categoryColors";
 
 import Water        from "./Water/Water.jsx";
 import Electricity  from "./Electricity/Electricity.jsx";
@@ -15,6 +16,7 @@ const serviciosData = [
     image: "/assets/agua1.jpg",
     route: "/servicios/agua",
     description: "Información y gestiones sobre el servicio de agua de red.",
+    categoria: "AGUA",
   },
   {
     id: 2,
@@ -22,6 +24,7 @@ const serviciosData = [
     image: "/assets/Luz1.jpg",
     route: "/servicios/luz",
     description: "Todo sobre el suministro eléctrico y atención al usuario.",
+    categoria: "LUZ",
   },
   {
     id: 3,
@@ -29,6 +32,7 @@ const serviciosData = [
     image: "/assets/FibraOptica.jpg",
     route: "/servicios/internet",
     description: "Planes, soporte técnico y conectividad.",
+    categoria: "INTERNET",
   },
   {
     id: 4,
@@ -36,6 +40,7 @@ const serviciosData = [
     image: "/assets/mineral2.jpg",
     route: "/servicios/agua-mineral",
     description: "Información sobre el servicio de agua mineral.",
+    categoria: "AGUA MINERAL",
   },
   {
     id: 5,
@@ -43,6 +48,7 @@ const serviciosData = [
     image: "/assets/Luto1.jpg",
     route: "/servicios/social",
     description: "Programas sociales y asistencia comunitaria.",
+    categoria: "SOCIAL",
   },
 ];
 
@@ -72,10 +78,17 @@ export default function ServicesPage() {
           </p>
           <div className={styles.serviciosGrid} ref={gridRef} onScroll={handleScroll}>
             {serviciosData.map((serv) => (
-              <Link key={serv.id} to={serv.route} className={styles.servicioCard}>
-                <img src={serv.image} alt={serv.name} className={styles.cardImage} />
-                <img src="/assets/logoSinFondo.jpg" alt="Copeospil" className={styles.cardLogo} />
-                <div className={styles.cardOverlay}>
+              <Link
+                key={serv.id}
+                to={serv.route}
+                className={styles.servicioCard}
+                style={{ "--accent": getCategoryColor(serv.categoria) }}
+              >
+                <div className={styles.cardImageWrap}>
+                  <img src={serv.image} alt={serv.name} className={styles.cardImage} />
+                  <img src="/assets/logoSinFondo.jpg" alt="Copeospil" className={styles.cardLogo} />
+                </div>
+                <div className={styles.cardBody}>
                   <h3>{serv.name}</h3>
                   <p>{serv.description}</p>
                   <span className={styles.cardAction}>Ver más →</span>
