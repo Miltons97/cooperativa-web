@@ -96,15 +96,13 @@ function NewsModal({ noticia, imageUrl, color = "#0b2b4a", onClose }) {
               </div>
               <span className={styles.chip}>{noticia.categoria}</span>
             </div>
-
-            <div className={styles.heroBottom}>
-              <div className={styles.accent} />
-              <h2 className={styles.title}>{noticia.titulo}</h2>
-              {noticia.resumen && <p className={styles.subtitle}>{noticia.resumen}</p>}
-            </div>
           </div>
 
           <div className={styles.body}>
+            <div className={styles.accent} />
+            <h2 className={styles.title}>{noticia.titulo}</h2>
+            {noticia.resumen && <p className={styles.subtitle}>{noticia.resumen}</p>}
+
             <div className={styles.metaRow}>
               <span className={styles.date}>{formattedDate}</span>
               <span className={styles.dot} />

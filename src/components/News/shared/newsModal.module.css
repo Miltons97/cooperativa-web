@@ -112,8 +112,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(4,8,20,0.9) 0%, rgba(4,8,20,0.35) 26%, transparent 46%),
-    linear-gradient(0deg, rgba(4,8,20,0.99) 0%, rgba(4,8,20,0.85) 24%, rgba(4,8,20,0.3) 58%, transparent 82%);
+    linear-gradient(180deg, rgba(4,8,20,0.75) 0%, transparent 22%),
+    linear-gradient(0deg, rgba(4,8,20,0.55) 0%, transparent 20%);
   pointer-events: none;
 }
 
@@ -164,53 +164,46 @@
   box-shadow: 0 4px 14px rgba(0,0,0,0.3);
 }
 
-.heroBottom {
-  position: absolute;
-  left: 1.9rem;
-  right: 1.9rem;
-  bottom: 1.7rem;
-  z-index: 2;
-}
-
 .accent {
   height: 4px;
   width: 46px;
   border-radius: 2px;
-  background: var(--accent, #0b2b4a);
-  margin-bottom: 1rem;
-  box-shadow: 0 0 12px 1px color-mix(in srgb, var(--accent, #0b2b4a) 60%, transparent);
+  background: #ffffff;
+  margin-bottom: 1.1rem;
+  box-shadow: 0 0 12px 1px rgba(255,255,255,0.4);
 }
 
 .title {
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   font-weight: 800;
   color: #ffffff;
   margin: 0;
-  line-height: 1.14;
-  letter-spacing: -0.024em;
-  text-shadow: 0 4px 30px rgba(0,0,0,0.8);
+  line-height: 1.16;
+  letter-spacing: -0.022em;
 }
 
 .subtitle {
-  font-size: 1.02rem;
+  font-size: 1rem;
   font-weight: 400;
-  color: rgba(255,255,255,0.72);
-  margin: 0.55rem 0 0;
+  color: rgba(255,255,255,0.78);
+  margin: 0.6rem 0 0;
   line-height: 1.5;
-  text-shadow: 0 2px 16px rgba(0,0,0,0.7);
 }
 
 /* ── body ── */
 .body {
-  padding: 1.7rem 2rem 2.2rem;
-  background: #0d1117;
+  padding: 1.8rem 2rem 2.2rem;
+  background: linear-gradient(155deg,
+    color-mix(in srgb, var(--accent, #0b2b4a) 55%, transparent) 0%,
+    #0b2b4a 42%,
+    #081d38 100%);
 }
 
 .metaRow {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  margin-bottom: 1.2rem;
+  margin: 1.4rem 0 1.2rem;
 }
 
 .date {
@@ -257,5 +250,4 @@
   .title   { font-size: 1.45rem; }
   .body    { padding: 1.4rem 1.5rem 1.8rem; }
   .heroTop { padding: 1.1rem 3.2rem 0 1.2rem; }
-  .heroBottom { left: 1.4rem; right: 1.4rem; bottom: 1.3rem; }
 }
