@@ -45,11 +45,6 @@ function NewsCard({ noticia, imageUrl, color = "#0b2b4a", onClick }) {
         {excerpt && <p className={styles.excerpt}>{excerpt}</p>}
 
         <div className={styles.meta}>
-          <span className={styles.date}>
-            {noticia.created_at
-              ? new Date(noticia.created_at).toLocaleDateString("es-AR")
-              : ""}
-          </span>
           <span className={styles.readMore}>
             Ver más <ArrowIcon />
           </span>
