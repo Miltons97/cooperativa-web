@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import SafeImage from "./SafeImage";
+import { useEffect, useState } from "react";
 import styles from "./newsModal.module.css";
 
 function CloseIcon() {
@@ -11,12 +10,18 @@ function CloseIcon() {
 }
 
 /**
- * Editorial split modal: image and text live in separate panes so the
- * title never has to fight an unpredictable image for legibility.
- * Stacks vertically on small screens. Closes on Escape, backdrop click,
- * or the close button; locks page scroll while open.
+ * Cinematic detail card: the photo is always shown whole (blurred ambient
+ * fill behind it, never cropped), title/subtitle sit on a vignette over the
+ * image the way the admin export cards already do, and the body continues
+ * in the same dark surface instead of switching to a plain white panel.
  */
 function NewsModal({ noticia, imageUrl, color = "#0b2b4a", onClose }) {
+  const [imgStatus, setImgStatus] = useState(imageUrl ? "loading" : "empty");
+
+  useEffect(() => {
+    setImgStatus(imageUrl ? "loading" : "empty");
+  }, [imageUrl]);
+
   useEffect(() => {
     if (!noticia) return;
 
@@ -43,6 +48,8 @@ function NewsModal({ noticia, imageUrl, color = "#0b2b4a", onClose }) {
       })
     : "";
 
+  const hasImage = imgStatus === "loading" || imgStatus === "loaded";
+
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div
@@ -53,38 +60,58 @@ function NewsModal({ noticia, imageUrl, color = "#0b2b4a", onClose }) {
         aria-modal="true"
         aria-label={noticia.titulo}
       >
-        <div className={styles.imagePane}>
-          <SafeImage src={imageUrl} alt={noticia.titulo} aspectRatio={null}>
-            <span className={styles.chip}>{noticia.categoria}</span>
-          </SafeImage>
-        </div>
+        <button className={styles.closeBtn} onClick={onClose} aria-label="Cerrar">
+          <CloseIcon />
+        </button>
 
-        <div className={styles.contentPane}>
-          <div className={styles.contentScroll}>
-            <div className={styles.topRow}>
+        <div className={styles.scrollArea}>
+          <div className={styles.hero}>
+            {hasImage ? (
+              <>
+                <img
+                  src={imageUrl}
+                  alt=""
+                  aria-hidden="true"
+                  className={styles.heroBlur}
+                />
+                <img
+                  src={imageUrl}
+                  alt={noticia.titulo}
+                  className={styles.heroImg}
+                  style={{ opacity: imgStatus === "loaded" ? 1 : 0 }}
+                  onLoad={() => setImgStatus("loaded")}
+                  onError={() => setImgStatus("empty")}
+                />
+              </>
+            ) : (
+              <div className={styles.heroFallback} />
+            )}
+
+            <div className={styles.heroGrad} />
+
+            <div className={styles.heroTop}>
               <div className={styles.brand}>
                 <img src="/assets/logoSinFondo.jpg" alt="Copeospil Ltda." className={styles.logo} />
                 <span className={styles.brandName}>Copeospil Ltda.</span>
               </div>
-              <button className={styles.closeBtn} onClick={onClose} aria-label="Cerrar">
-                <CloseIcon />
-              </button>
+              <span className={styles.chip}>{noticia.categoria}</span>
             </div>
 
-            <h2 className={styles.title}>{noticia.titulo}</h2>
-            {noticia.resumen && <p className={styles.subtitle}>{noticia.resumen}</p>}
+            <div className={styles.heroBottom}>
+              <div className={styles.accent} />
+              <h2 className={styles.title}>{noticia.titulo}</h2>
+              {noticia.resumen && <p className={styles.subtitle}>{noticia.resumen}</p>}
+            </div>
+          </div>
 
+          <div className={styles.body}>
             <div className={styles.metaRow}>
               <span className={styles.date}>{formattedDate}</span>
               <span className={styles.dot} />
               <span className={styles.category}>{noticia.categoria}</span>
             </div>
-
             <div className={styles.rule} />
-
             <p className={styles.content}>{noticia.contenido}</p>
-
-            <div className={styles.footer}>www.copeospil.com.ar</div>
           </div>
         </div>
       </div>
