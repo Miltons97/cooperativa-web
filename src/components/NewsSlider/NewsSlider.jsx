@@ -166,7 +166,14 @@ function NewsSlider({ noticias }) {
                 <span className={styles.modalCatBadge}>{sel.categoria}</span>
               </div>
               <div className={styles.modalHeroBottom}>
-                <h2 className={styles.modalTitle}>{sel.titulo}</h2>
+                <div className={styles.modalTitleWrap}>
+                  <h2 className={styles.modalTitle}>{sel.titulo}</h2>
+                  {sel.resumen && (
+                    <p className={styles.modalSubtitle} style={{ color: catColor }}>
+                      {sel.resumen}
+                    </p>
+                  )}
+                </div>
               </div>
 
               <button className={styles.closeBtn} onClick={() => setSelectedNoticia(null)}>✕</button>

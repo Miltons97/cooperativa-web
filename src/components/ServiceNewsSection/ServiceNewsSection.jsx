@@ -173,7 +173,14 @@ export default function ServiceNewsSection({ categoria, title }) {
                 <span className={styles.modalBadge}>{selected.categoria}</span>
               </div>
               <div className={styles.modalHeroBottom}>
-                <h2 className={styles.modalTitle}>{selected.titulo}</h2>
+                <div className={styles.modalTitleWrap}>
+                  <h2 className={styles.modalTitle}>{selected.titulo}</h2>
+                  {selected.resumen && (
+                    <p className={styles.modalSubtitle} style={{ color }}>
+                      {selected.resumen}
+                    </p>
+                  )}
+                </div>
               </div>
 
               <button className={styles.closeBtn} onClick={() => setSelected(null)}>✕</button>

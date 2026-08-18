@@ -377,7 +377,7 @@
   background: #ffffff;
   border-radius: 26px;
   width: 100%;
-  max-width: 620px;
+  max-width: 700px;
   max-height: 92vh;
   overflow-y: auto;
   position: relative;
@@ -405,8 +405,8 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  min-height: 220px;
-  max-height: 460px;
+  min-height: 260px;
+  max-height: 520px;
   background: #070b12;
   overflow: hidden;
   display: flex;
@@ -445,8 +445,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(4,8,20,0.76) 0%, transparent 38%),
-    linear-gradient(0deg,   rgba(4,8,20,0.97) 0%, rgba(4,8,20,0.55) 42%, transparent 72%);
+    linear-gradient(180deg, rgba(4,8,20,0.8) 0%, transparent 34%),
+    linear-gradient(0deg,   rgba(4,8,20,0.92) 0%, rgba(4,8,20,0.6) 46%, transparent 78%);
   z-index: 2;
   pointer-events: none;
 }
@@ -470,6 +470,17 @@
   position: relative;
   z-index: 3;
   padding: 0 1.9rem 1.7rem;
+}
+
+.modalTitleWrap {
+  display: inline-block;
+  max-width: 100%;
+  background: rgba(4, 8, 20, 0.5);
+  backdrop-filter: blur(14px) saturate(1.3);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 0.9rem 1.2rem;
 }
 
 .modalBrand {
@@ -549,6 +560,15 @@
   text-shadow: 0 2px 28px rgba(0,0,0,0.75);
 }
 
+.modalSubtitle {
+  font-size: 1.02rem;
+  font-weight: 700;
+  margin: 0.55rem 0 0;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.9), 0 1px 2px rgba(0,0,0,0.6);
+}
+
 .modalBody {
   padding: 1.7rem 2.2rem 1.2rem;
   flex: 1;
@@ -625,6 +645,7 @@
   .modalBody   { padding: 1.4rem 1.6rem 0.9rem; }
   .modalTitle  { font-size: 1.4rem; }
   .modalHeroBottom { padding: 0 1.5rem 1.3rem; }
+  .modalTitleWrap { padding: 0.7rem 0.95rem; border-radius: 13px; }
 }
 
 @media (max-width: 480px) {
@@ -633,7 +654,7 @@
   .modalContent { font-size: 0.95rem; }
   .modalBody    { padding: 1.3rem 1.4rem 0.7rem; }
   .modalFooter  { padding: 0.8rem 1.4rem; }
-  .modalHero    { min-height: 170px; max-height: 340px; }
+  .modalHero    { min-height: 190px; max-height: 360px; }
 }
 
 @media (max-width: 360px) {

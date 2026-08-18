@@ -122,6 +122,9 @@ function News() {
 
             <div className={styles.modalBody}>
               <h2>{selectedNoticia.titulo}</h2>
+              {selectedNoticia.resumen && (
+                <div className={styles.modalSubtitle}>{selectedNoticia.resumen}</div>
+              )}
               <p>{selectedNoticia.contenido}</p>
             </div>
           </div>
