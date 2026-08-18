@@ -8,13 +8,13 @@ function Cards() {
   return (
     <div className={styles.cardsContainer}>
 
-      <div className={styles.card}>
+      <div className={`${styles.card} ${styles.cardCoral}`}>
         <div className={styles.cardTop}>
-          <div className={styles.cardIconBox} style={{ background: "rgba(224,82,96,0.12)" }}>
-            <FaPhoneAlt className={styles.cardIcon} style={{ color: "#e05260" }} />
+          <div className={styles.cardIconBox} style={{ background: "rgba(255,255,255,0.18)" }}>
+            <FaPhoneAlt className={styles.cardIcon} style={{ color: "#fff" }} />
           </div>
           <h3 className={styles.cardTitle}>Contacto y Emergencias</h3>
-          <div className={styles.cardAccent} style={{ background: "#e05260" }} />
+          <div className={styles.cardAccent} style={{ background: "rgba(255,255,255,0.55)" }} />
         </div>
 
         <ul className={styles.cardList}>
@@ -40,7 +40,7 @@ function Cards() {
           </li>
           <li>
             <span className={styles.listLabel}>Social / Sepelio</span>
-            <span className={styles.listVal}>(02302) 44-4444</span>
+            <span className={styles.listVal}>(2302) 44-4444</span>
           </li>
         </ul>
 
